@@ -28,7 +28,7 @@
     "elec": "electron-forge start",
     "start": "react-scripts start",
     "package": "electron-forge package",
-    "make": "electron-forge make",
+    "make": "react-scripts build && electron-forge make",
     "dev": "concurrently -k \"cross-env BROWSER=none npm start\" \"npm:electron\"",
     "electron": "wait-on http://localhost:3000 && electron ."
   },
