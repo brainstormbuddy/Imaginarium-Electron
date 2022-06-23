@@ -4,6 +4,7 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import ResetEmail from "./pages/resetemail";
 import ResetPassword from "./pages/resetpassword";
+// import Layout from "./components/Layout";
 
 function App() {
   let routes = useRoutes([
