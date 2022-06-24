@@ -1,6 +1,6 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow } = require("electron");
-const electron = require('electron');
+const electron = require("electron");
 const path = require("path");
 const isDev = require("electron-is-dev");
 const screenElectron = electron.screen;
@@ -9,8 +9,6 @@ function createWindow() {
   const mainScreen = screenElectron.getPrimaryDisplay();
   const dimensions = mainScreen.size;
 
-  // const primaryDisplay = screen.getPrimaryDisplay()
-  // const { width, height } = primaryDisplay.workAreaSize
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: dimensions.width,
@@ -43,7 +41,7 @@ function createWindow() {
   //   mainWindow.webContents.openDevTools({ mode: "detach" });
   // }
 
-  splash.loadFile("splash.html");
+  splash.loadFile("./public/splash/splash.html");
   splash.center();
   setTimeout(function () {
     splash.close();

@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&family=Ubuntu:wght@400&display=swap");
 @font-face {
   font-family: "Mulish";
-  src: url("./Mulish/Mulish-VariableFont_wght.ttf");
+  src: url("./assets/fonts/Mulish/Mulish-VariableFont_wght.ttf");
 }
 @tailwind base;
 @tailwind components;

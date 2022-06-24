@@ -1,9 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import { GoogleLogin } from "react-google-login";
 import AppleLogin from "react-apple-login";
 
+import { AuthContext } from "./context/AuthContext";
+import DeviartImage from "../components/pages/Onboard/DeviartImage";
+
 function Login() {
+  const { setIsAuthenticated } = React.useContext(AuthContext);
+
   const responseGoogle = (response) => {
     console.log(response);
   };
@@ -14,11 +20,12 @@ function Login() {
         className="relative h-[calc(100vh)] w-fullrelative !w-full bg-[url('/img/background.png')] h-[calc(100vh)] bg-center bg-cover bg-no-repeat"
         alt="background"
       />
-      <img
+      {/* <img
         className="absolute top-6	left-6 !w-auto h-6"
         src="assets/img/Deviant Art.png"
         alt="Deviant Art"
-      />
+      /> */}
+      <DeviartImage />
       <label className="absolute top-6 right-10 !w-37 h-5 font-extrabold text-[9px] tracking-[.21em] text-white opacity-50">
         ART BY @FANTASYLADY
       </label>
@@ -77,9 +84,13 @@ function Login() {
           />
         </div>
         <div className="h-14 flex justify-center">
-          <button className="mt-4 flex justify-center rounded-md px-[9px] py-[6px] text-center w-28 h-8 text-white bg-gradient-to-r from-[#FEAC6D] to-[#AE61ED] font-extrabold text-[10px] tracking-[.25em] leading-5">
+          <Link
+            className="mt-4 flex justify-center rounded-md px-[9px] py-[6px] text-center w-28 h-8 text-white bg-gradient-to-r from-[#FEAC6D] to-[#AE61ED] font-extrabold text-[10px] tracking-[.25em] leading-5"
+            to="/dashboard"
+            onClick={() => setIsAuthenticated(true)}
+          >
             LOG IN
-          </button>
+          </Link>
         </div>
         <div className="mt-10 mb-2">
           <GoogleLogin

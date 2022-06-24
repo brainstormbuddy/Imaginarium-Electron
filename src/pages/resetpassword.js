@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 // import IconButton from "@material-ui/core/IconButton";
@@ -9,24 +9,24 @@ import { Link } from "react-router-dom";
 // import Input from "@material-ui/core/Input";
 
 function ResetPassword() {
-  const [isShown, setIsSHown] = useState(false);
+  // const [isShown, setIsSHown] = useState(false);
 
-  const [values, setValues] = React.useState({
-    password: "",
-    showPassword: false,
-  });
+  // const [values, setValues] = React.useState({
+  //   password: "",
+  //   showPassword: false,
+  // });
 
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-  };
+  // const handleClickShowPassword = () => {
+  //   setValues({ ...values, showPassword: !values.showPassword });
+  // };
 
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+  // const handleMouseDownPassword = (event) => {
+  //   event.preventDefault();
+  // };
 
-  const handlePasswordChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
+  // const handlePasswordChange = (prop) => (event) => {
+  //   setValues({ ...values, [prop]: event.target.value });
+  // };
 
   return (
     <div className="w-full h-[calc(100vh]">
@@ -84,7 +84,7 @@ function ResetPassword() {
           </label>
 
           <input
-            type={isShown ? "text" : "password"}
+            type={"password"}
             name="confirmpassword"
             className="flex items-center mb-2 px-3 py-2 bg-black  border-neutral-700	placeholder-slate-400 focus:outline-none focus:border-neutral-700 focus:ring-neutral-700 block w-full rounded-md sm:text-sm focus:ring-1 text-white"
             placeholder="Confirm password"

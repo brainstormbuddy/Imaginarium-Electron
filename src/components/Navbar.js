@@ -1,5 +1,5 @@
 import * as React from "react";
-import { BaseIcon } from "./Svg";
+import { BaseIcon, SearchIcon, BellIcon } from "./Svg";
 
 const mainmenu = [
   {
@@ -10,10 +10,21 @@ const mainmenu = [
 export default function Navbar(props) {
   return (
     <div className="w-full h-14 bg-neutral-830">
-      <div className="w-14 h-14 bg-neutral-850">
-        {mainmenu.map((menu, index) => (
-          <MainMenuItem icon={menu.icon} key={index} />
-        ))}
+      <div className="flex justify-between">
+        <div className="w-14 h-14 bg-neutral-850">
+          {mainmenu.map((menu, index) => (
+            <MainMenuItem icon={menu.icon} key={index} />
+          ))}
+        </div>
+        <div className="flex flex-end items-center">
+          <SearchIcon className="mr-7 hover:cursor-pointer" />
+          <BellIcon className="mr-7 hover:cursor-pointer" />
+          <img
+            className="mr-4 rounded-[32px]"
+            src="assets/img/dashboard/Avatar.png"
+            alt="Avatar"
+          />
+        </div>
       </div>
     </div>
   );
