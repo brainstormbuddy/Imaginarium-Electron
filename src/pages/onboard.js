@@ -58,7 +58,7 @@ function Onboard() {
   return (
     <Carousel {...carouselProp}>
       <div className="screen1">
-        <div className="relative !w-full bg-[url('/img/screen1.png')] h-[calc(100vh)] bg-center bg-cover bg-no-repeat">
+        <div className="relative !w-full bg-[url('/public/assets/img/screen1.png')] h-[calc(100vh)] bg-center bg-cover bg-no-repeat">
           <DeviartImage />
           <label className="absolute top-6 right-10 !w-37 h-5 font-extrabold text-[9px] tracking-[.21em] text-white opacity-50">
             ART BY @FANTASYLADY
@@ -73,10 +73,11 @@ function Onboard() {
       </div>
       <div className="screen2">
         <div
-          className="relative !w-full bg-[url('/img/screen2.png')] h-[calc(100vh)] bg-center bg-cover bg-no-repeat"
+          className="relative !w-full bg-[url('/public/assets/img/screen2.png')] h-[calc(100vh)] bg-center bg-cover bg-no-repeat"
           src="assets/img/screen2.png"
           alt="screen2"
         />
+
         <DeviartImage />
         <label className="absolute top-6 right-10 !w-37 h-5 font-extrabold text-[9px] tracking-[.21em] text-white opacity-50">
           ART BY @FANTASYLADY
@@ -90,10 +91,11 @@ function Onboard() {
       </div>
       <div className="screen3">
         <div
-          className="relative !w-full bg-[url('/img/screen3.png')] h-[calc(100vh)] bg-center bg-cover bg-no-repeat"
+          className="relative !w-full bg-[url('/public/assets/img/screen3.png')] h-[calc(100vh)] bg-center bg-cover bg-no-repeat"
           src="assets/img/screen3.png"
           alt="screen3"
         />
+
         <DeviartImage />
         <label className="absolute top-6 right-10 !w-37 h-5 font-extrabold text-[9px] tracking-[.21em] text-white opacity-50">
           ART BY @FANTASYLADY

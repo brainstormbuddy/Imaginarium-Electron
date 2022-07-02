@@ -1,6 +1,5 @@
 import * as React from "react";
 import Navbar from "./Navbar";
-import { useLocation } from "react-router-dom";
 
 import { AuthContext } from "../pages/context/AuthContext";
 
@@ -8,27 +7,15 @@ import { AuthContext } from "../pages/context/AuthContext";
 import SubNavbar from "./SubNavbar";
 
 export default function Layout(props) {
-  const { isAuthenticated } = React.useContext(AuthContext);
+  const { isAuthenticated, setIsAuthenticated } = React.useContext(AuthContext);
 
-  const location = useLocation();
-  console.log(location.pathname.indexOf("/"));
+  React.useEffect(
+    () => setIsAuthenticated(localStorage.getItem("auth")),
+    [setIsAuthenticated]
+  );
 
   return (
     <div>
-      {/* {location.pathname.indexOf("login") === -1 && (
-        <>
-          <Navbar />
-          <SubNavbar />
-        </>
-      )} */}
-      {/* 
-      {location.pathname.indexOf("") === -1 && (
-        <>
-          <Navbar />
-          <SubNavbar />
-        </>
-      )} */}
-
       {isAuthenticated && (
         <div>
           <Navbar />

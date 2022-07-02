@@ -1,5 +1,7 @@
 import * as React from "react";
 import { BrowserRouter as Router, useRoutes } from "react-router-dom";
+import "./App.css";
+
 import Onboard from "./pages/onboard";
 import Login from "./pages/login";
 import Register from "./pages/register";
@@ -7,7 +9,9 @@ import ResetEmail from "./pages/resetemail";
 import ResetPassword from "./pages/resetpassword";
 import Layout from "./components/Layout";
 import Dashboard from "./pages/dashboard";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import NewProject from "./pages/newproject";
+import EditProject from "./pages/editproject";
+import Profile from "./pages/profile";
 
 // auth context
 import { AuthContext } from "./pages/context/AuthContext";
@@ -20,6 +24,9 @@ function App() {
     { path: "/reset-email", element: <ResetEmail /> },
     { path: "/reset-password", element: <ResetPassword /> },
     { path: "/dashboard", element: <Dashboard /> },
+    { path: "/new-project", element: <NewProject /> },
+    { path: "/edit-project", element: <EditProject /> },
+    { path: "/profile", element: <Profile /> },
     // ...
   ]);
   return routes;

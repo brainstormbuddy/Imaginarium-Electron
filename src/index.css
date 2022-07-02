@@ -1,14 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&family=Ubuntu:wght@400&display=swap");
-@font-face {
-  font-family: "Mulish";
-  src: url("./assets/fonts/Mulish/Mulish-VariableFont_wght.ttf");
-}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html {
-    font-family: Mulish;
-  }
+@font-face {
+  font-family: mulish;
+  src: url("../public/assets/font/Mulish/Mulish-VariableFont_wght.ttf");
+}
+
+body {
+  font-family: "mulish", Mulish;
+}
+
+:root {
+  --bc: 25 25% 0%;
+}
+
+.checkbox {
+  background-color: #0e0e0e;
 }
