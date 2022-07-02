@@ -84,7 +84,7 @@ export default function Navbar(props) {
               <div className="mr-6 w-[32px] h-[32px] min-h-0 p-0 bg-transparent hover:bg-[#4F4F4F] active:bg-[#4F4F4F] border-none cursor-pointer rounded-[4px]">
                 <label
                   htmlFor="my-modal-4"
-                  className="btn modal-button w-[32px] h-[32px] min-h-0 p-0 bg-transparent hover:bg-[#4F4F4F] active:bg-[#4F4F4F] border-none rounded-none rounded-[4px]"
+                  className="btn modal-button w-[32px] h-[32px] min-h-0 p-0 bg-transparent hover:bg-[#4F4F4F] active:bg-[#4F4F4F] border-none rounded-[4px]"
                 >
                   <SearchIcon />
                 </label>
@@ -415,7 +415,7 @@ export default function Navbar(props) {
                   </label>
                   <div className="mt-3 flex flex-row items-center">
                     <input
-                      type="checkbox"
+                      type="  "
                       className="checkbox bg-[0E0E0E] border border-[#404040] w-[14px] h-[14px] rounded-[4px]"
                       style={{}}
                       defaultChecked={checked}
