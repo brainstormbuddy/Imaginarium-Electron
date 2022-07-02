@@ -7,6 +7,8 @@ import {
   ProjectTypeTv,
 } from "../../Svg";
 
+import Checkbox from "../common/Checkbox";
+
 const projects = [
   {
     project_id: 1,
@@ -59,6 +61,7 @@ const projects = [
 export default function Table(props) {
   const [showLeaveModal, setShowLeaveModal] = React.useState(false);
   const [showRevokeModal, setShowRevokeModal] = React.useState(false);
+  const [checked, setChecked] = React.useState(true);
 
   return (
     <div className="w-full h-full scrollbar-hide md:scrollbar-default">
@@ -223,14 +226,15 @@ export default function Table(props) {
                 not be able to interact with the project until you are invited
                 again.
               </label>
-              <div className="mt-3 flex flex-row items-center">
-                <input
-                  type="checkbox"
-                  className="mt-[2px] rounded-[4px] border border-[#404040] bg-transparent accent-[#0E0E0E]"
-                />
-                <label className="ml-3 text-white text-[12px] leading-5">
-                  Confirm deletion
-                </label>
+              <div className="mt-3">
+                <Checkbox
+                  checked={checked}
+                  onChange={() => {
+                    setChecked(!checked);
+                  }}
+                >
+                  Confirm project leaving
+                </Checkbox>
               </div>
             </div>
             <div className="flex justify-end edit-modal-footer py-4 px-[24px]">
@@ -274,14 +278,15 @@ export default function Table(props) {
                   After cancellation, all collaborators will be immediately
                   removed from the project. You can add them again.
                 </label>
-                <div className="mt-3 flex flex-row items-center">
-                  <input
-                    type="checkbox"
-                    className="mt-[2px] rounded-[4px] border border-[#404040] bg-transparent accent-[#0E0E0E]"
-                  />
-                  <label className="ml-3 text-white text-[12px] leading-5">
+                <div className="mt-3">
+                  <Checkbox
+                    checked={checked}
+                    onChange={() => {
+                      setChecked(!checked);
+                    }}
+                  >
                     Confirm ownership transfer
-                  </label>
+                  </Checkbox>
                 </div>
               </div>
               <div className="flex justify-end edit-modal-footer py-4 px-[24px]">

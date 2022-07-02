@@ -2,6 +2,7 @@ import * as React from "react";
 
 // core components
 import Table from "../components/core/table/Table";
+import Checkbox from "../components/core/common/Checkbox";
 
 function Dashboard() {
   const [showModal, setShowModal] = React.useState(true);
@@ -26,30 +27,17 @@ function Dashboard() {
                 </div>
 
                 {/*footer*/}
-                <div className="flex h-16 justify-between items-center bg-[#2B2B2B] rounded-[4px]">
-                  <div
-                    className="flex items-center"
-                    onClick={() => {
+                <div className="flex h-16 p-6 justify-between items-center bg-[#2B2B2B] rounded-[4px]">
+                  <Checkbox
+                    checked={checked}
+                    onChange={() => {
                       setChecked(!checked);
                     }}
                   >
-                    <input
-                      type="checkbox"
-                      className="ml-7 checkbox bg-[0E0E0E] border border-[#404040] w-[14px] h-[14px] rounded-[4px]"
-                      defaultChecked={checked}
-                      onChange={() => setChecked(!checked)}
-                    />
-                    <label
-                      className="ml-4 text-[10px] leading-5 text-white cursor-pointer"
-                      onClick={() => {
-                        setChecked(!checked);
-                      }}
-                    >
-                      Show welcome screen on launch
-                    </label>
-                  </div>
+                    Show welcome screen on launch
+                  </Checkbox>
                   <button
-                    className="m-6 w-[100px] h-8  tracking-[.21em] leading-5 font-extrabold text-white text-[10px] border border-[#404040] hover:bg-[#404040] rounded-md"
+                    className="w-[100px] h-8  tracking-[.21em] leading-5 font-extrabold text-white text-[10px] border border-[#404040] hover:bg-[#404040] rounded-md"
                     type="button"
                     onClick={() => setShowModal(false)}
                   >

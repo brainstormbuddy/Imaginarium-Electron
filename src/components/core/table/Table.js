@@ -10,6 +10,8 @@ import {
   ProjectTypeTv,
 } from "../../Svg";
 
+import Checkbox from "../common/Checkbox";
+
 const projects = [
   {
     project_id: 1,
@@ -571,17 +573,15 @@ export default function Table(props) {
               <label className="text-white text-[12px] leading-5">
                 This action can not be undone.
               </label>
-              <div className="mt-3 flex flex-row items-center">
-                <input
-                  type="checkbox"
-                  className="checkbox bg-[0E0E0E] border border-[#404040] w-[14px] h-[14px] rounded-[4px]"
-                  defaultChecked={checked}
-                  onChange={() => setChecked(!checked)}
-                />
-
-                <label className="ml-3 text-white text-[12px] leading-5">
+              <div className="mt-3">
+                <Checkbox
+                  checked={checked}
+                  onChange={() => {
+                    setChecked(!checked);
+                  }}
+                >
                   Confirm deletion
-                </label>
+                </Checkbox>
               </div>
             </div>
             <div className="flex justify-end edit-modal-footer py-4 px-[24px]">
@@ -630,17 +630,15 @@ export default function Table(props) {
                 not be able to interact with the project until you are invited
                 again.
               </label>
-              <div className="mt-3 flex flex-row items-center">
-                <input
-                  type="checkbox"
-                  className="checkbox bg-[0E0E0E] border border-[#404040] w-[14px] h-[14px] rounded-[4px]"
-                  defaultChecked={checked}
-                  onChange={() => setChecked(!checked)}
-                />
-
-                <label className="ml-3 text-white text-[12px] leading-5">
+              <div className="mt-3">
+                <Checkbox
+                  checked={checked}
+                  onChange={() => {
+                    setChecked(!checked);
+                  }}
+                >
                   Confirm deletion
-                </label>
+                </Checkbox>
               </div>
             </div>
             <div className="flex justify-end edit-modal-footer py-4 px-[24px]">
