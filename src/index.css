@@ -11,10 +11,25 @@ body {
   font-family: "mulish", Mulish;
 }
 
-:root {
-  --bc: 25 25% 0%;
+.dropdown .dropdown-content {
+  position: absolute;
 }
 
-.checkbox {
-  background-color: #0e0e0e;
+[type="checkbox"], [type="radio"] {
+  color: #0e0e0e;
+}
+
+[type="checkbox"]:focus {
+  --tw-ring-offset-width: 0px
+  --tw-ring-color: #0e0e0e;
+}
+
+[type='radio']:focus {
+  --tw-ring-offset-width: 0px
+  --tw-ring-color: #0e0e0e;
+}
+
+[type='text']:focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus {
+  --tw-ring-offset-width: 0px
+  --tw-ring-color: #0e0e0e;
 }

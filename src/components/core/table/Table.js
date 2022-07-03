@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import {
   DetailIcon,
   DropDownIcon,
-  CloseIcon,
   ProjectTypeBook,
   ProjectTypeMovie,
   ProjectTypeTv,
@@ -231,7 +230,7 @@ export default function Table(props) {
   const [showDeleteModal, setShowDeleteModal] = React.useState(false);
   const [showLeaveModal, setShowLeaveModal] = React.useState(false);
   const [showExport, setShowExport] = React.useState(false);
-  const [checked, setChecked] = React.useState(true);
+  const [checked, setChecked] = React.useState(false);
   const [id, setId] = React.useState();
 
   return (
@@ -295,7 +294,7 @@ export default function Table(props) {
                   {project.project_author}
                 </span>
               </TableCol>
-              <TableCol className="flex flex-row w-[10%]">
+              <TableCol className="flex flex-row flex-wrap w-[10%]">
                 {project.project_collaborators.map(
                   (project_collaborator, index) => (
                     <img
@@ -423,7 +422,11 @@ export default function Table(props) {
                   setshowExportModal(false);
                 }}
               >
-                <CloseIcon />
+                <img
+                  className="w-[20px] h-[20px]"
+                  src="assets/img/dashboard/close.png"
+                  alt="close"
+                />
               </button>
             </div>
             <div className="edit-modal-content px-[24px] py-4 border-b border-[#161616]">
@@ -432,15 +435,18 @@ export default function Table(props) {
                   <label className="text-white text-[9px] font-extrabold leading-5 tracking-[.21em]">
                     WHERE TO SAVE
                   </label>
-                  <div className="mt-1 flex justify-between items-center bg-[#161616] border border-[#404040] w-full h-8">
+                  <div className="mt-1 flex justify-between items-center bg-[#161616] border border-[#404040] w-full h-8 rounded-[4px]">
                     <label className="ml-2 text-[12px] leading-5 text-white">
                       Documents
                     </label>
-                    <img
-                      className="mr-1.5"
-                      src="assets/img/dashboard/folder.png"
-                      alt="folder"
-                    />
+                    <input type="file" id="upload-file" className="" hidden />
+                    <label className="cursor-pointer" htmlFor="upload-file">
+                      <img
+                        className="mr-1.5"
+                        src="assets/img/dashboard/folder.png"
+                        alt="folder"
+                      />
+                    </label>
                   </div>
                   <label className="flex mt-3 text-white text-[9px] font-extrabold leading-5 tracking-[.21em]">
                     PROJECT FORMAT
@@ -456,7 +462,7 @@ export default function Table(props) {
                       name="projects"
                       id="projects"
                     >
-                      <label className="ml-2 font-extrabold text-center text-white text-[9px] leading-5">
+                      <label className="ml-2 text-center text-white text-[12px] leading-5">
                         {projectType}
                       </label>
 
@@ -468,10 +474,10 @@ export default function Table(props) {
                     {showExport ? (
                       <ul
                         tabIndex="0"
-                        className="menu menu-compact dropdown-content mt-[40px] bg-[#161616] w-full h-[56px] mt-0 rounded-[4px]"
+                        className="menu menu-compact dropdown-content mt-[40px] bg-[#161616] w-full h-[56px] rounded-[4px]"
                       >
                         <li
-                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 border border-[#404040] hover:bg-[#5D5D5D]"
+                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border border-[#404040] hover:bg-[#5D5D5D]"
                           onClick={() => {
                             setProjectType("Microsoft Word Document (*.docx)");
                             setShowExport(false);
@@ -480,7 +486,7 @@ export default function Table(props) {
                           Microsoft Word Document (*.docx)
                         </li>
                         <li
-                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 border-x border-[#404040] hover:bg-[#5D5D5D]"
+                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border-x border-[#404040] hover:bg-[#5D5D5D]"
                           onClick={() => {
                             setProjectType("HTML Document (*.html)");
                             setShowExport(false);
@@ -489,7 +495,7 @@ export default function Table(props) {
                           HTML Document (*.html)
                         </li>
                         <li
-                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 border border-[#404040] hover:bg-[#5D5D5D]"
+                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border border-[#404040] hover:bg-[#5D5D5D]"
                           onClick={() => {
                             setProjectType("Rich Text Format (*.rtf)");
                             setShowExport(false);
@@ -498,7 +504,7 @@ export default function Table(props) {
                           Rich Text Format (*.rtf)
                         </li>
                         <li
-                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 border-x border-[#404040] hover:bg-[#5D5D5D]"
+                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border-x border-[#404040] hover:bg-[#5D5D5D]"
                           onClick={() => {
                             setProjectType("Plain Text (*.txt)");
                             setShowExport(false);
@@ -507,7 +513,7 @@ export default function Table(props) {
                           Plain Text (*.txt)
                         </li>
                         <li
-                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 border border-[#404040] hover:bg-[#5D5D5D]"
+                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border border-[#404040] hover:bg-[#5D5D5D]"
                           onClick={() => {
                             setProjectType("Text with Layout (*.txt)");
                             setShowExport(false);
@@ -516,7 +522,7 @@ export default function Table(props) {
                           Text with Layout (*.txt)
                         </li>
                         <li
-                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 border-x border-[#404040] hover:bg-[#5D5D5D]"
+                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border-x border-[#404040] hover:bg-[#5D5D5D]"
                           onClick={() => {
                             setProjectType("Avid Script-Based Editing (*.txt)");
                             setShowExport(false);
@@ -525,7 +531,7 @@ export default function Table(props) {
                           Avid Script-Based Editing (*.txt)
                         </li>
                         <li
-                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 border border-[#404040] hover:bg-[#5D5D5D]"
+                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border border-[#404040] hover:bg-[#5D5D5D]"
                           onClick={() => {
                             setProjectType("Tab Delimited Dialogue (*.txt)");
                             setShowExport(false);
@@ -566,7 +572,11 @@ export default function Table(props) {
                   setShowDeleteModal(false);
                 }}
               >
-                <CloseIcon />
+                <img
+                  className="w-[20px] h-[20px]"
+                  src="assets/img/dashboard/close.png"
+                  alt="close"
+                />
               </button>
             </div>
             <div className="edit-modal-content px-[24px] py-4 border-b border-[#161616]">
@@ -621,7 +631,11 @@ export default function Table(props) {
                   setShowLeaveModal(false);
                 }}
               >
-                <CloseIcon />
+                <img
+                  className="w-[20px] h-[20px]"
+                  src="assets/img/dashboard/close.png"
+                  alt="close"
+                />
               </button>
             </div>
             <div className="edit-modal-content px-[24px] py-4 border-b border-[#161616]">
@@ -714,6 +728,9 @@ export const Progressbar = (props) => {
 };
 
 export const ProjectDetail = (props) => {
+  const [chapter, setChapter] = React.useState("Select Chapter");
+  const [openChapter, setOpenChapter] = React.useState(false);
+
   return (
     <div className="flex ">
       <div className="page-detail-left pl-6 w-1/2">
@@ -728,20 +745,62 @@ export const ProjectDetail = (props) => {
         </label>
 
         <div className="flex flex-row pt-4">
-          <select
-            disabled
-            className="w-1/5 h-8 border border-[#404040] bg-neutral-830 font-extrabold text-center text-[#5F5F5F] text-[12px] leading-5 focus:ring-gray-300 rounded-md"
-            alt="Select Chapter"
-            name="projects"
-            id="projects"
-          >
-            <option
-              className=" h-8 font-extrabold text-center text-white text-[9px] hover:bg-neutral-830"
-              value="1"
+          <div className="dropdown">
+            <div
+              tabIndex="0"
+              className="p-1.5 w-40 h-8 bg-[#161616] border border-[#404040] rounded-[4px]"
+              onClick={() => {
+                // setOpenChapter(true);
+              }}
+              name="projects"
+              id="projects"
             >
-              Select Chapter
-            </option>
-          </select>
+              <div className="flex justify-between">
+                <label className="ml-1.5 font-extrabold text-center text-[#5F5F5F] text-[12px] leading-5">
+                  {chapter}
+                </label>
+
+                <button>
+                  <DropDownIcon />
+                </button>
+              </div>
+            </div>
+
+            {/* {openChapter ? (
+              <ul
+                tabIndex="0"
+                className="z-100 fixed menu menu-compact dropdown-content mt-2 shadow bg-[#161616] border border-[#2B2B2B] w-full h-24 rounded-[4px]"
+              >
+                <li
+                  className="flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
+                  onClick={() => {
+                    setChapter("ALL PROJECTS");
+                    setOpenChapter(false);
+                  }}
+                >
+                  ALL PROJECTS
+                </li>
+                <li
+                  className="flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
+                  onClick={() => {
+                    setChapter("YOUR PROJECTS");
+                    setOpenChapter(false);
+                  }}
+                >
+                  YOUR PROJECTS
+                </li>
+                <li
+                  className="flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
+                  onClick={() => {
+                    setChapter("SHARED WITH YOU");
+                    setOpenChapter(false);
+                  }}
+                >
+                  SHARED WITH YOU
+                </li>
+              </ul>
+            ) : null} */}
+          </div>
 
           <button className="ml-4 flex justify-center items-center rounded-md px-[6px] text-center w-1/15 h-8 text-white bg-gradient-to-r from-[#FEAC6D] to-[#AE61ED] font-extrabold text-[10px] tracking-widest leading-5 hover:opacity-80">
             GO TO

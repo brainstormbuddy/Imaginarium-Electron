@@ -8,13 +8,10 @@ import {
 
 function NewProject() {
   const [initAct, setInitAct] = React.useState("School1");
-  const [initScene, setInitScene] = React.useState(72);
+  const [openAct, setOpenAct] = React.useState(false);
+  const [initScene, setInitScene] = React.useState("");
   const [showUpload, setShowUpload] = React.useState(true);
   const [projectType, setProjectType] = React.useState(1);
-
-  function handleChange(event) {
-    setInitScene(event.target.value);
-  }
 
   function loadFile(event) {
     const image = document.getElementById("output");
@@ -56,10 +53,10 @@ function NewProject() {
                   PROJECT TYPE
                 </label>
 
-                <div className="flex flex-row bg-[#161616] border border-[#404040] w-full h-8 p-1 rounded-md">
+                <div className="flex flex-row justify-between bg-[#161616] border border-[#404040] w-full h-8 p-1 rounded-md">
                   <button
                     className={
-                      "w-1/3 h-6 px-2 py-0.5 text-white text-[9px] leading-5 tracking-[.21em] rounded-md " +
+                      "h-6 px-1 py-0.5 text-white text-[9px] leading-5 tracking-[.21em] rounded-md " +
                       (projectType === 1 ? "bg-[#1DAEFF]" : "bg-transparent")
                     }
                     onClick={() => {
@@ -70,7 +67,7 @@ function NewProject() {
                   </button>
                   <button
                     className={
-                      "ml-1 w-1/3 h-6 px-2 py-0.5 text-white text-[9px] leading-5 tracking-[.21em] rounded-md " +
+                      "ml-1 h-6 px-1 py-0.5 text-white text-[9px] leading-5 tracking-[.21em] rounded-md " +
                       (projectType === 2 ? "bg-[#1DAEFF]" : "bg-transparent")
                     }
                     onClick={() => {
@@ -81,11 +78,12 @@ function NewProject() {
                   </button>
                   <button
                     className={
-                      "ml-1 w-1/3 h-6 px-2 py-0.5 text-white text-[9px] leading-5 tracking-[.21em] rounded-md " +
+                      "ml-1 h-6 px-1 py-0.5 text-white text-[9px] leading-5 tracking-[.21em] rounded-md " +
                       (projectType === 3 ? "bg-[#1DAEFF]" : "bg-transparent")
                     }
                     onClick={() => {
                       setProjectType(3);
+                      console.log(projectType);
                     }}
                   >
                     BOOK
@@ -217,6 +215,9 @@ function NewProject() {
                     className="px-2 py-1.5 h-8 bg-[#161616] border border-[#404040] rounded-[4px]"
                     name="projects"
                     id="projects"
+                    onClick={() => {
+                      setOpenAct(true);
+                    }}
                   >
                     <div className="flex justify-between">
                       <label className="text-center text-white text-[12px] leading-5">
@@ -228,53 +229,59 @@ function NewProject() {
                       </button>
                     </div>
                   </div>
-                  <ul
-                    tabIndex="0"
-                    className="drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact dropdown-content mt-3 shadow bg-[#161616] border border-[#464646] w-[168px] h-32 mt-0 rounded-[4px]"
-                  >
-                    <li
-                      className="flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
-                      onClick={() => {
-                        setInitAct("School 1");
-                      }}
+
+                  {openAct ? (
+                    <ul
+                      tabIndex="0"
+                      className="drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact dropdown-content mt-3 shadow bg-[#161616] border border-[#464646] w-full h-32 rounded-[4px]"
                     >
-                      School 1
-                    </li>
-                    <li
-                      className="flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
-                      onClick={() => {
-                        setInitAct("School 2");
-                      }}
-                    >
-                      School 2
-                    </li>
-                    <li
-                      className="flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
-                      onClick={() => {
-                        setInitAct("School 3");
-                      }}
-                    >
-                      School 3
-                    </li>
-                    <li
-                      className="flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
-                      onClick={() => {
-                        setInitAct("Custom");
-                      }}
-                    >
-                      Custom
-                    </li>
-                  </ul>
+                      <li
+                        className="flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
+                        onClick={() => {
+                          setInitAct("School 1");
+                          setOpenAct(false);
+                        }}
+                      >
+                        School 1
+                      </li>
+                      <li
+                        className="flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
+                        onClick={() => {
+                          setInitAct("School 2");
+                          setOpenAct(false);
+                        }}
+                      >
+                        School 2
+                      </li>
+                      <li
+                        className="flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
+                        onClick={() => {
+                          setInitAct("School 3");
+                          setOpenAct(false);
+                        }}
+                      >
+                        School 3
+                      </li>
+                      <li
+                        className="flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
+                        onClick={() => {
+                          setInitAct("Custom");
+                          setOpenAct(false);
+                        }}
+                      >
+                        Custom
+                      </li>
+                    </ul>
+                  ) : null}
                 </div>
 
                 <div className="flex bg-[#161616] border border-[#404040] h-8 px-1 py-1.5 w-[47.5%] rounded-md">
                   <div className="flex w-full items-center justify-between">
                     <input
-                      className="w-3/4 h-6 text-center text-[12px] text-white
-                      px-2 py-1.5  bg-transparent placeholder-[#5F5F5F] focus:outline-none rounded-md"
+                      className="px-2 py-1.5 w-3/4 h-6 bg-transparent ring-offset-0 border-[#161616] text-center focus:border-[#161616] focus:outline-none placeholder-[#5F5F5F] rounded-md text-[12px] text-white"
                       name="scenenumber"
                       value={initScene}
-                      onChange={handleChange}
+                      onChange={(e) => setInitScene(e.target.value)}
                       type="text"
                     />
                     <label className="text-[#5F5F5F] text-[12px] leading-5">

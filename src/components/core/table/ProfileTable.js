@@ -1,11 +1,6 @@
 import * as React from "react";
 
-import {
-  DetailIcon,
-  CloseIcon,
-  ProjectTypeMovie,
-  ProjectTypeTv,
-} from "../../Svg";
+import { DetailIcon, ProjectTypeMovie, ProjectTypeTv } from "../../Svg";
 
 import Checkbox from "../common/Checkbox";
 
@@ -217,7 +212,11 @@ export default function Table(props) {
                   setShowLeaveModal(false);
                 }}
               >
-                <CloseIcon />
+                <img
+                  className="w-[20px] h-[20px]"
+                  src="assets/img/dashboard/close.png"
+                  alt="close"
+                />
               </button>
             </div>
             <div className="edit-modal-content px-[24px] py-4 border-b border-[#161616]">
@@ -270,7 +269,11 @@ export default function Table(props) {
                     setShowRevokeModal(false);
                   }}
                 >
-                  <CloseIcon />
+                  <img
+                    className="w-[20px] h-[20px]"
+                    src="assets/img/dashboard/close.png"
+                    alt="close"
+                  />
                 </button>
               </div>
               <div className="edit-modal-content px-[24px] py-4 border-b border-[#161616]">

@@ -2,12 +2,13 @@ import * as React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import { AuthContext } from "../pages/context/AuthContext";
+import Checkbox from "../components/core/common/Checkbox";
+import InputText from "./core/common/InputText";
 
 import {
   BaseIcon,
   SearchIcon,
   BellIcon,
-  CloseIcon,
   ImageAlarmIcon,
   PersonAlarmIcon,
   DropDownIcon,
@@ -29,25 +30,32 @@ export default function Navbar(props) {
   const [showLogoutModal, setShowLogoutModal] = React.useState(false);
   const [showAlarmModal, setShowAlarmModal] = React.useState(false);
   const [showSettingModal, setShowSettingModal] = React.useState(false);
-  const [checked, setChecked] = React.useState(true);
-  const [initRecentItemCount, setInitRecentItemCount] = React.useState(15);
-  const [initBackupItemCount, setInitBackuptItemCount] = React.useState(1000);
   const [languageType, setLanguageType] = React.useState("English");
   const [theme, setTheme] = React.useState(true);
   const [openTab, setOpenTab] = React.useState(1);
   const [searchDropdownMenu, setSearchDropdownMenu] = React.useState(false);
   const [setSearchDropdownValue] = React.useState("");
 
+  const [initRecentItemCount, setInitRecentItemCount] = React.useState(15);
+  const [initAutoSaveCount, setInitAutoSaveCount] = React.useState(15);
+  const [initBackupItemCount, setInitBackuptItemCount] = React.useState(1000);
+
+  const [checkedGeneralSpeech, setCheckedGeneralSpeech] = React.useState(false);
+  const [checkedGeneralScroll, setCheckedGeneralScroll] = React.useState(false);
+  const [checkedGeneralCapitalize, setCheckedGeneralCapitalize] =
+    React.useState(false);
+  const [checkedGeneralAutomatically, setCheckedGeneralAutomatically] =
+    React.useState(false);
+  const [checkedGeneralShow, setCheckedGeneralShow] = React.useState(false);
+  const [checkedAnonymousAuto, setCheckedAnonymousAuto] = React.useState(false);
+  const [checkedAutosaveAuto, setCheckedAutosaveAuto] = React.useState(false);
+  const [checkedAutosaveAsk, setCheckedAutosaveAsk] = React.useState(false);
+  const [checkedBackupAuto, setCheckedBackupAuto] = React.useState(false);
+  const [checkedFormatScan, setCheckedFormatScan] = React.useState(false);
+  const [checkedFormatAlways, setCheckedFormatAlways] = React.useState(false);
+
   function handleSearchChange(event) {
     setSearchDropdownValue(event.target.value);
-  }
-
-  function handleChange(event) {
-    setInitRecentItemCount(event.target.value);
-  }
-
-  function handleBackup(event) {
-    setInitBackuptItemCount(event.target.value);
   }
 
   function handleTheme(event) {
@@ -158,7 +166,7 @@ export default function Navbar(props) {
               tabIndex="0"
               className={
                 "w-[32px] h-[32px] flex items-center justify-center rounded-[4px] active:bg-[#4F4F4F] focus:bg-[#4F4F4F] " +
-                (searchDropdownMenu ? "active" : null)
+                (showAlarmModal ? "active" : null)
               }
               onClick={() => {
                 setShowAlarmModal(true);
@@ -181,7 +189,11 @@ export default function Navbar(props) {
                       setShowAlarmModal(false);
                     }}
                   >
-                    <CloseIcon />
+                    <img
+                      className="w-[20px] h-[20px]"
+                      src="assets/img/dashboard/close.png"
+                      alt="close"
+                    />
                   </button>
                 </div>
                 <div className="alarm-modal-content flex flex-col px-[24px] py-[16px] w-full">
@@ -324,7 +336,11 @@ export default function Navbar(props) {
                   setShowLogoutModal(false);
                 }}
               >
-                <CloseIcon />
+                <img
+                  className="w-[20px] h-[20px]"
+                  src="assets/img/dashboard/close.png"
+                  alt="close"
+                />
               </button>
             </div>
             <div className="edit-modal-content px-[24px] py-4 border-b border-[#161616]">
@@ -355,7 +371,7 @@ export default function Navbar(props) {
           </div>
         ) : null}
         {showSettingModal ? (
-          <div className="drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] z-20 fixed flex flex-col top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[585px] h-auto bg-[#2B2B2B] border border-[#161616] rounded-md">
+          <div className="z-20 fixed flex flex-col top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[585px] h-auto bg-[#2B2B2B] border border-[#161616] rounded-md">
             <div className="setting-modal-header flex flex-row justify-between items-center py-[14px] w-full h-8 border-b border-[#161616]">
               <label className="ml-[24px] text-[9px] text-white font-extrabold leading-5 tracking-[.21em]">
                 SETTINGS
@@ -366,7 +382,11 @@ export default function Navbar(props) {
                   setShowSettingModal(false);
                 }}
               >
-                <CloseIcon />
+                <img
+                  className="w-[20px] h-[20px]"
+                  src="assets/img/dashboard/close.png"
+                  alt="close"
+                />
               </button>
             </div>
             <div className="setting-modal-tab">
@@ -413,73 +433,71 @@ export default function Navbar(props) {
                   <label className="text-[9px] font-extrabold leading-5 text-white tracking-[.21em]">
                     GENERAL
                   </label>
-                  <div className="mt-3 flex flex-row items-center">
-                    <input
-                      type="  "
-                      className="checkbox bg-[0E0E0E] border border-[#404040] w-[14px] h-[14px] rounded-[4px]"
-                      style={{}}
-                      defaultChecked={checked}
-                      onChange={() => setChecked(!checked)}
-                    />
-                    <label className="ml-3 text-white text-[12px] leading-5">
+                  <div className="mt-3">
+                    <Checkbox
+                      checked={checkedGeneralSpeech}
+                      onChange={() => {
+                        setCheckedGeneralSpeech(!checkedGeneralSpeech);
+                      }}
+                    >
                       Speech commands
-                    </label>
+                    </Checkbox>
                   </div>
-                  <div className="mt-3 flex flex-row items-center">
-                    <input
-                      type="checkbox"
-                      className="checkbox bg-[0E0E0E] border border-[#404040] w-[14px] h-[14px] rounded-[4px]"
-                      defaultChecked={checked}
-                      onChange={() => setChecked(!checked)}
-                    />
-                    <label className="ml-3 text-white text-[12px] leading-5">
+
+                  <div className="mt-3">
+                    <Checkbox
+                      checked={checkedGeneralScroll}
+                      onChange={() => {
+                        setCheckedGeneralScroll(!checkedGeneralScroll);
+                      }}
+                    >
                       Scroll keys mimic MS Word
-                    </label>
+                    </Checkbox>
                   </div>
-                  <div className="mt-3 flex flex-row items-center">
-                    <input
-                      type="checkbox"
-                      className="checkbox bg-[0E0E0E] border border-[#404040] w-[14px] h-[14px] rounded-[4px]"
-                      defaultChecked={checked}
-                      onChange={() => setChecked(!checked)}
-                    />
-                    <label className="ml-3 text-white text-[12px] leading-5">
+                  <div className="mt-3">
+                    <Checkbox
+                      checked={checkedGeneralCapitalize}
+                      onChange={() => {
+                        setCheckedGeneralCapitalize(!checkedGeneralCapitalize);
+                      }}
+                    >
                       Capitalize first word of a sentence
-                    </label>
+                    </Checkbox>
                   </div>
-                  <div className="mt-3 flex flex-row items-center">
-                    <input
-                      type="checkbox"
-                      className="checkbox bg-[0E0E0E] border border-[#404040] w-[14px] h-[14px] rounded-[4px]"
-                      defaultChecked={checked}
-                      onChange={() => setChecked(!checked)}
-                    />
-                    <label className="ml-3 text-white text-[12px] leading-5">
+                  <div className="mt-3">
+                    <Checkbox
+                      checked={checkedGeneralAutomatically}
+                      onChange={() => {
+                        setCheckedGeneralAutomatically(
+                          !checkedGeneralAutomatically
+                        );
+                      }}
+                    >
                       Automatically check for updates
-                    </label>
+                    </Checkbox>
                   </div>
-                  <div className="mt-3 flex flex-row items-center">
-                    <input
-                      type="checkbox"
-                      className="checkbox bg-[0E0E0E] border border-[#404040] w-[14px] h-[14px] rounded-[4px]"
-                      defaultChecked={checked}
-                      onChange={() => setChecked(!checked)}
-                    />
-                    <label className="ml-3 text-white text-[12px] leading-5">
+                  <div className="mt-3">
+                    <Checkbox
+                      checked={checkedGeneralShow}
+                      onChange={() => {
+                        setCheckedGeneralShow(!checkedGeneralShow);
+                      }}
+                    >
                       Show welcome screen on launch
-                    </label>
+                    </Checkbox>
                   </div>
                   <div className="mt-2 flex flex-row items-center">
-                    <label className="text-white text-[12px] leading-5">
+                    <label className="text-white text-[12px] leading-5 mr-3">
                       Recent Items
                     </label>
-                    <input
-                      className="ml-3 px-2 py-1.5 w-20 h-8 bg-[#161616] border border-[#404040] focus:border-white placeholder-[#5F5F5F] focus:outline-none rounded-md text-[12px] focus:ring-1 text-white"
-                      name="recent-count"
-                      value={initRecentItemCount}
-                      onChange={handleChange}
-                      type="text"
-                    />
+                    <div className="w-20">
+                      <InputText
+                        type="text"
+                        name="autosave-count"
+                        value={initRecentItemCount}
+                        onChange={(e) => setInitRecentItemCount(e.target.value)}
+                      />
+                    </div>
                   </div>
                   <div className="mt-2 flex flex-row items-center">
                     <label className="text-white text-[12px] leading-5">
@@ -540,7 +558,7 @@ export default function Navbar(props) {
                   </label>
                   <div className="flex flex-row items-center mt-3">
                     <input
-                      className="w-[18px] radio h-[18px] accent-[#161616] bg-[#0E0E0E] border border-[#404040]"
+                      className="w-[18px] h-[18px] border border-[#404040] bg-[#0E0E0E] checked:bg-[#0E0E0E] hover:bg-[#0E0E0E] cursor-pointer"
                       type="radio"
                       name="theme"
                       value="light"
@@ -551,7 +569,7 @@ export default function Navbar(props) {
                       Light Mode
                     </label>
                     <input
-                      className="ml-3 radio w-[18px] h-[18px] accent-[#161616] bg-[#0E0E0E] border border-[#404040]"
+                      className="ml-3 w-[18px] h-[18px] border border-[#404040] bg-[#0E0E0E] checked:bg-[#0E0E0E] hover:bg-[#0E0E0E] cursor-pointer"
                       type="radio"
                       name="theme"
                       value="dark"
@@ -566,16 +584,15 @@ export default function Navbar(props) {
                   <label className="text-[9px] font-extrabold leading-5 text-white tracking-[.21em]">
                     ANONYMOUS DIAGNOSTIC
                   </label>
-                  <div className="mt-3 flex flex-row items-center">
-                    <input
-                      type="checkbox"
-                      className="checkbox bg-[0E0E0E] border border-[#404040] w-[14px] h-[14px] rounded-[4px]"
-                      defaultChecked={checked}
-                      onChange={() => setChecked(!checked)}
-                    />
-                    <label className="ml-3 text-white text-[12px] leading-5">
+                  <div className="mt-3">
+                    <Checkbox
+                      checked={checkedAnonymousAuto}
+                      onChange={() => {
+                        setCheckedAnonymousAuto(!checkedAnonymousAuto);
+                      }}
+                    >
                       Automatically send
-                    </label>
+                    </Checkbox>
                   </div>
                   <label className="mt-1.5 text-white text-[10px] leading-5">
                     Help Imaginarium improve its products and services by
@@ -591,65 +608,70 @@ export default function Navbar(props) {
                   <label className="text-[9px] font-extrabold leading-5 text-white tracking-[.21em]">
                     AUTO-SAVE
                   </label>
+
                   <div className="mt-3 flex flex-row items-center">
-                    <input
-                      type="checkbox"
-                      className="checkbox bg-[0E0E0E] border border-[#404040] w-[14px] h-[14px] rounded-[4px]"
-                      defaultChecked={checked}
-                      onChange={() => setChecked(!checked)}
-                    />
-                    <label className="ml-3 text-white text-[12px] leading-5">
+                    <Checkbox
+                      checked={checkedAutosaveAuto}
+                      onChange={() => {
+                        setCheckedAutosaveAuto(!checkedAutosaveAuto);
+                      }}
+                    >
                       Auto-Save every
-                    </label>
-                    <input
-                      className="ml-3 px-2 py-1.5 w-20 h-8 bg-[#161616] border border-[#404040] focus:border-white placeholder-[#5F5F5F] focus:outline-none rounded-md text-[12px] focus:ring-1 text-white"
-                      name="autosave-count"
-                      value={initRecentItemCount}
-                      onChange={handleChange}
-                      type="text"
-                    />
-                    <label className="ml-3 text-white text-[12px] leading-5">
-                      Auto-Save every
-                    </label>
+                    </Checkbox>
+                    <div className="ml-3 flex flex-row items-center">
+                      <div className="w-20">
+                        <InputText
+                          name="autosave-count"
+                          value={initAutoSaveCount}
+                          onChange={(e) => setInitAutoSaveCount(e.target.value)}
+                          type="number"
+                        />
+                      </div>
+                      <label className="ml-3 text-white text-[12px] leading-5">
+                        Auto-Save every
+                      </label>
+                    </div>
                   </div>
-                  <div className="mt-3 flex flex0row items-center">
-                    <input
-                      type="checkbox"
-                      className="checkbox bg-[0E0E0E] border border-[#404040] w-[14px] h-[14px] rounded-[4px]"
-                      defaultChecked={checked}
-                      onChange={() => setChecked(!checked)}
-                    />
-                    <label className="ml-3 text-white text-[12px] leading-5">
+                  <div className="mt-3">
+                    <Checkbox
+                      checked={checkedAutosaveAsk}
+                      onChange={() => {
+                        setCheckedAutosaveAsk(!checkedAutosaveAsk);
+                      }}
+                    >
                       Ask before Auto-Save
-                    </label>
+                    </Checkbox>
                   </div>
                 </div>
                 <div className="autosave-2-tab-content px-[24px] py-[16px]">
                   <label className="text-[9px] font-extrabold leading-5 text-white tracking-[.21em]">
                     BACKUP
                   </label>
-                  <div className="mt-3 flex flex-row items-center">
-                    <input
-                      type="checkbox"
-                      className="checkbox bg-[0E0E0E] border border-[#404040] w-[14px] h-[14px] rounded-[4px]"
-                      defaultChecked={checked}
-                      onChange={() => setChecked(!checked)}
-                    />
-                    <label className="ml-3 text-white text-[12px] leading-5">
+                  <div className="mt-3 flex flex0row items-center">
+                    <Checkbox
+                      checked={checkedBackupAuto}
+                      onChange={() => {
+                        setCheckedBackupAuto(!checkedBackupAuto);
+                      }}
+                    >
                       Auto-Backup enabled
-                    </label>
+                    </Checkbox>
                   </div>
+
                   <div className="flex flex-row items-center mt-3">
                     <label className="text-white text-[12px] leading-5">
                       Backup folder file count:
                     </label>
-                    <input
-                      className="ml-3 px-2 py-1.5 w-20 h-8 bg-[#161616] border border-[#404040] focus:border-white placeholder-[#5F5F5F] focus:outline-none rounded-md text-[12px] focus:ring-1 text-white"
-                      name="backup-count"
-                      value={initBackupItemCount}
-                      onChange={handleBackup}
-                      type="text"
-                    />
+                    <div className="ml-3 w-20">
+                      <InputText
+                        name="backup-count"
+                        value={initBackupItemCount}
+                        onChange={(e) =>
+                          setInitBackuptItemCount(e.target.value)
+                        }
+                        type="number"
+                      />
+                    </div>
                   </div>
                   <label className="mt-1 text-white text-[10px] leading-5">
                     /Users/juliaellei/Library/Application
@@ -663,26 +685,24 @@ export default function Navbar(props) {
               <div className="format-tab-content">
                 <div className="px-[24px] py-[16px]">
                   <div className="flex flex-row items-center">
-                    <input
-                      type="checkbox"
-                      className="checkbox bg-[0E0E0E] border border-[#404040] w-[14px] h-[14px] rounded-[4px]"
-                      defaultChecked={checked}
-                      onChange={() => setChecked(!checked)}
-                    />
-                    <label className="ml-3 text-white text-[12px] leading-5">
+                    <Checkbox
+                      checked={checkedFormatScan}
+                      onChange={() => {
+                        setCheckedFormatScan(!checkedFormatScan);
+                      }}
+                    >
                       Scan for format errors before printing
-                    </label>
+                    </Checkbox>
                   </div>
-                  <div className="mt-3 flex flex-row items-center">
-                    <input
-                      type="checkbox"
-                      className="checkbox bg-[0E0E0E] border border-[#404040] w-[14px] h-[14px] rounded-[4px]"
-                      defaultChecked={checked}
-                      onChange={() => setChecked(!checked)}
-                    />
-                    <label className="ml-3 text-white text-[12px] leading-5">
+                  <div className="mt-3">
+                    <Checkbox
+                      checked={checkedFormatAlways}
+                      onChange={() => {
+                        setCheckedFormatAlways(!checkedFormatAlways);
+                      }}
+                    >
                       Always ask me before printing
-                    </label>
+                    </Checkbox>
                   </div>
                 </div>
               </div>

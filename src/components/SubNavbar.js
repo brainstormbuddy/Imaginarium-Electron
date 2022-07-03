@@ -11,7 +11,6 @@ import {
   EditIcon,
   ProfileIcon,
   DropDownIcon,
-  CloseIcon,
 } from "./Svg";
 
 import { AuthContext } from "../pages/context/AuthContext";
@@ -35,6 +34,13 @@ export default function SubNavbar(props) {
     return <ProfileSubNavbar />;
   }
 }
+// function toggleMenu() {
+//   var menu = document.getElementById("menu");
+
+//   menu.classList.toggle("hidden");
+//   menu.classList.toggle("w-auto");
+//   menu.classList.toggle("h-auto");
+// }
 
 export const MainSubNavbar = () => {
   const { setIsAuthenticated } = React.useContext(AuthContext);
@@ -154,7 +160,11 @@ export const MainSubNavbar = () => {
                 setShowLogoutModal(false);
               }}
             >
-              <CloseIcon />
+              <img
+                className="w-[20px] h-[20px]"
+                src="assets/img/dashboard/close.png"
+                alt="close"
+              />
             </button>
           </div>
           <div className="edit-modal-content px-[24px] py-4 border-b border-[#161616]">
@@ -191,39 +201,77 @@ export const MainSubNavbar = () => {
 export const DashboardSubNavbar = () => {
   const [projectsType, setProjectsType] = React.useState("ALL PROJECTS");
   const [openProjectsType, setOpenProjectsType] = React.useState(false);
+  const [checkedShowFinish, setCheckedShowFinsh] = React.useState(false);
+  const [projectType, setProjectType] = React.useState(1);
 
   return (
     <div className="flex w-full h-14 bg-[#0E0E0E]">
       <MainSubNavbar />
+
       <div className="w-full flex justify-between">
         <div>
-          <div className="!inline-flex flex flex-row p-4 space-x-2 h-full hover:bg-[#1F1F1F] cursor-pointer active:bg-gray-700 focus:outline-none accent-[#1DAEFF]">
+          <button
+            className={
+              "!inline-flex flex flex-row p-4 space-x-2 h-full cursor-pointer hover:bg-[#1F1F1F] focus:bg-black-rgba " +
+              +(projectType === 1 ? "active" : null)
+            }
+            onClick={() => {
+              setProjectType(1);
+            }}
+          >
             <RecentIcon />
             <span className="text-white">Recent</span>
-          </div>
-          <div
-            className="!inline-flex flex flex-row p-4 space-x-2 h-full hover:bg-[#1F1F1F] cursor-pointer active:bg-gray-700 focus:outline-none focus:ring focus:ring-violet-300 "
-            // onClick={() => props.handleClick(props.key)}
+          </button>
+          <button
+            className={
+              "!inline-flex flex flex-row p-4 space-x-2 h-full cursor-pointer hover:bg-[#1F1F1F] focus:bg-black-rgba " +
+              (projectType === 2 ? "active" : null)
+            }
+            onClick={() => {
+              setProjectType(2);
+            }}
           >
             <MovieIcon />
             <span className="text-white">Movies</span>
-          </div>
-          <div className="!inline-flex flex flex-row p-4 space-x-2 h-full hover:bg-[#1F1F1F] cursor-pointer active:bg-gray-700 focus:outline-none focus:ring focus:ring-violet-300 ">
+          </button>
+          <button
+            className={
+              "!inline-flex flex flex-row p-4 space-x-2 h-full cursor-pointer hover:bg-[#1F1F1F] focus:bg-black-rgba " +
+              (projectType === 3 ? "active" : null)
+            }
+            onClick={() => {
+              setProjectType(3);
+            }}
+          >
             <SeriesIcon />
             <span className="text-white">Series</span>
-          </div>
-          <div className="!inline-flex flex flex-row p-4 space-x-2 h-full hover:bg-[#1F1F1F] cursor-pointer active:bg-gray-700 focus:outline-none focus:ring focus:ring-violet-300 ">
+          </button>
+          <button
+            className={
+              "!inline-flex flex flex-row p-4 space-x-2 h-full cursor-pointer hover:bg-[#1F1F1F] focus:bg-black-rgba " +
+              (projectType === 4 ? "active" : null)
+            }
+            onClick={() => {
+              setProjectType(4);
+            }}
+          >
             <BooksIcon />
             <span className="text-white">Books</span>
-          </div>
+          </button>
         </div>
+
         <div className="flex items-center flex-row justify-between">
           <div className="flex items-center">
-            <input
-              type="checkbox"
-              className="mr-2 checkbox bg-[0E0E0E] border border-[#404040] w-[14px] h-[14px] rounded-[4px]"
-            />
-            <label className="mr-5 text-[9px] font-extrabold text-white">
+            <label className="mr-4 flex flex-row items-center font-extrabold text-white text-[9px] leading-5 cursor-pointer tracking-[.21em] uppercase">
+              <input
+                type="checkbox"
+                className="mr-3 bg-[#0E0E0E] cursor-pointer 
+        w-[14px] h-[14px] border border-[#404040] rounded-[4px] checked:bg-[#0A0A0A] hover:bg-[#0E0E0E] focus:bg-[#0A0A0A]"
+                checked={checkedShowFinish}
+                onChange={() => {
+                  setCheckedShowFinsh(!checkedShowFinish);
+                }}
+              />
               Show finished projects
             </label>
 
@@ -272,7 +320,7 @@ export const DashboardSubNavbar = () => {
                     YOUR PROJECTS
                   </li>
                   <li
-                    className="flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
+                    className="flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 hover:bg-[#5D5D5D]"
                     onClick={() => {
                       setProjectsType("SHARED WITH YOU");
                       setOpenProjectsType(false);
@@ -414,7 +462,11 @@ export const ProfileSubNavbar = () => {
                   setShowExportModal(false);
                 }}
               >
-                <CloseIcon />
+                <img
+                  className="w-[20px] h-[20px]"
+                  src="assets/img/dashboard/close.png"
+                  alt="close"
+                />
               </button>
             </div>
             <div className="edit-modal-content px-[24px] py-4 border-b border-[#161616]">
@@ -426,21 +478,24 @@ export const ProfileSubNavbar = () => {
                   <input
                     type="text"
                     name="name"
-                    className="mt-1 px-2 py-1.5 w-full h-8 bg-[#161616] border border-[#404040] focus:border-white placeholder-[#5F5F5F] focus:outline-none rounded-md text-[12px] focus:ring-1 text-white"
+                    className="mt-1 px-2 py-1.5 w-full h-8 bg-[#161616] border border-[#404040] focus:border-white placeholder-[#5F5F5F] focus:outline-none rounded-md text-[12px] text-white"
                     placeholder="Enter name of archive"
                   />
                   <label className="flex mt-3 text-white text-[9px] font-extrabold leading-5 tracking-[.21em]">
                     WHERE TO SAVE
                   </label>
-                  <div className="mt-1 flex justify-between items-center bg-[#161616] border border-[#404040] w-full h-8">
+                  <div className="mt-1 flex justify-between items-center bg-[#161616] border border-[#404040] w-full h-8 rounded-md">
                     <label className="ml-2 text-[12px] leading-5 text-white">
                       Documents
                     </label>
-                    <img
-                      className="mr-1.5"
-                      src="assets/img/dashboard/folder.png"
-                      alt="folder"
-                    />
+                    <input type="file" id="save-path" className="" hidden />
+                    <label className="cursor-pointer" htmlFor="save-path">
+                      <img
+                        className="mr-1.5"
+                        src="assets/img/dashboard/folder.png"
+                        alt="folder"
+                      />
+                    </label>
                   </div>
 
                   <label className="flex mt-3 text-white text-[9px] font-extrabold leading-5 tracking-[.21em]">
@@ -457,7 +512,7 @@ export const ProfileSubNavbar = () => {
                       name="projects"
                       id="projects"
                     >
-                      <label className="ml-2 font-extrabold text-center text-white text-[9px] leading-5">
+                      <label className="ml-2 text-center text-white text-[12px] leading-5">
                         {projectType}
                       </label>
 
@@ -472,7 +527,7 @@ export const ProfileSubNavbar = () => {
                         className="menu menu-compact dropdown-content mt-[40px] bg-[#161616] w-full h-[56px] mt-0 rounded-[4px]"
                       >
                         <li
-                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 border border-[#404040] hover:bg-[#5D5D5D]"
+                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border border-[#404040] hover:bg-[#5D5D5D]"
                           onClick={() => {
                             setProjectType("Microsoft Word Document (*.docx)");
                             setShowProject(false);
@@ -481,7 +536,7 @@ export const ProfileSubNavbar = () => {
                           Microsoft Word Document (*.docx)
                         </li>
                         <li
-                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 border-x border-[#404040] hover:bg-[#5D5D5D]"
+                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border-x border-[#404040] hover:bg-[#5D5D5D]"
                           onClick={() => {
                             setProjectType("HTML Document (*.html)");
                             setShowProject(false);
@@ -490,7 +545,7 @@ export const ProfileSubNavbar = () => {
                           HTML Document (*.html)
                         </li>
                         <li
-                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 border border-[#404040] hover:bg-[#5D5D5D]"
+                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border border-[#404040] hover:bg-[#5D5D5D]"
                           onClick={() => {
                             setProjectType("Rich Text Format (*.rtf)");
                             setShowProject(false);
@@ -499,7 +554,7 @@ export const ProfileSubNavbar = () => {
                           Rich Text Format (*.rtf)
                         </li>
                         <li
-                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 border-x border-[#404040] hover:bg-[#5D5D5D]"
+                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border-x border-[#404040] hover:bg-[#5D5D5D]"
                           onClick={() => {
                             setProjectType("Plain Text (*.txt)");
                             setShowProject(false);
@@ -508,7 +563,7 @@ export const ProfileSubNavbar = () => {
                           Plain Text (*.txt)
                         </li>
                         <li
-                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 border border-[#404040] hover:bg-[#5D5D5D]"
+                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border border-[#404040] hover:bg-[#5D5D5D]"
                           onClick={() => {
                             setProjectType("Text with Layout (*.txt)");
                             setShowProject(false);
@@ -517,7 +572,7 @@ export const ProfileSubNavbar = () => {
                           Text with Layout (*.txt)
                         </li>
                         <li
-                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 border-x border-[#404040] hover:bg-[#5D5D5D]"
+                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border-x border-[#404040] hover:bg-[#5D5D5D]"
                           onClick={() => {
                             setProjectType("Avid Script-Based Editing (*.txt)");
                             setShowProject(false);
@@ -526,7 +581,7 @@ export const ProfileSubNavbar = () => {
                           Avid Script-Based Editing (*.txt)
                         </li>
                         <li
-                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 border border-[#404040] hover:bg-[#5D5D5D]"
+                          className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border border-[#404040] hover:bg-[#5D5D5D]"
                           onClick={() => {
                             setProjectType("Tab Delimited Dialogue (*.txt)");
                             setShowProject(false);

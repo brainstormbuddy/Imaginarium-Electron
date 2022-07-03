@@ -14,8 +14,13 @@ module.exports = {
         "neutral-840": "#111111",
         "neutral-850": "#0E0E0E",
         "thead-row": "#5F5F5F",
+        "black-rgba": "rgba(55 , 65 , 81, 1)",
       },
     },
   },
-  plugins: [require("daisyui"), require("tailwind-scrollbar-hide")],
+  plugins: [
+    require("daisyui"),
+    require("tailwind-scrollbar-hide"),
+    require("@tailwindcss/forms"),
+  ],
 };

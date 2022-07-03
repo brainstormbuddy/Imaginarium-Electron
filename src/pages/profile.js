@@ -5,9 +5,9 @@ import moment from "https://cdn.skypack.dev/moment?min";
 
 import "../github.scss";
 
+import InputText from "../components/core/common/InputText";
 import { AuthContext } from "./context/AuthContext";
 import ProfileTable from "../components/core/table/ProfileTable";
-import { CloseIcon } from "../components/Svg";
 
 const DayNames = {
   0: "SUN",
@@ -148,24 +148,28 @@ function Profile() {
             </label>
             <div className="mt-2 flex flex-row">
               <div className="w-4 h-4 opacity-30 bg-[#1DAEFF] rounded-[4px]"></div>
-              <label className="ml-2 text-[12px] leading-5">136 low days</label>
+              <label className="ml-2 text-[12px] leading-5 text-white">
+                136 low days
+              </label>
             </div>
             <div className="mt-2 flex flex-row">
               <div className="w-4 h-4 opacity-[.65] bg-[#1DAEFF] rounded-[4px]"></div>
-              <label className="ml-2 text-[12px] leading-5">
+              <label className="ml-2 text-[12px] leading-5 text-white">
                 69 normal days
               </label>
             </div>
             <div className="mt-2 flex flex-row">
               <div className="w-4 h-4 bg-[#1DAEFF] rounded-[4px]"></div>
-              <label className="ml-2 text-[12px] leading-5">20 hard days</label>
+              <label className="ml-2 text-[12px] leading-5 text-white">
+                20 hard days
+              </label>
             </div>
 
             <label className="text-[10px] leading-5 text-[#1DAEFF]">
               Learn how we count edits
             </label>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col w-[80%]">
             <Timeline
               range={dateRange}
               data={data}
@@ -214,33 +218,35 @@ function Profile() {
                   setShowEditModal(false);
                 }}
               >
-                <CloseIcon />
+                <img
+                  className="w-[20px] h-[20px]"
+                  src="assets/img/dashboard/close.png"
+                  alt="close"
+                />
               </button>
             </div>
             <div className="edit-modal-content px-[24px] py-4 border-b border-[#161616]">
               <div className="flex flex-row">
                 <img
-                  className="my-2 w-[100px] h-[100px] border border-[#1C1C1C] opacity-50 rounded-[50px]"
-                  src="assets/img/Avatar.png"
+                  className="my-2 w-[100px] h-[100px] border border-[#1C1C1C] rounded-[50px]"
+                  src="assets/img/profile/Image Upload.png"
                   alt="logo"
                 />
                 <div className="ml-[24px] flex flex-col w-full">
                   <label className="text-white text-[9px] font-extrabold leading-5 tracking-[.21em]">
                     NAME
                   </label>
-                  <input
+                  <InputText
                     type="text"
                     name="name"
-                    className="px-2 py-1.5 w-full h-8 bg-[#161616] border border-[#404040] focus:border-white placeholder-[#5F5F5F] focus:outline-none rounded-md text-[12px] focus:ring-1 text-white"
                     placeholder="Julia Ellei"
                   />
                   <label className="mt-2 text-white text-[9px] font-extrabold leading-5 tracking-[.21em]">
                     USERNAME
                   </label>
-                  <input
+                  <InputText
                     type="text"
                     name="username"
-                    className="px-2 py-1.5 w-full h-8 bg-[#161616] border border-[#404040] focus:border-white placeholder-[#5F5F5F] focus:outline-none rounded-md text-[12px] focus:ring-1 text-white"
                     placeholder="juliaellei"
                   />
                 </div>
@@ -250,21 +256,20 @@ function Profile() {
                   <label className="text-white text-[9px] font-extrabold leading-5 tracking-[.21em]">
                     EMAIL
                   </label>
-                  <input
-                    type="text"
-                    name="name"
-                    className="px-2 py-1.5 w-full h-8 bg-[#161616] border border-[#404040] focus:border-white placeholder-[#5F5F5F] focus:outline-none rounded-md text-[12px] focus:ring-1 text-white"
-                    placeholder="juliaellei@gmail.com"
+                  <InputText
+                    type="email"
+                    name="email"
+                    placeholder="jjuliaellei@gmail.com"
                   />
                 </div>
                 <div className="mt-[12px] current-password">
                   <label className="text-white text-[9px] font-extrabold leading-5 tracking-[.21em]">
                     CURRENT PASSWORD
                   </label>
-                  <input
-                    type="text"
-                    name="name"
-                    className="px-2 py-1.5 w-full h-8 bg-[#161616] border border-[#404040] focus:border-white placeholder-[#5F5F5F] focus:outline-none rounded-md text-[12px] focus:ring-1 text-white"
+
+                  <InputText
+                    type="password"
+                    name="current-password"
                     placeholder="Enter current password"
                   />
                 </div>
@@ -272,10 +277,9 @@ function Profile() {
                   <label className="text-white text-[9px] font-extrabold leading-5 tracking-[.21em]">
                     NEW PASSWORD
                   </label>
-                  <input
-                    type="text"
-                    name="name"
-                    className="px-2 py-1.5 w-full h-8 bg-[#161616] border border-[#404040] focus:border-white placeholder-[#5F5F5F] focus:outline-none rounded-md text-[12px] focus:ring-1 text-white"
+                  <InputText
+                    type="password"
+                    name="new-password"
                     placeholder="Enter new password"
                   />
                 </div>
@@ -283,10 +287,9 @@ function Profile() {
                   <label className="text-white text-[9px] font-extrabold leading-5 tracking-[.21em]">
                     CONFIRM NEW PASSWORD
                   </label>
-                  <input
-                    type="text"
-                    name="name"
-                    className="px-2 py-1.5 w-full h-8 bg-[#161616] border border-[#404040] focus:border-white placeholder-[#5F5F5F] focus:outline-none rounded-md text-[12px] focus:ring-1 text-white"
+                  <InputText
+                    type="password"
+                    name="confirm-password"
                     placeholder="Confirm new password"
                   />
                 </div>

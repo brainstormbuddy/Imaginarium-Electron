@@ -1,0 +1,21 @@
+input[type="checkbox"] {
+  margin-left: 10px;
+  display: none;
+}
+
+.checkbox label {
+  margin-bottom: 10px;
+}
+
+.checkbox label:before {
+  border-radius: 3px;
+}
+
+input[type="checkbox"]:checked + label:before {
+  content: "\2713";
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  font-size: 15px;
+  color: white;
+  text-align: center;
+  line-height: 15px;
+}

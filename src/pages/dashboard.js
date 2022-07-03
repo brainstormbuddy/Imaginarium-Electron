@@ -6,7 +6,7 @@ import Checkbox from "../components/core/common/Checkbox";
 
 function Dashboard() {
   const [showModal, setShowModal] = React.useState(true);
-  const [checked, setChecked] = React.useState(true);
+  const [checked, setChecked] = React.useState(false);
 
   return (
     <div className="p-8 bg-[#0A0A0A] w-full h-[calc(100vh-112px)] overflow-auto">
