@@ -34,13 +34,6 @@ export default function SubNavbar(props) {
     return <ProfileSubNavbar />;
   }
 }
-// function toggleMenu() {
-//   var menu = document.getElementById("menu");
-
-//   menu.classList.toggle("hidden");
-//   menu.classList.toggle("w-auto");
-//   menu.classList.toggle("h-auto");
-// }
 
 export const MainSubNavbar = () => {
   const { setIsAuthenticated } = React.useContext(AuthContext);
@@ -199,6 +192,14 @@ export const MainSubNavbar = () => {
 };
 
 export const DashboardSubNavbar = () => {
+  function toggleMenu() {
+    var menu = document.getElementById("menu");
+
+    menu.classList.toggle("hidden");
+    menu.classList.toggle("w-auto");
+    menu.classList.toggle("h-auto");
+  }
+
   const [projectsType, setProjectsType] = React.useState("ALL PROJECTS");
   const [openProjectsType, setOpenProjectsType] = React.useState(false);
   const [checkedShowFinish, setCheckedShowFinsh] = React.useState(false);
@@ -208,11 +209,15 @@ export const DashboardSubNavbar = () => {
     <div className="flex w-full h-14 bg-[#0E0E0E]">
       <MainSubNavbar />
 
-      <div className="w-full flex justify-between">
-        <div>
+      <div className="w-full flex items-center justify-between">
+        <div
+          id="menu"
+          className="hidden sm:visible sm:fixed sm:left-14 sm:top-28 z-50 sm:w-[115px] sm:bg-[#1e1e1e] sm:rounded-tr-lg sm:rounded-bl-lg
+          md:visible md:relative md:flex md:p-0 md:bg-transparent md:flex-row md:top-0 md:left-0  "
+        >
           <button
             className={
-              "!inline-flex flex flex-row p-4 space-x-2 h-full cursor-pointer hover:bg-[#1F1F1F] focus:bg-black-rgba " +
+              "!inline-flex flex flex-row p-4 space-x-2 h-full cursor-pointer hover:bg-[#1F1F1F] focus:bg-black-rgba outline-none	" +
               +(projectType === 1 ? "active" : null)
             }
             onClick={() => {
@@ -224,7 +229,7 @@ export const DashboardSubNavbar = () => {
           </button>
           <button
             className={
-              "!inline-flex flex flex-row p-4 space-x-2 h-full cursor-pointer hover:bg-[#1F1F1F] focus:bg-black-rgba " +
+              "!inline-flex flex flex-row p-4 space-x-2 h-full cursor-pointer hover:bg-[#1F1F1F] focus:bg-black-rgba outline-none " +
               (projectType === 2 ? "active" : null)
             }
             onClick={() => {
@@ -236,7 +241,7 @@ export const DashboardSubNavbar = () => {
           </button>
           <button
             className={
-              "!inline-flex flex flex-row p-4 space-x-2 h-full cursor-pointer hover:bg-[#1F1F1F] focus:bg-black-rgba " +
+              "!inline-flex flex flex-row p-4 space-x-2 h-full cursor-pointer hover:bg-[#1F1F1F] focus:bg-black-rgba outline-none " +
               (projectType === 3 ? "active" : null)
             }
             onClick={() => {
@@ -248,7 +253,7 @@ export const DashboardSubNavbar = () => {
           </button>
           <button
             className={
-              "!inline-flex flex flex-row p-4 space-x-2 h-full cursor-pointer hover:bg-[#1F1F1F] focus:bg-black-rgba " +
+              "!inline-flex flex flex-row p-4 space-x-2 h-full cursor-pointer hover:bg-[#1F1F1F] focus:bg-black-rgba outline-none " +
               (projectType === 4 ? "active" : null)
             }
             onClick={() => {
@@ -257,6 +262,16 @@ export const DashboardSubNavbar = () => {
           >
             <BooksIcon />
             <span className="text-white">Books</span>
+          </button>
+        </div>
+        <div className="flex items-center md:hidden">
+          <button
+            className="text-white text-4xl font-bold opacity-70 hover:opacity-100 duration-300"
+            onClick={() => {
+              toggleMenu();
+            }}
+          >
+            &#9776;
           </button>
         </div>
 
