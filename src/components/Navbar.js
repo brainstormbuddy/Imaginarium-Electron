@@ -1,10 +1,6 @@
 import * as React from "react";
 import { Link, useLocation } from "react-router-dom";
 
-import { AuthContext } from "../pages/context/AuthContext";
-import Checkbox from "../components/core/common/Checkbox";
-import InputText from "./core/common/InputText";
-
 import {
   BaseIcon,
   SearchIcon,
@@ -18,23 +14,25 @@ import {
   LocationSearchIcon,
 } from "./Svg";
 
-const MainMenu = [
-  {
-    icon: <BaseIcon />,
-  },
-];
+// context
+import { AuthContext } from "../pages/context/AuthContext";
+// core components
+import Checkbox from "../components/core/common/Checkbox";
+import InputText from "./core/common/InputText";
 
 export default function Navbar(props) {
   const location = useLocation();
   const { setIsAuthenticated } = React.useContext(AuthContext);
   const [showLogoutModal, setShowLogoutModal] = React.useState(false);
   const [showAlarmModal, setShowAlarmModal] = React.useState(false);
-  const [showSettingModal, setShowSettingModal] = React.useState(false);
-  const [languageType, setLanguageType] = React.useState("English");
-  const [theme, setTheme] = React.useState(true);
-  const [openTab, setOpenTab] = React.useState(1);
+
   const [searchDropdownMenu, setSearchDropdownMenu] = React.useState(false);
   const [setSearchDropdownValue] = React.useState("");
+
+  const [showSettingModal, setShowSettingModal] = React.useState(false);
+  const [openTab, setOpenTab] = React.useState(1);
+  const [languageType, setLanguageType] = React.useState("English");
+  const [theme, setTheme] = React.useState(true);
 
   const [initRecentItemCount, setInitRecentItemCount] = React.useState(15);
   const [initAutoSaveCount, setInitAutoSaveCount] = React.useState(15);
@@ -53,14 +51,6 @@ export default function Navbar(props) {
   const [checkedBackupAuto, setCheckedBackupAuto] = React.useState(false);
   const [checkedFormatScan, setCheckedFormatScan] = React.useState(false);
   const [checkedFormatAlways, setCheckedFormatAlways] = React.useState(false);
-
-  function handleSearchChange(event) {
-    setSearchDropdownValue(event.target.value);
-  }
-
-  function handleTheme(event) {
-    setTheme(event.target.value);
-  }
 
   if (location.pathname === "/") {
     return null;
@@ -82,9 +72,9 @@ export default function Navbar(props) {
       <div className="w-full h-14 bg-[#161616]">
         <div className="bg-[#161616] p-0 min-h-0 flex flex-row w-full items-center">
           <div className="w-14 h-14 bg-[#0E0E0E]">
-            {MainMenu.map((menu, index) => (
-              <MainMenuItem icon={menu.icon} key={index} />
-            ))}
+            <div className="!inline-flex flex flex-row p-4 h-full hover:bg-neutral-800 hover:cursor-pointer">
+              <BaseIcon />
+            </div>
           </div>
 
           <div className="w-full items-center flex justify-end">
@@ -106,10 +96,12 @@ export default function Navbar(props) {
                       <SmallSearchIcon />
                     </button>
                     <input
-                      className="ml-2 bg-transparent w-full text-white focus:outline-none text-[12px] placeholder-[#5F5F5F]"
+                      className="ml-2 bg-transparent w-full h-8 text-white text-[12px] outline-none border border-[#161616] focus:border-[#161616] placeholder-[#5F5F5F]"
                       type="text"
                       placeholder="Search Text, Characters, Locations..."
-                      onChange={handleSearchChange}
+                      onChange={(e) => {
+                        setSearchDropdownValue(e.target.value);
+                      }}
                       onMouseDown={() => {
                         setSearchDropdownMenu(!searchDropdownMenu);
                       }}
@@ -564,7 +556,9 @@ export default function Navbar(props) {
                       name="theme"
                       value="light"
                       defaultChecked={theme}
-                      onChange={handleTheme}
+                      onChange={(e) => {
+                        setTheme(e.target.value);
+                      }}
                     />
                     <label className="ml-3 text-[12px] leading-5 text-white">
                       Light Mode
@@ -574,7 +568,9 @@ export default function Navbar(props) {
                       type="radio"
                       name="theme"
                       value="dark"
-                      onChange={handleTheme}
+                      onChange={(e) => {
+                        setTheme(e.target.value);
+                      }}
                     />
                     <label className="ml-3 text-[12px] leading-5 text-white">
                       Dark Mode
@@ -714,11 +710,3 @@ export default function Navbar(props) {
     );
   }
 }
-
-export const MainMenuItem = (props) => {
-  return (
-    <div className="!inline-flex flex flex-row p-4 h-full hover:bg-neutral-800 hover:cursor-pointer">
-      {props.icon}
-    </div>
-  );
-};

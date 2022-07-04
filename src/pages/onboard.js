@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+// module
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-
-import DeviartImage from "../components/pages/Onboard/DeviartImage";
-import ImaginariumImage from "../components/pages/Onboard/ImaginariumImage";
 
 function Onboard() {
   const [indexOfSlide, setIndexOfSlide] = useState(0);
@@ -59,11 +56,26 @@ function Onboard() {
     <Carousel {...carouselProp}>
       <div className="screen1">
         <div className="relative !w-full bg-[url('/public/assets/img/screen1.png')] h-[calc(100vh)] bg-center bg-cover bg-no-repeat">
-          <DeviartImage />
+          <img
+            className="absolute top-6	left-6 !w-auto h-6"
+            src="assets/img/Deviant Art.png"
+            alt="Deviant Art"
+          />
           <label className="absolute top-6 right-10 !w-37 h-5 font-extrabold text-[9px] tracking-[.21em] text-white opacity-50">
             ART BY @FANTASYLADY
           </label>
-          <ImaginariumImage />
+          <div className="flex justify-center content-center">
+            <img
+              className="absolute top-20 !w-auto"
+              src="assets/img/Union1.png"
+              alt="Union1"
+            />
+            <img
+              className="absolute top-[184px] !w-auto"
+              src="assets/img/imaginarium.png"
+              alt="imaginarium"
+            />
+          </div>
           <div className="absolute flex flex-row bottom-20 w-full pl-20 pr-20 justify-between">
             <label className="flex flex-start w-3/4 font-extrabold text-[40px] text-white leading-snug">
               There Are A Lot of Untold Stories
@@ -71,36 +83,66 @@ function Onboard() {
           </div>
         </div>
       </div>
+
       <div className="screen2">
         <div
           className="relative !w-full bg-[url('/public/assets/img/screen2.png')] h-[calc(100vh)] bg-center bg-cover bg-no-repeat"
           src="assets/img/screen2.png"
           alt="screen2"
         />
-
-        <DeviartImage />
+        <img
+          className="absolute top-6	left-6 !w-auto h-6"
+          src="assets/img/Deviant Art.png"
+          alt="Deviant Art"
+        />
         <label className="absolute top-6 right-10 !w-37 h-5 font-extrabold text-[9px] tracking-[.21em] text-white opacity-50">
           ART BY @FANTASYLADY
         </label>
-        <ImaginariumImage />
+        <div className="flex justify-center content-center">
+          <img
+            className="absolute top-20 !w-auto"
+            src="assets/img/Union1.png"
+            alt="Union1"
+          />
+          <img
+            className="absolute top-[184px] !w-auto"
+            src="assets/img/imaginarium.png"
+            alt="imaginarium"
+          />
+        </div>
         <div className="absolute flex flex-row bottom-20 w-full pl-20 pr-20 justify-between">
           <label className="flex flex-start w-3/4 font-extrabold text-[40px] text-white leading-snug">
             Never Seen And Shared Before
           </label>
         </div>
       </div>
+
       <div className="screen3">
         <div
           className="relative !w-full bg-[url('/public/assets/img/screen3.png')] h-[calc(100vh)] bg-center bg-cover bg-no-repeat"
           src="assets/img/screen3.png"
           alt="screen3"
         />
-
-        <DeviartImage />
+        <img
+          className="absolute top-6	left-6 !w-auto h-6"
+          src="assets/img/Deviant Art.png"
+          alt="Deviant Art"
+        />
         <label className="absolute top-6 right-10 !w-37 h-5 font-extrabold text-[9px] tracking-[.21em] text-white opacity-50">
           ART BY @FANTASYLADY
         </label>
-        <ImaginariumImage />
+        <div className="flex justify-center content-center">
+          <img
+            className="absolute top-20 !w-auto"
+            src="assets/img/Union1.png"
+            alt="Union1"
+          />
+          <img
+            className="absolute top-[184px] !w-auto"
+            src="assets/img/imaginarium.png"
+            alt="imaginarium"
+          />
+        </div>
         <div className="absolute flex flex-row bottom-20 w-full pl-20 pr-20 justify-between">
           <label className="flex flex-start w-2/3 font-extrabold text-[40px] w-1/2 text-white leading-snug">
             So... Go On! Tell Yours!

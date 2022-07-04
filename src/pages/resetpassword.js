@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// core components
+import InputText from "../components/core/common/InputText";
 
 function ResetPassword() {
   // const [isShown, setIsSHown] = useState(false);
@@ -45,9 +47,9 @@ function ResetPassword() {
               src="assets/img/imaginarium.png"
               alt="imaginarium"
             />
-            <div className="ml-2 -mt-2 w-5 h-2 font-bold text-sm text-[#5F5F5F] ">
+            <label className="ml-2 -mt-2 w-5 h-2 font-bold text-sm text-[#5F5F5F] ">
               1.0
-            </div>
+            </label>
           </div>
           <div className="flex justify-center mb-6">
             <label className="w-50 h-6 font-bold text-lg text-white">
@@ -59,11 +61,9 @@ function ResetPassword() {
             <label className="flex flex-start mb-1 font-extrabold leading-5 text-[9px] text-white  tracking-[.21em]">
               NEW PASSWORD
             </label>
-
-            <input
+            <InputText
               type="password"
-              name="newpassword"
-              className="mb-2 px-3 py-2 bg-black  border-neutral-700	placeholder-slate-400 focus:outline-none focus:border-neutral-700 focus:ring-neutral-700 block w-full rounded-md sm:text-sm focus:ring-1 text-white"
+              name="password"
               placeholder="Enter new password"
             />
           </div>
@@ -72,11 +72,9 @@ function ResetPassword() {
             <label className="flex flex-start mb-1 font-extrabold leading-5 text-[9px] text-white  tracking-[.21em]">
               CONFIRM NEW PASSWORD
             </label>
-
-            <input
-              type={"password"}
-              name="confirmpassword"
-              className="flex items-center mb-2 px-3 py-2 bg-black  border-neutral-700	placeholder-slate-400 focus:outline-none focus:border-neutral-700 focus:ring-neutral-700 block w-full rounded-md sm:text-sm focus:ring-1 text-white"
+            <InputText
+              type="password"
+              name="password"
               placeholder="Confirm password"
             />
             {/* <img className="p-1.5" src="assets/img/eye.png" alt="eye" /> */}

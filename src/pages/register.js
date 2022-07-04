@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// core components
+import InputText from "../components/core/common/InputText";
 
 function Register() {
   return (
@@ -26,16 +28,15 @@ function Register() {
               src="assets/img/imaginarium.png"
               alt="imaginarium"
             />
-            <div className="ml-2 -mt-2 w-5 h-2 font-bold text-sm text-[#5F5F5F] ">
+            <label className="ml-2 -mt-2 w-5 h-2 font-bold text-sm text-[#5F5F5F] ">
               1.0
-            </div>
+            </label>
           </div>
           <div className="flex justify-center mb-6">
             <label className="w-50 h-6 font-bold text-[18px] text-white leading-6">
               Create Your Account
             </label>
           </div>
-
           <div className="flex flex-row flex-start">
             <label className="mb-1 font-extrabold leading-5 text-[9px] text-white w-40 tracking-[.25em]">
               FIRST NAME
@@ -44,44 +45,26 @@ function Register() {
               LAST NAME
             </label>
           </div>
-
           <div className="flex justify-between">
-            <input
-              type="text"
-              name="firstname"
-              className="mb-2 px-3 py-2 bg-black  border-neutral-700	placeholder-slate-400 focus:outline-none focus:border-neutral-700 focus:ring-neutral-700 block w-36 rounded-md sm:text-sm focus:ring-1 text-white"
-              placeholder="Julia"
-            />
-
-            <input
-              type="text"
-              name="lastname"
-              className="mb-2 px-3 py-2 bg-black  border-neutral-700	placeholder-slate-400 focus:outline-none focus:border-neutral-700 focus:ring-neutral-700 block w-36 rounded-md sm:text-sm focus:ring-1 text-white"
-              placeholder="Ellei"
-            />
+            <div className="w-36">
+              <InputText type="text" name="firstname" placeholder="Julia" />
+            </div>
+            <div className="w-36">
+              <InputText type="text" name="lastname" placeholder="Ellei" />
+            </div>
           </div>
-
           <label className=" mb-1 font-extrabold leading-5 text-[9px] text-white tracking-[.25em]">
             USERNAME
           </label>
-
-          <input
-            type="text"
-            name="username"
-            className="mb-2 px-3 py-2 bg-black  border-neutral-700	placeholder-slate-400 focus:outline-none focus:border-neutral-700 focus:ring-neutral-700 block w-full rounded-md sm:text-sm focus:ring-1 text-white"
-            placeholder=" juliaellei"
-          />
-
+          <InputText type="text" name="username" placeholder="juliaellei" />
           <div>
             <label className="flex flex-start mb-1 font-extrabold leading-5 text-[9px] text-white tracking-[.25em]">
               EMAIL
             </label>
-
-            <input
+            <InputText
               type="email"
               name="email"
-              className="mb-2 px-3 py-2 bg-black  border-neutral-700	placeholder-slate-400 focus:outline-none focus:border-neutral-700 focus:ring-neutral-700 block w-full rounded-md sm:text-sm focus:ring-1 text-white"
-              placeholder="you@example.com"
+              placeholder="juliaellei@gmail.com"
             />
           </div>
 
@@ -89,11 +72,9 @@ function Register() {
             <label className="flex flex-start mb-1 font-extrabold leading-5 text-[9px] text-white tracking-[.25em]">
               PASSWORD
             </label>
-
-            <input
+            <InputText
               type="password"
               name="password"
-              className="mb-2 px-3 py-2 bg-black  border-neutral-700	placeholder-slate-400 focus:outline-none focus:border-neutral-700 focus:ring-neutral-700 block w-full rounded-md sm:text-sm focus:ring-1 text-white"
               placeholder="please enter your password"
             />
           </div>
@@ -102,11 +83,9 @@ function Register() {
             <label className="flex flex-start mb-1 font-extrabold leading-5 text-[9px] text-white tracking-[.25em]">
               CONFIRM PASSWORD
             </label>
-
-            <input
+            <InputText
               type="password"
               name="password"
-              className="mb-2 px-3 py-2 bg-black  border-neutral-700	placeholder-slate-400 focus:outline-none focus:border-neutral-700 focus:ring-neutral-700 block w-full rounded-md sm:text-sm focus:ring-1 text-white"
               placeholder="confirm your password"
             />
           </div>

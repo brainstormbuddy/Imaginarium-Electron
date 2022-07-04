@@ -17,7 +17,7 @@ function Dashboard() {
     <div className="p-8 bg-[#0A0A0A] w-full h-[calc(100vh-112px)] overflow-auto">
       <Table />
 
-      {showModal === null ? (
+      {showModal === null && (
         <>
           <div className="drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="absolute flex flex-col top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-auto">
@@ -57,8 +57,6 @@ function Dashboard() {
           </div>
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
-      ) : (
-        ""
       )}
     </div>
   );

@@ -12,7 +12,7 @@ import {
   ProfileIcon,
   DropDownIcon,
 } from "./Svg";
-
+// context
 import { AuthContext } from "../pages/context/AuthContext";
 import { ProjectContext } from "../pages/context/ProjectContext";
 
@@ -396,8 +396,6 @@ export const NewProjectSubNavbar = () => {
           </div>
         </div>
       </div>
-
-      {/* {currentSubNavMenu === 1 && <DashboardSubNavbar />} */}
     </div>
   );
 };
@@ -428,8 +426,6 @@ export const EditSubNavbar = () => {
           </div>
         </div>
       </div>
-
-      {/* {currentSubNavMenu === 1 && <DashboardSubNavbar />} */}
     </div>
   );
 };

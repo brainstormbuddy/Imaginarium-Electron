@@ -6,6 +6,7 @@ import {
   BigPlusButtonIcon,
   LoglinePlusIcon,
 } from "../components/Svg";
+// core components
 import InputText from "../components/core/common/InputText";
 
 function NewProject() {

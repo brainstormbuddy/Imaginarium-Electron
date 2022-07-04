@@ -1,5 +1,5 @@
 import * as React from "react";
-
+// core components
 import InputText from "../components/core/common/InputText";
 import Genres from "../components/core/chip/Genres";
 import Tag from "../components/core/chip/Tag";

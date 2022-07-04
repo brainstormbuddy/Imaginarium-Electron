@@ -1,10 +1,8 @@
 import * as React from "react";
+
 import Navbar from "./Navbar";
-
-import { AuthContext } from "../pages/context/AuthContext";
-
-// core components
 import SubNavbar from "./SubNavbar";
+import { AuthContext } from "../pages/context/AuthContext";
 
 export default function Layout(props) {
   const { isAuthenticated, setIsAuthenticated } = React.useContext(AuthContext);

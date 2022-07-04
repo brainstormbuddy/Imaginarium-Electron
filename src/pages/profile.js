@@ -1,14 +1,14 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-
+// link
 import moment from "https://cdn.skypack.dev/moment?min";
-
+// css
 import "../github.scss";
-
-import InputText from "../components/core/common/InputText";
+// context
 import { AuthContext } from "./context/AuthContext";
+// core components
+import InputText from "../components/core/common/InputText";
 import ProfileTable from "../components/core/table/ProfileTable";
-import { CloseIcon } from "../components/Svg";
 
 const DayNames = {
   0: "SUN",
@@ -280,7 +280,7 @@ function Profile() {
                   <InputText
                     type="email"
                     name="email"
-                    placeholder="jjuliaellei@gmail.com"
+                    placeholder="juliaellei@gmail.com"
                   />
                 </div>
                 <div className="mt-[12px] current-password">
@@ -343,7 +343,11 @@ function Profile() {
                   setShowLogoutModal(false);
                 }}
               >
-                <CloseIcon />
+                <img
+                  className="w-[20px] h-[20px]"
+                  src="assets/img/dashboard/close.png"
+                  alt="close"
+                />
               </button>
             </div>
             <div className="edit-modal-content px-[24px] py-4 border-b border-[#161616]">

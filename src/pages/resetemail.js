@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// core components
+import InputText from "../components/core/common/InputText";
 
 function ResetEmail() {
   return (
@@ -26,9 +28,9 @@ function ResetEmail() {
               src="assets/img/imaginarium.png"
               alt="imaginarium"
             />
-            <div className="ml-2 -mt-2 w-5 h-2 font-bold text-sm text-[#5F5F5F] ">
+            <label className="ml-2 -mt-2 w-5 h-2 font-bold text-sm text-[#5F5F5F] ">
               1.0
-            </div>
+            </label>
           </div>
           <div className="flex justify-center mb-6">
             <label className="w-50 h-6 font-bold text-lg text-white">
@@ -41,11 +43,10 @@ function ResetEmail() {
               EMAIL
             </label>
 
-            <input
+            <InputText
               type="email"
               name="email"
-              className="mb-2 px-3 py-2 bg-black  border-neutral-700	placeholder-slate-400 focus:outline-none focus:border-neutral-700 focus:ring-neutral-700 block w-full rounded-md sm:text-sm focus:ring-1 text-white"
-              placeholder="you@example.com"
+              placeholder="juliaellei@gmail.com"
             />
           </div>
 
