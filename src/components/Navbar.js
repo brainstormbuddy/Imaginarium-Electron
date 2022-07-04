@@ -363,6 +363,7 @@ export default function Navbar(props) {
                 onClick={() => {
                   setIsAuthenticated(false);
                   localStorage.removeItem("auth");
+                  localStorage.removeItem("showModal");
                 }}
               >
                 LOG OUT

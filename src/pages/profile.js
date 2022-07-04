@@ -8,6 +8,7 @@ import "../github.scss";
 import InputText from "../components/core/common/InputText";
 import { AuthContext } from "./context/AuthContext";
 import ProfileTable from "../components/core/table/ProfileTable";
+import { CloseIcon } from "../components/Svg";
 
 const DayNames = {
   0: "SUN",
@@ -86,6 +87,15 @@ function Timeline({ range, data, colorFunc }) {
       </div>
     </div>
   );
+}
+
+function loadFile(event) {
+  const image = document.getElementById("output");
+  console.log("image" + image);
+  image.src = URL.createObjectURL(event.target.files[0]);
+  if (image.src !== null) {
+    // setShowUpload(false);
+  }
 }
 
 function Profile() {
@@ -184,14 +194,15 @@ function Profile() {
           <label className="text-[24px] text-white font-bold leading-6">
             Shared Projects
           </label>
-          <div className="flex items-center justify-between w-52 bg-[#161616] border border-[#404040] rounded-[4px] px-2 py-1.5">
+          <div className="flex items-center justify-between w-52 h-8 bg-[#161616] border border-[#404040] rounded-[4px] px-2 py-1.5">
             <input
-              className=" bg-transparent w-40 text-white focus:outline-none text-[12px] placeholder-[#5F5F5F]"
+              className=" bg-transparent w-40 h-6 text-white border border-[#161616] focus:border-[#161616] text-[12px] placeholder-[#5F5F5F]"
               type="text"
               placeholder="Search shared project"
             />
             <button>
               <img
+                className="outline-none"
                 width={20}
                 height={20}
                 src="assets/img/profile/search.png"
@@ -227,12 +238,22 @@ function Profile() {
             </div>
             <div className="edit-modal-content px-[24px] py-4 border-b border-[#161616]">
               <div className="flex flex-row">
-                <img
-                  className="my-2 w-[100px] h-[100px] border border-[#1C1C1C] rounded-[50px]"
-                  src="assets/img/profile/Image Upload.png"
-                  alt="logo"
+                <input
+                  type="file"
+                  className="hidden"
+                  name="image"
+                  id="file"
+                  onChange={loadFile}
                 />
-                <div className="ml-[24px] flex flex-col w-full">
+                <label htmlFor="file" className="mr-6 cursor-pointer">
+                  <img
+                    id="output"
+                    className="my-2 w-[100px] h-[100px] border border-[#1C1C1C] rounded-[50px]"
+                    src="assets/img/profile/Image Upload.png"
+                    alt="logo"
+                  />
+                </label>
+                <div className="flex flex-col w-[236px]">
                   <label className="text-white text-[9px] font-extrabold leading-5 tracking-[.21em]">
                     NAME
                   </label>
@@ -322,31 +343,7 @@ function Profile() {
                   setShowLogoutModal(false);
                 }}
               >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <mask
-                    id="mask0_3305_13642"
-                    style={{ maskType: "alpha" }}
-                    maskUnits="userSpaceOnUse"
-                    x="5"
-                    y="4"
-                    width="11"
-                    height="11"
-                  >
-                    <path
-                      d="M11.1785 9.99996L14.756 6.42246C15.0819 6.09663 15.0819 5.56996 14.756 5.24413C14.4302 4.9183 13.9035 4.9183 13.5777 5.24413L10.0002 8.82163L6.42271 5.24413C6.09687 4.9183 5.57021 4.9183 5.24437 5.24413C4.91854 5.56996 4.91854 6.09663 5.24437 6.42246L8.82187 9.99996L5.24437 13.5775C4.91854 13.9033 4.91854 14.43 5.24437 14.7558C5.40687 14.9183 5.62021 15 5.83354 15C6.04687 15 6.26021 14.9183 6.42271 14.7558L10.0002 11.1783L13.5777 14.7558C13.7402 14.9183 13.9535 15 14.1669 15C14.3802 15 14.5935 14.9183 14.756 14.7558C15.0819 14.43 15.0819 13.9033 14.756 13.5775L11.1785 9.99996Z"
-                      fill="white"
-                    />
-                  </mask>
-                  <g mask="url(#mask0_3305_13642)">
-                    <rect width="20" height="20" fill="#CDCDCD" />
-                  </g>
-                </svg>
+                <CloseIcon />
               </button>
             </div>
             <div className="edit-modal-content px-[24px] py-4 border-b border-[#161616]">
@@ -369,6 +366,7 @@ function Profile() {
                 onClick={() => {
                   setIsAuthenticated(false);
                   localStorage.removeItem("auth");
+                  localStorage.removeItem("showModal");
                 }}
               >
                 LOG OUT

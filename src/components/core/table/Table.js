@@ -1,228 +1,14 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
+import { ProjectContext } from "../../../pages/context/ProjectContext";
 
-import {
-  DetailIcon,
-  DropDownIcon,
-  ProjectTypeBook,
-  ProjectTypeMovie,
-  ProjectTypeTv,
-} from "../../Svg";
+import { DetailIcon, DropDownIcon } from "../../Svg";
 
 import Checkbox from "../common/Checkbox";
-
-const projects = [
-  {
-    project_id: 1,
-    project_image: "assets/img/dashboard/project1.png",
-    project_name: "Apple Trees",
-    project_type_icon: <ProjectTypeMovie />,
-    project_type: "Movie",
-    project_content: "20 / 40 scenes",
-    project_progress: "50%",
-    project_opened: "Today",
-    project_author: "You",
-    project_collaborators: [
-      {
-        src: "assets/img/dashboard/Avatar1.png",
-        alt: "Avatar1",
-      },
-      {
-        src: "assets/img/dashboard/Avatar2.png",
-        alt: "Avatar2",
-      },
-      {
-        src: "assets/img/dashboard/Avatar3.png",
-        alt: "Avatar3",
-      },
-      {
-        src: "assets/img/dashboard/Avatar4.png",
-        alt: "Avatar4",
-      },
-    ],
-    project_own: true,
-  },
-  {
-    project_id: 2,
-    project_image: "assets/img/dashboard/project2.png",
-    project_name: "John Wick 4",
-    project_type_icon: <ProjectTypeMovie />,
-    project_type: "Movie",
-    project_content: "20 / 40 scenes",
-    project_progress: "50%",
-    project_opened: "Today",
-    project_author: "Rin Ellei",
-    project_collaborators: [
-      {
-        src: "assets/img/dashboard/Avatar1.png",
-        alt: "Avatar1",
-      },
-      {
-        src: "assets/img/dashboard/Avatar2.png",
-        alt: "Avatar2",
-      },
-      {
-        src: "assets/img/dashboard/Avatar3.png",
-        alt: "Avatar3",
-      },
-      {
-        src: "assets/img/dashboard/Avatar4.png",
-        alt: "Avatar4",
-      },
-    ],
-    project_own: false,
-  },
-  {
-    project_id: 3,
-    project_image: "assets/img/dashboard/project3.png",
-    project_name: "Young Katyusha",
-    project_type_icon: <ProjectTypeTv />,
-    project_type: "TV Series",
-    project_content: "20 / 40 episodes",
-    project_opened: "Today",
-    project_author: "Rin Ellei",
-    project_collaborators: [
-      {
-        src: "assets/img/dashboard/Avatar1.png",
-        alt: "Avatar1",
-      },
-      {
-        src: "assets/img/dashboard/Avatar2.png",
-        alt: "Avatar2",
-      },
-      {
-        src: "assets/img/dashboard/Avatar3.png",
-        alt: "Avatar3",
-      },
-      {
-        src: "assets/img/dashboard/Avatar4.png",
-        alt: "Avatar4",
-      },
-    ],
-    project_own: false,
-  },
-  {
-    project_id: 4,
-    project_image: "assets/img/dashboard/project4.png",
-    project_name: "Steep Banks",
-    project_type_icon: <ProjectTypeTv />,
-    project_type: "Book",
-    project_content: "48 chapters",
-    project_opened: "2 days ago",
-    project_author: "You",
-    project_collaborators: [
-      {
-        src: "assets/img/dashboard/Avatar10.png",
-        alt: "Avatar10",
-      },
-      {
-        src: "assets/img/dashboard/Avatar11.png",
-        alt: "Avatar11",
-      },
-      {
-        src: "assets/img/dashboard/Avatar12.png",
-        alt: "Avatar12",
-      },
-    ],
-    project_own: true,
-  },
-  {
-    project_id: 5,
-    project_image: "assets/img/dashboard/project5.png",
-    project_name: "Riverbank",
-    project_type_icon: <ProjectTypeMovie />,
-    project_type: "Movie",
-    project_content: "12/40 scenes",
-    project_progress: "33%",
-    project_opened: "3 days ago",
-    project_author: "Andrey Mashkov",
-    project_collaborators: [
-      {
-        src: "assets/img/dashboard/Avatar1.png",
-        alt: "Avatar1",
-      },
-      {
-        src: "assets/img/dashboard/Avatar2.png",
-        alt: "Avatar2",
-      },
-    ],
-    project_own: false,
-  },
-  {
-    project_id: 6,
-    project_image: "assets/img/dashboard/project6.png",
-    project_name: "Inglorious Bastards",
-    project_type_icon: <ProjectTypeMovie />,
-    project_type: "Movie",
-    project_content: "12/40 scenes",
-    project_progress: "33%",
-    project_opened: "5 days ago",
-    project_author: "You",
-    project_collaborators: [
-      {
-        src: "assets/img/dashboard/Avatar5.png",
-        alt: "Avatar5",
-      },
-      {
-        src: "assets/img/dashboard/Avatar6.png",
-        alt: "Avatar6",
-      },
-    ],
-    project_own: true,
-  },
-  {
-    project_id: 7,
-    project_image: "assets/img/dashboard/project7.png",
-    project_name: "2 Guns",
-    project_type_icon: <ProjectTypeBook />,
-    project_type: "Book",
-    project_content: "16 chapters",
-    project_opened: "2 weeks ago",
-    project_author: "You",
-    project_collaborators: [
-      {
-        src: "assets/img/dashboard/Avatar7.png",
-        alt: "Avatar7",
-      },
-      {
-        src: "assets/img/dashboard/Avatar8.png",
-        alt: "Avatar8",
-      },
-      {
-        src: "assets/img/dashboard/Avatar9.png",
-        alt: "Avatar9",
-      },
-    ],
-    project_own: true,
-  },
-  {
-    project_id: 8,
-    project_image: "assets/img/dashboard/project7.png",
-    project_name: "2 Guns",
-    project_type_icon: <ProjectTypeBook />,
-    project_type: "Book",
-    project_content: "16 chapters",
-    project_opened: "2 weeks ago",
-    project_author: "You",
-    project_collaborators: [
-      {
-        src: "assets/img/dashboard/Avatar7.png",
-        alt: "Avatar7",
-      },
-      {
-        src: "assets/img/dashboard/Avatar8.png",
-        alt: "Avatar8",
-      },
-      {
-        src: "assets/img/dashboard/Avatar9.png",
-        alt: "Avatar9",
-      },
-    ],
-    project_own: true,
-  },
-];
+import { projects } from "../data/projects";
 
 export default function Table(props) {
+  const { selected, setSelected } = React.useContext(ProjectContext);
   const [showExportModal, setshowExportModal] = React.useState(false);
   const [projectType, setProjectType] = React.useState(
     "Microsoft Word (*.docx)"
@@ -230,8 +16,11 @@ export default function Table(props) {
   const [showDeleteModal, setShowDeleteModal] = React.useState(false);
   const [showLeaveModal, setShowLeaveModal] = React.useState(false);
   const [showExport, setShowExport] = React.useState(false);
-  const [checked, setChecked] = React.useState(false);
+  const [checkedDelete, setCheckedDelete] = React.useState(false);
+  const [checkedLeave, setCheckedLeave] = React.useState(false);
   const [id, setId] = React.useState();
+
+  React.useEffect(() => setSelected("Recent"), [setSelected]);
 
   return (
     <div className="w-full h-full scrollbar-hide md:scrollbar-default">
@@ -245,170 +34,340 @@ export default function Table(props) {
           <TableCol className="w-1/10">COLLABORATORS</TableCol>
         </TableHeaderRow>
       </TableHeader>
-
-      {projects.map((project, index) => (
-        <div className="collapse !overflow-visible" key={index}>
-          <input type="checkbox" className="!w-[88%] !p-0" />
-          <div className="collapse-title text-xl font-medium p-0">
-            <TableBodyRow no={project.project_id}>
-              <TableCol className="flex flex-row items-center px-4 w-1/4">
-                <img
-                  src={project.project_image}
-                  alt={project.project_id}
-                  width={40}
-                  height={40}
-                />
-                <span className="ml-4 text-[18px] leading-6 text-white">
-                  {project.project_name}
-                </span>
-              </TableCol>
-              <TableCol className="flex flex-row items-center w-1/15">
-                {project.project_type_icon}
-                <span className="leading-5 ml-3 text-[14px] leading-5 text-white">
-                  {project.project_type}
-                </span>
-              </TableCol>
-              <TableCol className="flex flex-col w-1/15">
-                <span className="text-white text-[12px]">
-                  {project.project_content}
-                </span>
-                {`${project.project_type}` === "Movie" ? (
-                  <Progressbar width={project.project_progress}>
-                    {project.project_progress}
-                  </Progressbar>
-                ) : null}
-              </TableCol>
-              <TableCol className="flex flex-row w-[13%]">
-                <span className="text-[14px] leading-5 text-white">
-                  {project.project_opened}
-                </span>
-              </TableCol>
-              <TableCol className="flex flex-row w-[10%] text-[14px] leading-5">
-                <span
-                  className={
-                    `${project.project_author}` === "You"
-                      ? "text-white"
-                      : "text-[#1DAEFF]"
-                  }
-                >
-                  {project.project_author}
-                </span>
-              </TableCol>
-              <TableCol className="flex flex-row flex-wrap w-[10%]">
-                {project.project_collaborators.map(
-                  (project_collaborator, index) => (
+      {selected === "Recent" ? (
+        <>
+          {projects.map((project, index) => (
+            <div className="collapse !overflow-visible" key={index}>
+              <input type="checkbox" className="!w-[88%] !p-0" />
+              <div className="collapse-title text-xl font-medium p-0">
+                <TableBodyRow no={project.project_id}>
+                  <TableCol className="flex flex-row items-center px-4 w-1/4">
                     <img
-                      key={index}
-                      className="rounded-[12px] mr-2"
-                      src={project_collaborator.src}
-                      alt={project_collaborator.alt}
-                      width={20}
-                      height={20}
+                      src={project.project_image}
+                      alt={project.project_id}
+                      width={40}
+                      height={40}
                     />
-                  )
-                )}
-              </TableCol>
-              <TableCol className="flex flex-row justify-evenly w-[12%]">
-                <button className="ring-1 ring-gray-500 w-20 h-8 text-[10px] text-white rounded leading-5 tracking-[.21em] hover:bg-[#404040]">
-                  OPEN
-                </button>
+                    <span className="ml-4 text-[18px] leading-6 text-white">
+                      {project.project_name}
+                    </span>
+                  </TableCol>
+                  <TableCol className="flex flex-row items-center w-1/15">
+                    {project.project_type_icon}
+                    <span className="leading-5 ml-3 text-[14px] leading-5 text-white">
+                      {project.project_type}
+                    </span>
+                  </TableCol>
+                  <TableCol className="flex flex-col w-1/15">
+                    <span className="text-white text-[12px]">
+                      {project.project_content}
+                    </span>
+                    {`${project.project_type}` === "Movie" ? (
+                      <Progressbar width={project.project_progress}>
+                        {project.project_progress}
+                      </Progressbar>
+                    ) : null}
+                  </TableCol>
+                  <TableCol className="flex flex-row w-[13%]">
+                    <span className="text-[14px] leading-5 text-white">
+                      {project.project_opened}
+                    </span>
+                  </TableCol>
+                  <TableCol className="flex flex-row w-[10%] text-[14px] leading-5">
+                    <span
+                      className={
+                        `${project.project_author}` === "You"
+                          ? "text-white"
+                          : "text-[#1DAEFF]"
+                      }
+                    >
+                      {project.project_author}
+                    </span>
+                  </TableCol>
+                  <TableCol className="flex flex-row flex-wrap w-[10%]">
+                    {project.project_collaborators.map(
+                      (project_collaborator, index) => (
+                        <img
+                          key={index}
+                          className="rounded-[12px] mr-2"
+                          src={project_collaborator.src}
+                          alt={project_collaborator.alt}
+                          width={20}
+                          height={20}
+                        />
+                      )
+                    )}
+                  </TableCol>
+                  <TableCol className="flex flex-row justify-evenly w-[12%]">
+                    <button className="ring-1 ring-gray-500 w-20 h-8 text-[10px] text-white rounded leading-5 tracking-[.21em] hover:bg-[#404040] outline-none">
+                      OPEN
+                    </button>
 
-                <div className="dropdown dropdown-end h-[32px]">
-                  <button tabIndex="0">
-                    <DetailIcon className="hover:bg-[#404040] cursor-pointer" />
-                  </button>
-                  {`${project.project_own}` === "true" ? (
-                    <ul
-                      tabIndex="0"
-                      className="z-20 drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact dropdown-content mr-3 shadow bg-[#161616] border border-[#464646] w-[148px] h-32 mt-0 rounded-[4px] cursor-pointer"
-                    >
-                      <Link
-                        className="flex flex-row px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] cursor-pointer"
-                        to="/edit-project"
-                      >
-                        <img
-                          className="p-0 w-5 h-5 cursor-pointer"
-                          src="assets/img/dashboard/edit.png"
-                          alt="edit"
-                        />
-                        <label className="p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em] cursor-pointer">
-                          EDIT
-                        </label>
-                      </Link>
-                      <button
-                        className="flex flex-row px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] cursor-pointer"
-                        onClick={() => {
-                          setshowExportModal(true);
-                        }}
-                      >
-                        <img
-                          className="p-0 w-5 h-5 cursor-pointer"
-                          src="assets/img/dashboard/export.png"
-                          alt="export"
-                        />
-                        <label className="p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em] cursor-pointer">
-                          EXPORT
-                        </label>
+                    <div className="dropdown dropdown-end h-[32px]">
+                      <button tabIndex="0">
+                        <DetailIcon className="hover:bg-[#404040] cursor-pointer" />
                       </button>
-                      <button className="flex flex-row px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] cursor-pointer">
-                        <img
-                          className="p-0 w-5 h-5 !active:bg-[#5D5D5D] cursor-pointer"
-                          src="assets/img/dashboard/share.png"
-                          alt="share"
-                        />
-                        <label className="!active:bg-[#5D5D5D] p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em] cursor-pointer">
-                          SHARE OPTIONS
-                        </label>
-                      </button>
-                      <button
-                        className="flex flex-row px-2 py-1.5 h-8 hover:bg-[#5D5D5D] cursor-pointer"
-                        onClick={() => {
-                          setShowDeleteModal(true);
-                          setId(`${project.project_id}`);
-                        }}
+                      {`${project.project_own}` === "true" ? (
+                        <ul
+                          tabIndex="0"
+                          className="z-20 drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact dropdown-content mr-3 shadow bg-[#161616] border border-[#464646] w-[148px] h-32 mt-0 rounded-[4px] cursor-pointer"
+                        >
+                          <Link
+                            className="flex flex-row px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] cursor-pointer"
+                            to="/edit-project"
+                          >
+                            <img
+                              className="p-0 w-5 h-5 cursor-pointer"
+                              src="assets/img/dashboard/edit.png"
+                              alt="edit"
+                            />
+                            <label className="p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em] cursor-pointer">
+                              EDIT
+                            </label>
+                          </Link>
+                          <button
+                            className="flex flex-row px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] cursor-pointer"
+                            onClick={() => {
+                              setshowExportModal(true);
+                            }}
+                          >
+                            <img
+                              className="p-0 w-5 h-5 cursor-pointer"
+                              src="assets/img/dashboard/export.png"
+                              alt="export"
+                            />
+                            <label className="p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em] cursor-pointer">
+                              EXPORT
+                            </label>
+                          </button>
+                          <button className="flex flex-row px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] cursor-pointer">
+                            <img
+                              className="p-0 w-5 h-5 !active:bg-[#5D5D5D] cursor-pointer"
+                              src="assets/img/dashboard/share.png"
+                              alt="share"
+                            />
+                            <label className="!active:bg-[#5D5D5D] p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em] cursor-pointer">
+                              SHARE OPTIONS
+                            </label>
+                          </button>
+                          <button
+                            className="flex flex-row px-2 py-1.5 h-8 hover:bg-[#5D5D5D] cursor-pointer"
+                            onClick={() => {
+                              setShowDeleteModal(true);
+                              setId(`${project.project_id}`);
+                            }}
+                          >
+                            <img
+                              className="p-0 w-5 h-5 cursor-pointer"
+                              src="assets/img/dashboard/trash-2.png"
+                              alt="trash"
+                            />
+                            <label className="p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em] cursor-pointer">
+                              DELETE
+                            </label>
+                          </button>
+                        </ul>
+                      ) : (
+                        <ul
+                          tabIndex="0"
+                          className="drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact dropdown-content mr-3 shadow bg-[#161616] border border-[#464646] w-[148px] h-8 mt-0 rounded-[4px]"
+                        >
+                          <button
+                            className="flex flex-row px-2 py-1.5 h-8 hover:bg-[#5D5D5D]"
+                            onClick={() => {
+                              setShowLeaveModal(true);
+                            }}
+                          >
+                            <img
+                              className="p-0 w-5 h-5"
+                              src="assets/img/dashboard/log-out.png"
+                              alt="leave"
+                            />
+                            <label className="p-0 ml-2 text-[9px] font-extrabold text-[#DD5E5E] leading-5 tracking-[.21em]">
+                              LEAVE PROJECT
+                            </label>
+                          </button>
+                        </ul>
+                      )}
+                    </div>
+                  </TableCol>
+                </TableBodyRow>
+              </div>
+              <div className="collapse-content">
+                <ProjectDetail />
+              </div>
+            </div>
+          ))}
+        </>
+      ) : (
+        <>
+          {projects
+            .filter((project, index) => project.project_type === selected)
+            .map((project, index) => (
+              <div className="collapse !overflow-visible" key={index}>
+                <input type="checkbox" className="!w-[88%] !p-0" />
+                <div className="collapse-title text-xl font-medium p-0">
+                  <TableBodyRow no={project.project_id}>
+                    <TableCol className="flex flex-row items-center px-4 w-1/4">
+                      <img
+                        src={project.project_image}
+                        alt={project.project_id}
+                        width={40}
+                        height={40}
+                      />
+                      <span className="ml-4 text-[18px] leading-6 text-white">
+                        {project.project_name}
+                      </span>
+                    </TableCol>
+                    <TableCol className="flex flex-row items-center w-1/15">
+                      {project.project_type_icon}
+                      <span className="leading-5 ml-3 text-[14px] leading-5 text-white">
+                        {project.project_type}
+                      </span>
+                    </TableCol>
+                    <TableCol className="flex flex-col w-1/15">
+                      <span className="text-white text-[12px]">
+                        {project.project_content}
+                      </span>
+                      {`${project.project_type}` === "Movie" ? (
+                        <Progressbar width={project.project_progress}>
+                          {project.project_progress}
+                        </Progressbar>
+                      ) : null}
+                    </TableCol>
+                    <TableCol className="flex flex-row w-[13%]">
+                      <span className="text-[14px] leading-5 text-white">
+                        {project.project_opened}
+                      </span>
+                    </TableCol>
+                    <TableCol className="flex flex-row w-[10%] text-[14px] leading-5">
+                      <span
+                        className={
+                          `${project.project_author}` === "You"
+                            ? "text-white"
+                            : "text-[#1DAEFF]"
+                        }
                       >
-                        <img
-                          className="p-0 w-5 h-5 cursor-pointer"
-                          src="assets/img/dashboard/trash-2.png"
-                          alt="trash"
-                        />
-                        <label className="p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em] cursor-pointer">
-                          DELETE
-                        </label>
+                        {project.project_author}
+                      </span>
+                    </TableCol>
+                    <TableCol className="flex flex-row flex-wrap w-[10%]">
+                      {project.project_collaborators.map(
+                        (project_collaborator, index) => (
+                          <img
+                            key={index}
+                            className="rounded-[12px] mr-2"
+                            src={project_collaborator.src}
+                            alt={project_collaborator.alt}
+                            width={20}
+                            height={20}
+                          />
+                        )
+                      )}
+                    </TableCol>
+                    <TableCol className="flex flex-row justify-evenly w-[12%]">
+                      <button className="ring-1 ring-gray-500 w-20 h-8 text-[10px] text-white rounded leading-5 tracking-[.21em] hover:bg-[#404040] outline-none">
+                        OPEN
                       </button>
-                    </ul>
-                  ) : (
-                    <ul
-                      tabIndex="0"
-                      className="drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact dropdown-content mr-3 shadow bg-[#161616] border border-[#464646] w-[148px] h-8 mt-0 rounded-[4px]"
-                    >
-                      <button
-                        className="flex flex-row px-2 py-1.5 h-8 hover:bg-[#5D5D5D]"
-                        onClick={() => {
-                          setShowLeaveModal(true);
-                        }}
-                      >
-                        <img
-                          className="p-0 w-5 h-5"
-                          src="assets/img/dashboard/log-out.png"
-                          alt="leave"
-                        />
-                        <label className="p-0 ml-2 text-[9px] font-extrabold text-[#DD5E5E] leading-5 tracking-[.21em]">
-                          LEAVE PROJECT
-                        </label>
-                      </button>
-                    </ul>
-                  )}
+
+                      <div className="dropdown dropdown-end h-[32px]">
+                        <button tabIndex="0">
+                          <DetailIcon className="hover:bg-[#404040] cursor-pointer" />
+                        </button>
+                        {`${project.project_own}` === "true" ? (
+                          <ul
+                            tabIndex="0"
+                            className="z-20 drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact dropdown-content mr-3 shadow bg-[#161616] border border-[#464646] w-[148px] h-32 mt-0 rounded-[4px] cursor-pointer"
+                          >
+                            <Link
+                              className="flex flex-row px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] cursor-pointer"
+                              to="/edit-project"
+                            >
+                              <img
+                                className="p-0 w-5 h-5 cursor-pointer"
+                                src="assets/img/dashboard/edit.png"
+                                alt="edit"
+                              />
+                              <label className="p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em] cursor-pointer">
+                                EDIT
+                              </label>
+                            </Link>
+                            <button
+                              className="flex flex-row px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] cursor-pointer"
+                              onClick={() => {
+                                setshowExportModal(true);
+                              }}
+                            >
+                              <img
+                                className="p-0 w-5 h-5 cursor-pointer"
+                                src="assets/img/dashboard/export.png"
+                                alt="export"
+                              />
+                              <label className="p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em] cursor-pointer">
+                                EXPORT
+                              </label>
+                            </button>
+                            <button className="flex flex-row px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] cursor-pointer">
+                              <img
+                                className="p-0 w-5 h-5 !active:bg-[#5D5D5D] cursor-pointer"
+                                src="assets/img/dashboard/share.png"
+                                alt="share"
+                              />
+                              <label className="!active:bg-[#5D5D5D] p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em] cursor-pointer">
+                                SHARE OPTIONS
+                              </label>
+                            </button>
+                            <button
+                              className="flex flex-row px-2 py-1.5 h-8 hover:bg-[#5D5D5D] cursor-pointer"
+                              onClick={() => {
+                                setShowDeleteModal(true);
+                                setId(`${project.project_id}`);
+                              }}
+                            >
+                              <img
+                                className="p-0 w-5 h-5 cursor-pointer"
+                                src="assets/img/dashboard/trash-2.png"
+                                alt="trash"
+                              />
+                              <label className="p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em] cursor-pointer">
+                                DELETE
+                              </label>
+                            </button>
+                          </ul>
+                        ) : (
+                          <ul
+                            tabIndex="0"
+                            className="drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact dropdown-content mr-3 shadow bg-[#161616] border border-[#464646] w-[148px] h-8 mt-0 rounded-[4px]"
+                          >
+                            <button
+                              className="flex flex-row px-2 py-1.5 h-8 hover:bg-[#5D5D5D]"
+                              onClick={() => {
+                                setShowLeaveModal(true);
+                              }}
+                            >
+                              <img
+                                className="p-0 w-5 h-5"
+                                src="assets/img/dashboard/log-out.png"
+                                alt="leave"
+                              />
+                              <label className="p-0 ml-2 text-[9px] font-extrabold text-[#DD5E5E] leading-5 tracking-[.21em]">
+                                LEAVE PROJECT
+                              </label>
+                            </button>
+                          </ul>
+                        )}
+                      </div>
+                    </TableCol>
+                  </TableBodyRow>
                 </div>
-              </TableCol>
-            </TableBodyRow>
-          </div>
-          <div className="collapse-content">
-            <ProjectDetail />
-          </div>
-        </div>
-      ))}
-
+                <div className="collapse-content">
+                  <ProjectDetail />
+                </div>
+              </div>
+            ))}
+        </>
+      )}
+      ;
       {showExportModal ? (
         <>
           <div className="drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] z-10 fixed flex flex-col top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-auto bg-[#2B2B2B] border border-[#161616] rounded-md">
@@ -558,7 +517,6 @@ export default function Table(props) {
           </div>
         </>
       ) : null}
-
       {showDeleteModal ? (
         <>
           <div className="drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] z-10 fixed flex flex-col top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-auto bg-[#2B2B2B] border border-[#161616] rounded-md">
@@ -585,9 +543,9 @@ export default function Table(props) {
               </label>
               <div className="mt-3">
                 <Checkbox
-                  checked={checked}
+                  checked={checkedDelete}
                   onChange={() => {
-                    setChecked(!checked);
+                    setCheckedDelete(!checkedDelete);
                   }}
                 >
                   Confirm deletion
@@ -617,7 +575,6 @@ export default function Table(props) {
           </div>
         </>
       ) : null}
-
       {showLeaveModal ? (
         <>
           <div className="drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] z-10 fixed flex flex-col top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-auto bg-[#2B2B2B] border border-[#161616] rounded-md">
@@ -646,9 +603,9 @@ export default function Table(props) {
               </label>
               <div className="mt-3">
                 <Checkbox
-                  checked={checked}
+                  checked={checkedLeave}
                   onChange={() => {
-                    setChecked(!checked);
+                    setCheckedLeave(!checkedLeave);
                   }}
                 >
                   Confirm deletion
@@ -750,13 +707,13 @@ export const ProjectDetail = (props) => {
               tabIndex="0"
               className="p-1.5 w-40 h-8 bg-[#161616] border border-[#404040] rounded-[4px]"
               onClick={() => {
-                // setOpenChapter(true);
+                setOpenChapter(true);
               }}
               name="projects"
               id="projects"
             >
               <div className="flex justify-between">
-                <label className="ml-1.5 font-extrabold text-center text-[#5F5F5F] text-[12px] leading-5">
+                <label className="ml-1.5 text-[#CDCDCD] text-[12px] leading-5">
                   {chapter}
                 </label>
 
@@ -766,40 +723,40 @@ export const ProjectDetail = (props) => {
               </div>
             </div>
 
-            {/* {openChapter ? (
+            {openChapter ? (
               <ul
                 tabIndex="0"
-                className="z-100 fixed menu menu-compact dropdown-content mt-2 shadow bg-[#161616] border border-[#2B2B2B] w-full h-24 rounded-[4px]"
+                className="z-100 !relative menu menu-compact dropdown-content mt-2 shadow bg-[#161616] border border-[#2B2B2B] w-full h-24 rounded-[4px]"
               >
                 <li
-                  className="flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
+                  className="flex flex-row px-2 py-1.5 h-8 text-center text-[#CDCDCD] text-[12px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
                   onClick={() => {
-                    setChapter("ALL PROJECTS");
+                    setChapter("Act 1 Chapter 1");
                     setOpenChapter(false);
                   }}
                 >
-                  ALL PROJECTS
+                  Act 1 Chapter 1
                 </li>
                 <li
-                  className="flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
+                  className="flex flex-row px-2 py-1.5 h-8 text-center text-[#CDCDCD] text-[12px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
                   onClick={() => {
-                    setChapter("YOUR PROJECTS");
+                    setChapter("Act 1 Chapter 2");
                     setOpenChapter(false);
                   }}
                 >
-                  YOUR PROJECTS
+                  Act 1 Chapter 2
                 </li>
                 <li
-                  className="flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
+                  className="flex flex-row px-2 py-1.5 h-8 text-center text-[#CDCDCD] text-[12px] leading-5 hover:bg-[#5D5D5D]"
                   onClick={() => {
-                    setChapter("SHARED WITH YOU");
+                    setChapter("Act 1 Chapter 3");
                     setOpenChapter(false);
                   }}
                 >
-                  SHARED WITH YOU
+                  Act 1 Chapter 3
                 </li>
               </ul>
-            ) : null} */}
+            ) : null}
           </div>
 
           <button className="ml-4 flex justify-center items-center rounded-md px-[6px] text-center w-1/15 h-8 text-white bg-gradient-to-r from-[#FEAC6D] to-[#AE61ED] font-extrabold text-[10px] tracking-widest leading-5 hover:opacity-80">
@@ -840,62 +797,62 @@ export const ProjectDetail = (props) => {
           CHARACTERS
         </label>
 
-        <div className="flex flex-row">
+        <div className="flex flex-row items-center flex-wrap mt-2">
           <img
-            className="mt-2 rounded-[32px]"
+            className="rounded-[32px]"
             src="assets/img/dashboard/Character1.png"
             alt="Character1"
           />
           <img
-            className="mt-2 ml-3 rounded-[32px]"
+            className="ml-3 rounded-[32px]"
             src="assets/img/dashboard/Character2.png"
             alt="Character2"
           />
           <img
-            className="mt-2 ml-3 rounded-[32px]"
+            className="ml-3 rounded-[32px]"
             src="assets/img/dashboard/Character3.png"
             alt="Character3"
           />
           <img
-            className="mt-2 ml-3 rounded-[32px]"
+            className="ml-3 rounded-[32px]"
             src="assets/img/dashboard/Character4.png"
             alt="Character4"
           />
           <img
-            className="mt-2 ml-3 rounded-[32px]"
+            className="ml-3 rounded-[32px]"
             src="assets/img/dashboard/Character5.png"
             alt="Character5"
           />
           <img
-            className="mt-2 ml-3 rounded-[32px]"
+            className="ml-3 rounded-[32px]"
             src="assets/img/dashboard/Character6.png"
             alt="Character6"
           />
           <img
-            className="mt-2 ml-3 rounded-[32px]"
+            className="ml-3 rounded-[32px]"
             src="assets/img/dashboard/Character7.png"
             alt="Character7"
           />
           <img
-            className="mt-2 ml-3 rounded-[32px]"
+            className="ml-3 rounded-[32px]"
             src="assets/img/dashboard/Character8.png"
             alt="Character8"
           />
           <img
-            className="mt-2 ml-3 rounded-[32px]"
+            className="ml-3 rounded-[32px]"
             src="assets/img/dashboard/Character9.png"
             alt="Character9"
           />
           <img
-            className="mt-2 ml-3 rounded-[32px]"
+            className="ml-3 rounded-[32px]"
             src="assets/img/dashboard/Character10.png"
             alt="Character10"
           />
-          <img
-            className="mt-2 ml-3 rounded-[32px]"
-            src="assets/img/dashboard/Character11.png"
-            alt="Character11"
-          />
+          <div className="ml-3 w-8 h-8 rounded-[24px] bg-[#161616] border border-[#2B2B2B] flex items-center justify-center">
+            <label className="text-[9px] text-[#CDCDCD] leading-5 font-extrabold tracking-[.1em]">
+              +15
+            </label>
+          </div>
         </div>
       </div>
     </div>

@@ -56,7 +56,7 @@ const projects = [
 export default function Table(props) {
   const [showLeaveModal, setShowLeaveModal] = React.useState(false);
   const [showRevokeModal, setShowRevokeModal] = React.useState(false);
-  const [checked, setChecked] = React.useState(true);
+  const [checked, setChecked] = React.useState(false);
 
   return (
     <div className="w-full h-full scrollbar-hide md:scrollbar-default">

@@ -4,14 +4,18 @@ import {
   DropDownIcon,
   SmallPlusButtonIcon,
   BigPlusButtonIcon,
+  LoglinePlusIcon,
 } from "../components/Svg";
+import InputText from "../components/core/common/InputText";
 
 function NewProject() {
+  const [projectName, setProjectName] = React.useState("");
   const [initAct, setInitAct] = React.useState("School1");
   const [openAct, setOpenAct] = React.useState(false);
   const [initScene, setInitScene] = React.useState("");
   const [showUpload, setShowUpload] = React.useState(true);
   const [projectType, setProjectType] = React.useState(1);
+  const [showLoglineModal, setShowLoglineModal] = React.useState(false);
 
   function loadFile(event) {
     const image = document.getElementById("output");
@@ -35,20 +39,21 @@ function NewProject() {
       <div className="flex w-[70%] h-full">
         <div className="flex w-full">
           <div className="flex flex-col w-1/2">
-            <div className="flex flex-row w-full">
-              <div className="project-name w-7/12">
+            <div className="flex flex-row w-full justify-between ">
+              <div className="project-name flex flex-col w-full">
                 <label className="mb-1 text-[9px] leading-5 font-extrabold tracking-[.21em] text-white">
                   PROJECT NAME
                 </label>
-                <input
+                <InputText
                   type="text"
                   name="name"
-                  className="px-2 py-1.5 w-full h-8 bg-[#161616] border border-[#404040] focus:border-white placeholder-[#5F5F5F] focus:outline-none rounded-md text-[12px] focus:ring-1 text-white"
+                  value={projectName}
+                  onChange={(e) => setProjectName(e.target.value)}
                   placeholder="Ex. John Wick 4"
                 />
               </div>
 
-              <div className="project-type w-5/12 ml-4">
+              <div className="project-type ml-4">
                 <label className="mb-1 text-[9px] leading-5 font-extrabold tracking-[.21em] text-white">
                   PROJECT TYPE
                 </label>
@@ -56,7 +61,7 @@ function NewProject() {
                 <div className="flex flex-row justify-between bg-[#161616] border border-[#404040] w-full h-8 p-1 rounded-md">
                   <button
                     className={
-                      "h-6 px-1 py-0.5 text-white text-[9px] leading-5 tracking-[.21em] rounded-md " +
+                      "h-6 px-1 py-0.5 text-white text-[9px] leading-5 tracking-[.21em] rounded-md focus:outline-none " +
                       (projectType === 1 ? "bg-[#1DAEFF]" : "bg-transparent")
                     }
                     onClick={() => {
@@ -67,7 +72,7 @@ function NewProject() {
                   </button>
                   <button
                     className={
-                      "ml-1 h-6 px-1 py-0.5 text-white text-[9px] leading-5 tracking-[.21em] rounded-md " +
+                      "ml-1 h-6 px-1 py-0.5 text-white text-[9px] leading-5 tracking-[.21em] rounded-md focus:outline-none " +
                       (projectType === 2 ? "bg-[#1DAEFF]" : "bg-transparent")
                     }
                     onClick={() => {
@@ -78,12 +83,11 @@ function NewProject() {
                   </button>
                   <button
                     className={
-                      "ml-1 h-6 px-1 py-0.5 text-white text-[9px] leading-5 tracking-[.21em] rounded-md " +
+                      "ml-1 h-6 px-1 py-0.5 text-white text-[9px] leading-5 tracking-[.21em] rounded-md focus:outline-none " +
                       (projectType === 3 ? "bg-[#1DAEFF]" : "bg-transparent")
                     }
                     onClick={() => {
                       setProjectType(3);
-                      console.log(projectType);
                     }}
                   >
                     BOOK
@@ -96,11 +100,18 @@ function NewProject() {
                 <label className="text-[9px] leading-5 font-extrabold tracking-[.21em] text-white">
                   LOGLINE
                 </label>
-                <img
-                  className="ml-2 w-4 h-4"
-                  src="assets/img/dashboard/info.png"
-                  alt="info"
-                />
+                <button
+                  className="ml-2 w-5 h-5 flex items-center justify-center hover:bg-[#404040] outline-none"
+                  onClick={() => {
+                    setShowLoglineModal(true);
+                  }}
+                >
+                  <img
+                    className=" w-4 h-4"
+                    src="assets/img/dashboard/info.png"
+                    alt="info"
+                  />
+                </button>
               </div>
               <textarea
                 name="logline"
@@ -114,10 +125,8 @@ function NewProject() {
                 GENRES
               </label>
               <div className="mt-1">
-                <button>
-                  <div className="flex justify-center items-center w-8 h-6 rounded-[15px] px-1 py-0.5 border border-[#404040]">
-                    <SmallPlusButtonIcon />
-                  </div>
+                <button className="flex justify-center items-center w-8 h-6 rounded-[15px] px-1 py-0.5 border border-[#404040] outline-none">
+                  <SmallPlusButtonIcon />
                 </button>
               </div>
             </div>
@@ -127,16 +136,14 @@ function NewProject() {
                 DREAM CAST
               </label>
               <div className="mt-1">
-                <button>
-                  <div className="flex flex-col justify-center items-center justify-between w-20 h-28">
-                    <div className="flex justify-center items-center border border-[#404040] w-20 h-20 rounded-[40px]">
-                      <BigPlusButtonIcon />
-                    </div>
-                    <label className="uppercase mt-2 text-center text-[#1DAEFF] text-[9px] w-[40px] h-[24px] font-bold  leading-3 tracking-[.21em]">
-                      ADD ACTOR
-                    </label>
-                  </div>
-                </button>
+                <div className="flex flex-col justify-center items-center justify-between w-20 h-28 cursor-pointer">
+                  <button className="flex justify-center items-center border border-[#404040] w-20 h-20 rounded-[40px] outline-none">
+                    <BigPlusButtonIcon />
+                  </button>
+                  <label className="uppercase mt-2 text-center text-[#1DAEFF] text-[9px] w-[40px] h-[24px] font-bold  leading-3 tracking-[.21em] cursor-pointer">
+                    ADD ACTOR
+                  </label>
+                </div>
               </div>
             </div>
           </div>
@@ -170,10 +177,8 @@ function NewProject() {
                 TAGS
               </label>
               <div className="mt-1">
-                <button>
-                  <div className="flex justify-center items-center w-8 h-6 rounded-[15px] px-1 py-0.5 border border-[#404040]">
-                    <SmallPlusButtonIcon />
-                  </div>
+                <button className="flex justify-center items-center w-8 h-6 rounded-[15px] px-1 py-0.5 border border-[#404040] outline-none">
+                  <SmallPlusButtonIcon />
                 </button>
               </div>
             </div>
@@ -183,17 +188,15 @@ function NewProject() {
                 SIMILAR MOVIES
               </label>
               <div className="mt-1">
-                <button>
-                  <div className="flex flex-col justify-center items-center justify-between w-20 h-[132px]">
-                    <div className="flex justify-center items-center border border-[#404040] w-20 h-[100px] rounded-[4px]">
-                      <BigPlusButtonIcon />
-                    </div>
-                    <label className="uppercase mt-2 text-center text-[#1DAEFF] text-[9px] font-bold  leading-3 tracking-[.21em]">
-                      ADD
-                      <br />
-                      MOVIE
-                    </label>
+                <button className="flex flex-col justify-center items-center justify-between w-20 h-[132px] outline-none">
+                  <div className="flex justify-center items-center border border-[#404040] w-20 h-[100px] rounded-[4px]">
+                    <BigPlusButtonIcon />
                   </div>
+                  <label className="uppercase mt-2 text-center text-[#1DAEFF] text-[9px] font-bold  leading-3 tracking-[.21em] cursor-pointer">
+                    ADD
+                    <br />
+                    MOVIE
+                  </label>
                 </button>
               </div>
             </div>
@@ -282,7 +285,7 @@ function NewProject() {
                       name="scenenumber"
                       value={initScene}
                       onChange={(e) => setInitScene(e.target.value)}
-                      type="text"
+                      type="number"
                     />
                     <label className="text-[#5F5F5F] text-[12px] leading-5">
                       scenes
@@ -312,7 +315,7 @@ function NewProject() {
               />
 
               {showUpload === true && (
-                <button className="absolute z-20 flex justify-center items-center bottom-4 w-1/3 h-8 bg-[#1DAEFF] py-0.5  opacity-[90] rounded-md">
+                <button className="absolute z-20 flex justify-center items-center bottom-4 w-36 h-8 bg-[#1DAEFF] py-0.5 rounded-md focus:outline-none">
                   <label
                     htmlFor="file"
                     className="text-white text-[9px] leading-5 tracking-[.21em]"
@@ -343,6 +346,60 @@ function NewProject() {
           </div>
         </div>
       </div>
+      {showLoglineModal ? (
+        <>
+          <div className="drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] z-10 fixed flex flex-col top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-auto bg-[#2B2B2B] border border-[#161616] rounded-md">
+            <div className="edit-modal-header flex flex-row justify-between items-center py-[14px] w-full h-8 border-b border-[#161616]">
+              <label className="ml-[24px] text-[9px] text-white font-extrabold leading-5 tracking-[.21em] uppercase">
+                Logline Formula
+              </label>
+              <button
+                className="mr-[10px] hover:bg-[#4F4F4F]"
+                onClick={() => {
+                  setShowLoglineModal(false);
+                }}
+              >
+                <img
+                  className="w-[20px] h-[20px]"
+                  src="assets/img/dashboard/close.png"
+                  alt="close"
+                />
+              </button>
+            </div>
+            <div className="edit-modal-content flex flex-col items-center justify-center px-[24px] py-4">
+              <div className=" flex items-center justify-center w-full h-[36px] bg-[#E67E22] opacity-40 rounded-[8px]">
+                <label className="text-[#FBC87E] text-[16px] leading-5 tracking-[.66px]">
+                  Inciting Incident
+                </label>
+              </div>
+              <div className="mt-3 mb-3">
+                <LoglinePlusIcon />
+              </div>
+              <div className=" flex items-center justify-center w-full h-[36px] bg-[#3498DB] opacity-40 rounded-[8px]">
+                <label className="text-[#8DCDF8] text-[16px] leading-5 tracking-[.66px]">
+                  Protagonist
+                </label>
+              </div>
+              <div className="mt-3 mb-3">
+                <LoglinePlusIcon />
+              </div>
+              <div className=" flex items-center justify-center w-full h-[36px] bg-[#9B59B6] opacity-40 rounded-[8px]">
+                <label className="text-[#D9AAEC] text-[16px] leading-5 tracking-[.66px]">
+                  Action
+                </label>
+              </div>
+              <div className="mt-3 mb-3">
+                <LoglinePlusIcon />
+              </div>
+              <div className=" flex items-center justify-center w-full h-[36px] bg-[#E74C3C] opacity-40 rounded-[8px]">
+                <label className="text-[#FC8083] text-[16px] leading-5 tracking-[.66px]">
+                  Antagonist
+                </label>
+              </div>
+            </div>
+          </div>
+        </>
+      ) : null}
     </div>
   );
 }

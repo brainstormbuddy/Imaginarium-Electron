@@ -14,6 +14,7 @@ import {
 } from "./Svg";
 
 import { AuthContext } from "../pages/context/AuthContext";
+import { ProjectContext } from "../pages/context/ProjectContext";
 
 export default function SubNavbar(props) {
   const location = useLocation();
@@ -180,6 +181,7 @@ export const MainSubNavbar = () => {
               onClick={() => {
                 setIsAuthenticated(false);
                 localStorage.removeItem("auth");
+                localStorage.removeItem("showModal");
               }}
             >
               LOG OUT
@@ -192,6 +194,7 @@ export const MainSubNavbar = () => {
 };
 
 export const DashboardSubNavbar = () => {
+  const { setSelected } = React.useContext(ProjectContext);
   function toggleMenu() {
     var menu = document.getElementById("menu");
 
@@ -203,7 +206,7 @@ export const DashboardSubNavbar = () => {
   const [projectsType, setProjectsType] = React.useState("ALL PROJECTS");
   const [openProjectsType, setOpenProjectsType] = React.useState(false);
   const [checkedShowFinish, setCheckedShowFinsh] = React.useState(false);
-  const [projectType, setProjectType] = React.useState(1);
+  const [filterType, setFilterType] = React.useState(1);
 
   return (
     <div className="flex w-full h-14 bg-[#0E0E0E]">
@@ -217,11 +220,12 @@ export const DashboardSubNavbar = () => {
         >
           <button
             className={
-              "!inline-flex flex flex-row p-4 space-x-2 h-full cursor-pointer hover:bg-[#1F1F1F] focus:bg-black-rgba outline-none	" +
-              +(projectType === 1 ? "active" : null)
+              "!inline-flex flex flex-row p-4 space-x-2 h-full cursor-pointer hover:bg-[#1F1F1F] focus:bg-black-rgba outline-none " +
+              +(filterType === 1 ? "active" : null)
             }
             onClick={() => {
-              setProjectType(1);
+              setFilterType(1);
+              setSelected("Recent");
             }}
           >
             <RecentIcon />
@@ -230,10 +234,11 @@ export const DashboardSubNavbar = () => {
           <button
             className={
               "!inline-flex flex flex-row p-4 space-x-2 h-full cursor-pointer hover:bg-[#1F1F1F] focus:bg-black-rgba outline-none " +
-              (projectType === 2 ? "active" : null)
+              (filterType === 2 ? "active" : null)
             }
             onClick={() => {
-              setProjectType(2);
+              setSelected("Movie");
+              setFilterType(2);
             }}
           >
             <MovieIcon />
@@ -242,10 +247,11 @@ export const DashboardSubNavbar = () => {
           <button
             className={
               "!inline-flex flex flex-row p-4 space-x-2 h-full cursor-pointer hover:bg-[#1F1F1F] focus:bg-black-rgba outline-none " +
-              (projectType === 3 ? "active" : null)
+              (filterType === 3 ? "active" : null)
             }
             onClick={() => {
-              setProjectType(3);
+              setSelected("TV Series");
+              setFilterType(3);
             }}
           >
             <SeriesIcon />
@@ -254,10 +260,11 @@ export const DashboardSubNavbar = () => {
           <button
             className={
               "!inline-flex flex flex-row p-4 space-x-2 h-full cursor-pointer hover:bg-[#1F1F1F] focus:bg-black-rgba outline-none " +
-              (projectType === 4 ? "active" : null)
+              (filterType === 4 ? "active" : null)
             }
             onClick={() => {
-              setProjectType(4);
+              setSelected("Book");
+              setFilterType(4);
             }}
           >
             <BooksIcon />

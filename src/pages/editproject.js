@@ -157,11 +157,9 @@ function EditProject() {
                     >
                       THRILLER
                     </Genres>
-                    <div className="mr-2 mb-2 flex justify-center items-center justify-between w-auto h-6 rounded-[15px] px-1 py-0.5 border border-[#404040]">
-                      <button>
-                        <SmallPlusButtonIcon />
-                      </button>
-                    </div>
+                    <button className="mr-2 mb-2 flex justify-center items-center justify-between w-auto h-6 rounded-[15px] px-1 py-0.5 border border-[#404040] outline-none">
+                      <SmallPlusButtonIcon />
+                    </button>
                   </div>
                 </div>
               </div>
@@ -187,11 +185,11 @@ function EditProject() {
                       alt="dreamcast3"
                       name="Keanu Reeves"
                     />
-                    <div className="mr-4 mb-2 flex flex-col justify-center items-center justify-between w-20 h-28">
-                      <div className="flex justify-center items-center border border-[#404040] w-20 h-20 rounded-[40px]">
+                    <div className="mr-4 mb-2 flex flex-col justify-center items-center justify-between w-20 h-28 outline-none">
+                      <button className="flex justify-center items-center border border-[#404040] w-20 h-20 rounded-[40px] outline-none">
                         <BigPlusButtonIcon />
-                      </div>
-                      <label className="uppercase mt-2 text-center text-[#1DAEFF] text-[9px] font-bold  leading-3 tracking-[.21em]">
+                      </button>
+                      <label className="uppercase mt-2 text-center text-[#1DAEFF] text-[9px] font-bold  leading-3 tracking-[.21em] cursor-pointer">
                         ADD
                         <br />
                         ACTOR
@@ -238,11 +236,9 @@ function EditProject() {
                     <Tag>Thriller</Tag>
                     <Tag>Speeding</Tag>
                     <Tag>Fantasy</Tag>
-                    <div className="mr-2 mb-2 flex justify-center items-center justify-between w-auto h-6 rounded-[15px] px-1 py-0.5 border border-[#404040]">
-                      <button>
-                        <SmallPlusButtonIcon />
-                      </button>
-                    </div>
+                    <button className="mr-2 mb-2 flex justify-center items-center justify-between w-auto h-6 rounded-[15px] px-1 py-0.5 border border-[#404040] outline-none">
+                      <SmallPlusButtonIcon />
+                    </button>
                   </div>
                 </div>
               </div>
@@ -268,13 +264,11 @@ function EditProject() {
                       alt="movie3"
                       name="Three Palmes"
                     />
-                    <div className="mr-4 mb-2 flex flex-col justify-center items-center justify-between w-20 h-[132px]">
-                      <div className="flex justify-center items-center border border-[#404040] w-20 h-[100px] rounded-[4px]">
-                        <button>
-                          <BigPlusButtonIcon />
-                        </button>
-                      </div>
-                      <label className="uppercase mt-2 text-center text-[#1DAEFF] text-[9px] font-bold  leading-3 tracking-[.21em]">
+                    <div className="mr-4 mb-2 flex flex-col justify-center items-center justify-between w-20 h-[132px] outline-none">
+                      <button className="flex justify-center items-center border border-[#404040] w-20 h-[100px] rounded-[4px]">
+                        <BigPlusButtonIcon />
+                      </button>
+                      <label className="uppercase mt-2 text-center text-[#1DAEFF] text-[9px] font-bold  leading-3 tracking-[.21em] cursor-pointer">
                         ADD
                         <br />
                         MOVIE
@@ -368,7 +362,7 @@ function EditProject() {
                         name="scenenumber"
                         value={initScene}
                         onChange={(e) => setInitScene(e.target.value)}
-                        type="text"
+                        type="number"
                       />
                       <label className="text-[#5F5F5F] text-[12px] leading-5">
                         scenes

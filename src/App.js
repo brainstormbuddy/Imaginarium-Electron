@@ -15,6 +15,7 @@ import Profile from "./pages/profile";
 
 // auth context
 import { AuthContext } from "./pages/context/AuthContext";
+import { ProjectContext } from "./pages/context/ProjectContext";
 
 function App() {
   let routes = useRoutes([
@@ -34,17 +35,21 @@ function App() {
 
 const AppWrapper = () => {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const [selected, setSelected] = React.useState("");
   const value = React.useMemo(
     () => ({ isAuthenticated, setIsAuthenticated }),
     [isAuthenticated]
   );
+  const project = React.useMemo(() => ({ selected, setSelected }), [selected]);
 
   return (
     <Router>
       <AuthContext.Provider value={value}>
-        <Layout>
-          <App />
-        </Layout>
+        <ProjectContext.Provider value={project}>
+          <Layout>
+            <App />
+          </Layout>
+        </ProjectContext.Provider>
       </AuthContext.Provider>
     </Router>
   );
