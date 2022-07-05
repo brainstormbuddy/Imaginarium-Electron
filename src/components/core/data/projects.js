@@ -26,11 +26,8 @@ export const projects = [
         src: "assets/img/dashboard/Avatar3.png",
         alt: "Avatar3",
       },
-      {
-        src: "assets/img/dashboard/Avatar4.png",
-        alt: "Avatar4",
-      },
     ],
+    projects_collaborators_count: 15,
     project_own: true,
   },
   {
@@ -56,11 +53,8 @@ export const projects = [
         src: "assets/img/dashboard/Avatar3.png",
         alt: "Avatar3",
       },
-      {
-        src: "assets/img/dashboard/Avatar4.png",
-        alt: "Avatar4",
-      },
     ],
+    projects_collaborators_count: 15,
     project_own: false,
   },
   {
@@ -85,11 +79,8 @@ export const projects = [
         src: "assets/img/dashboard/Avatar3.png",
         alt: "Avatar3",
       },
-      {
-        src: "assets/img/dashboard/Avatar4.png",
-        alt: "Avatar4",
-      },
     ],
+    projects_collaborators_count: 15,
     project_own: false,
   },
   {
@@ -184,6 +175,7 @@ export const projects = [
         alt: "Avatar9",
       },
     ],
+    projects_collaborators_count: 15,
     project_own: true,
   },
   {

@@ -239,15 +239,17 @@ export default function Navbar(props) {
             )}
           </div>
 
-          <div className="dropdown dropdown-end mr-6">
-            <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img src="assets/img/dashboard/Avatar.png" alt="Avatar" />
-              </div>
-            </label>
+          <div className="dropdown dropdown-end mr-4 h-[40px]">
+            <button tabIndex="0" className="w-[40px] h-[40px] outline-none">
+              <img
+                className="w-[40px] h-[40px] rounded-[24px]"
+                src="assets/img/dashboard/Avatar.png"
+                alt="Avatar"
+              />
+            </button>
             <ul
               tabIndex="0"
-              className="cursor-pointer drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact dropdown-content mt-3 shadow bg-[#161616] border border-[#464646] w-32 h-40 mr-2 mt-0 rounded-[4px]"
+              className="cursor-pointer drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact dropdown-content mt-3 shadow bg-[#161616] border border-[#464646] w-32 h-40 rounded-[4px]"
             >
               <Link
                 className="cursor-pointer flex flex-row px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] rounded-t-[4px]"

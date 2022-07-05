@@ -11,9 +11,6 @@ body {
   font-family: "mulish", Mulish;
 }
 
-.dropdown .dropdown-content {
-  position: absolute;
-}
 
 [type="checkbox"], [type="radio"] {
   color: #0e0e0e;

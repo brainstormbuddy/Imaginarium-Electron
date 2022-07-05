@@ -355,7 +355,7 @@ export const DashboardSubNavbar = () => {
             </div>
 
             <Link
-              className="mr-4 flex justify-center items-center rounded-md px-[6px] text-center w-28 h-8 text-white bg-gradient-to-r from-[#FEAC6D] to-[#AE61ED] font-extrabold text-[10px] tracking-widest leading-5 hover:opacity-80"
+              className="mr-4 flex justify-center items-center rounded-md px-[6px] text-center w-[120px] h-8 text-white bg-gradient-to-r from-[#FEAC6D] to-[#AE61ED] font-extrabold text-[10px] tracking-widest leading-5 hover:opacity-80"
               to="/new-project"
             >
               NEW PROJECT

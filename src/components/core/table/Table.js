@@ -59,22 +59,24 @@ export default function Table(props) {
                     </span>
                   </TableCol>
                   <TableCol className="flex flex-col w-1/15">
-                    <span className="text-white text-[12px]">
+                    <span className="text-white text-[12px] leading-none">
                       {project.project_content}
                     </span>
                     {`${project.project_type}` === "Movie" ? (
-                      <Progressbar width={project.project_progress}>
-                        {project.project_progress}
-                      </Progressbar>
+                      <div className="mt-1">
+                        <Progressbar width={project.project_progress}>
+                          {project.project_progress}
+                        </Progressbar>
+                      </div>
                     ) : null}
                   </TableCol>
                   <TableCol className="flex flex-row w-[13%]">
-                    <span className="text-[14px] leading-5 text-white">
+                    <label className="text-[14px] leading-5 text-white">
                       {project.project_opened}
-                    </span>
+                    </label>
                   </TableCol>
                   <TableCol className="flex flex-row w-[10%] text-[14px] leading-5">
-                    <span
+                    <label
                       className={
                         `${project.project_author}` === "You"
                           ? "text-white"
@@ -82,14 +84,14 @@ export default function Table(props) {
                       }
                     >
                       {project.project_author}
-                    </span>
+                    </label>
                   </TableCol>
                   <TableCol className="flex flex-row flex-wrap w-[10%]">
                     {project.project_collaborators.map(
                       (project_collaborator, index) => (
                         <img
                           key={index}
-                          className="rounded-[12px] mr-2"
+                          className="w-8 h-8 rounded-[24px] mr-2 mb-2"
                           src={project_collaborator.src}
                           alt={project_collaborator.alt}
                           width={20}
@@ -97,6 +99,14 @@ export default function Table(props) {
                         />
                       )
                     )}
+                    {typeof project.projects_collaborators_count ===
+                    "number" ? (
+                      <div className="w-8 h-8 rounded-[24px] bg-[#161616] border border-[#2B2B2B] flex items-center justify-center">
+                        <label className="text-[9px] text-[#CDCDCD] leading-5 font-extrabold tracking-[.1em]">
+                          +{project.projects_collaborators_count}
+                        </label>
+                      </div>
+                    ) : null}
                   </TableCol>
                   <TableCol className="flex flex-row justify-evenly w-[12%]">
                     <button className="ring-1 ring-gray-500 w-20 h-8 text-[10px] text-white rounded leading-5 tracking-[.21em] hover:bg-[#404040] outline-none">
@@ -226,22 +236,24 @@ export default function Table(props) {
                       </span>
                     </TableCol>
                     <TableCol className="flex flex-col w-1/15">
-                      <span className="text-white text-[12px]">
+                      <span className="text-white text-[12px] leading-none">
                         {project.project_content}
                       </span>
                       {`${project.project_type}` === "Movie" ? (
-                        <Progressbar width={project.project_progress}>
-                          {project.project_progress}
-                        </Progressbar>
+                        <div className="mt-1">
+                          <Progressbar width={project.project_progress}>
+                            {project.project_progress}
+                          </Progressbar>
+                        </div>
                       ) : null}
                     </TableCol>
                     <TableCol className="flex flex-row w-[13%]">
-                      <span className="text-[14px] leading-5 text-white">
+                      <label className="text-[14px] leading-5 text-white">
                         {project.project_opened}
-                      </span>
+                      </label>
                     </TableCol>
                     <TableCol className="flex flex-row w-[10%] text-[14px] leading-5">
-                      <span
+                      <label
                         className={
                           `${project.project_author}` === "You"
                             ? "text-white"
@@ -249,14 +261,14 @@ export default function Table(props) {
                         }
                       >
                         {project.project_author}
-                      </span>
+                      </label>
                     </TableCol>
                     <TableCol className="flex flex-row flex-wrap w-[10%]">
                       {project.project_collaborators.map(
                         (project_collaborator, index) => (
                           <img
                             key={index}
-                            className="rounded-[12px] mr-2"
+                            className="w-8 h-8 rounded-[24px] mr-2 mb-2"
                             src={project_collaborator.src}
                             alt={project_collaborator.alt}
                             width={20}
@@ -264,6 +276,14 @@ export default function Table(props) {
                           />
                         )
                       )}
+                      {typeof project.projects_collaborators_count ===
+                      "number" ? (
+                        <div className="w-8 h-8 rounded-[24px] bg-[#161616] border border-[#2B2B2B] flex items-center justify-center">
+                          <label className="text-[9px] text-[#CDCDCD] leading-5 font-extrabold tracking-[.1em]">
+                            {project.projects_collaborators_count}
+                          </label>
+                        </div>
+                      ) : null}
                     </TableCol>
                     <TableCol className="flex flex-row justify-evenly w-[12%]">
                       <button className="ring-1 ring-gray-500 w-20 h-8 text-[10px] text-white rounded leading-5 tracking-[.21em] hover:bg-[#404040] outline-none">
@@ -433,7 +453,7 @@ export default function Table(props) {
                     {showExport ? (
                       <ul
                         tabIndex="0"
-                        className="menu menu-compact dropdown-content mt-[40px] bg-[#161616] w-full h-[56px] rounded-[4px]"
+                        className="menu menu-compact dropdown-content mt-[40px] bg-[#161616] w-[350px] h-[56px] rounded-[4px]"
                       >
                         <li
                           className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border border-[#404040] hover:bg-[#5D5D5D]"
@@ -673,7 +693,7 @@ export const TableCol = (props) => {
 
 export const Progressbar = (props) => {
   return (
-    <div className="w-11/12 h-3 bg-gray-200 rounded-full">
+    <div className="w-11/12 h-3 bg-progress-bar rounded-full">
       <div
         className="bg-[#1dadff] h-3 text-[10px] font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
         style={{ width: props.width }}
@@ -702,7 +722,7 @@ export const ProjectDetail = (props) => {
         </label>
 
         <div className="flex flex-row pt-4">
-          <div className="dropdown">
+          <div className="dropdown !static">
             <div
               tabIndex="0"
               className="p-1.5 w-40 h-8 bg-[#161616] border border-[#404040] rounded-[4px]"
@@ -726,7 +746,7 @@ export const ProjectDetail = (props) => {
             {openChapter ? (
               <ul
                 tabIndex="0"
-                className="z-100 !relative menu menu-compact dropdown-content mt-2 shadow bg-[#161616] border border-[#2B2B2B] w-full h-24 rounded-[4px]"
+                className="!overflow-visible z-100 menu menu-compact dropdown-content mt-2 shadow bg-[#161616] border border-[#2B2B2B] w-40 h-24 rounded-[4px]"
               >
                 <li
                   className="flex flex-row px-2 py-1.5 h-8 text-center text-[#CDCDCD] text-[12px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"

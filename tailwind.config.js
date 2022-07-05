@@ -15,6 +15,7 @@ module.exports = {
         "neutral-850": "#0E0E0E",
         "thead-row": "#5F5F5F",
         "black-rgba": "rgba(55 , 65 , 81, 1)",
+        "progress-bar": "rgba(29, 174, 255, 0.15)",
       },
     },
   },

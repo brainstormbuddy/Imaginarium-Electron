@@ -257,19 +257,11 @@ function Profile() {
                   <label className="text-white text-[9px] font-extrabold leading-5 tracking-[.21em]">
                     NAME
                   </label>
-                  <InputText
-                    type="text"
-                    name="name"
-                    placeholder="Julia Ellei"
-                  />
+                  <InputText type="text" name="name" />
                   <label className="mt-2 text-white text-[9px] font-extrabold leading-5 tracking-[.21em]">
                     USERNAME
                   </label>
-                  <InputText
-                    type="text"
-                    name="username"
-                    placeholder="juliaellei"
-                  />
+                  <InputText type="text" name="username" />
                 </div>
               </div>
               <div className="flex flex-col">
@@ -277,42 +269,26 @@ function Profile() {
                   <label className="text-white text-[9px] font-extrabold leading-5 tracking-[.21em]">
                     EMAIL
                   </label>
-                  <InputText
-                    type="email"
-                    name="email"
-                    placeholder="juliaellei@gmail.com"
-                  />
+                  <InputText type="email" name="email" />
                 </div>
                 <div className="mt-[12px] current-password">
                   <label className="text-white text-[9px] font-extrabold leading-5 tracking-[.21em]">
                     CURRENT PASSWORD
                   </label>
 
-                  <InputText
-                    type="password"
-                    name="current-password"
-                    placeholder="Enter current password"
-                  />
+                  <InputText type="password" name="current-password" />
                 </div>
                 <div className="mt-[12px] new-password">
                   <label className="text-white text-[9px] font-extrabold leading-5 tracking-[.21em]">
                     NEW PASSWORD
                   </label>
-                  <InputText
-                    type="password"
-                    name="new-password"
-                    placeholder="Enter new password"
-                  />
+                  <InputText type="password" name="new-password" />
                 </div>
                 <div className="mt-[12px] confirm-new-password">
                   <label className="text-white text-[9px] font-extrabold leading-5 tracking-[.21em]">
                     CONFIRM NEW PASSWORD
                   </label>
-                  <InputText
-                    type="password"
-                    name="confirm-password"
-                    placeholder="Confirm new password"
-                  />
+                  <InputText type="password" name="confirm-password" />
                 </div>
               </div>
             </div>

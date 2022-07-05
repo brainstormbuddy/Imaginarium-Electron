@@ -17,6 +17,7 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
+    icon: "public/Union.png",
   });
   mainWindow.loadFile("public/index.html");
   // and load the index.html of the app.
@@ -26,6 +27,7 @@ function createWindow() {
     transparent: true,
     frame: false,
     alwaysOnTop: true,
+    icon: "public/Union.png",
   });
 
   mainWindow.removeMenu();
