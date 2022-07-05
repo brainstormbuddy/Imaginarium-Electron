@@ -790,27 +790,35 @@ export const ProjectDetail = (props) => {
           GENRES
         </label>
 
-        <div className="flex flex-row">
-          <img
-            className="mt-2"
-            src="assets/img/dashboard/Tag1.png"
-            alt="Tag1"
-          />
-          <img
-            className="mt-2 ml-3"
-            src="assets/img/dashboard/Tag2.png"
-            alt="Tag2"
-          />
-          <img
-            className="mt-2 ml-3"
-            src="assets/img/dashboard/Tag3.png"
-            alt="Tag3"
-          />
-          <img
-            className="mt-2 ml-3"
-            src="assets/img/dashboard/Tag4.png"
-            alt="Tag4"
-          />
+        <div className="flex flex-wrap w-full">
+          <div className="mr-2 mb-2 flex justify-center items-center justify-between w-auto h-6 rounded-[15px] px-2 py-0.5 border border-[#404040]">
+            <img
+              className="w-4 h-4"
+              src="assets/img/dashboard/genres1.png"
+              alt="genres1"
+            />
+          </div>
+          <div className="mr-2 mb-2 flex justify-center items-center justify-between w-auto h-6 rounded-[15px] px-2 py-0.5 border border-[#404040]">
+            <img
+              className="w-4 h-4"
+              src="assets/img/dashboard/genres2.png"
+              alt="genres2"
+            />
+          </div>
+          <div className="mr-2 mb-2 flex justify-center items-center justify-between w-auto h-6 rounded-[15px] px-2 py-0.5 border border-[#404040]">
+            <img
+              className="w-4 h-4"
+              src="assets/img/dashboard/genres3.png"
+              alt="genres3"
+            />
+          </div>
+          <div className="mr-2 mb-2 flex justify-center items-center justify-between w-auto h-6 rounded-[15px] px-2 py-0.5 border border-[#404040]">
+            <img
+              className="w-4 h-4"
+              src="assets/img/dashboard/genres4.png"
+              alt="genres4"
+            />
+          </div>
         </div>
 
         <label className="mt-8 h-15 font-normal text-[10px] text-white leading-5 tracking-[.21em]">
