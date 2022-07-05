@@ -57,6 +57,7 @@ export default function Table(props) {
   const [showLeaveModal, setShowLeaveModal] = React.useState(false);
   const [showRevokeModal, setShowRevokeModal] = React.useState(false);
   const [checked, setChecked] = React.useState(false);
+  const [id, setId] = React.useState();
 
   return (
     <div className="w-full h-full scrollbar-hide md:scrollbar-default">
@@ -148,6 +149,7 @@ export default function Table(props) {
                       className="flex flex-row px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D]"
                       onClick={() => {
                         setShowLeaveModal(true);
+                        setId(`${project.project_id}`);
                       }}
                     >
                       <img
@@ -182,6 +184,7 @@ export default function Table(props) {
                       className="flex flex-row px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D]"
                       onClick={() => {
                         setShowRevokeModal(true);
+                        setId(`${project.project_id}`);
                       }}
                     >
                       <img
@@ -249,6 +252,7 @@ export default function Table(props) {
                 className="cursor-pointer	flex justify-center items-center rounded-md px-[6px] text-center w-28 h-8 text-white bg-[#DD5E5E] font-extrabold text-[10px] tracking-widest leading-5 hover:opacity-80"
                 onClick={() => {
                   setShowLeaveModal(false);
+                  delete projects[id - 1];
                 }}
               >
                 LEAVE
@@ -305,6 +309,7 @@ export default function Table(props) {
                   className="cursor-pointer	flex justify-center items-center rounded-md px-[6px] text-center w-28 h-8 text-white bg-[#DD5E5E] font-extrabold text-[10px] tracking-widest leading-5 hover:opacity-80"
                   onClick={() => {
                     setShowRevokeModal(false);
+                    delete projects[id - 1];
                   }}
                 >
                   REVOKE
