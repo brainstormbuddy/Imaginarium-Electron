@@ -109,10 +109,11 @@ export default function Table(props) {
                     ) : null}
                   </TableCol>
                   <TableCol className="flex flex-row justify-evenly w-[12%]">
-                    <button className="ring-1 ring-gray-500 w-20 h-8 text-[10px] text-white rounded leading-5 tracking-[.21em] hover:bg-[#404040] outline-none">
-                      OPEN
-                    </button>
-
+                    <Link to="/workspace">
+                      <button className="ring-1 ring-gray-500 w-20 h-8 text-[10px] text-white rounded leading-5 tracking-[.21em] hover:bg-[#404040] outline-none">
+                        OPEN
+                      </button>
+                    </Link>
                     <div className="dropdown dropdown-end h-[32px]">
                       <button tabIndex="0">
                         <DetailIcon className="hover:bg-[#404040] cursor-pointer" />
@@ -286,10 +287,11 @@ export default function Table(props) {
                       ) : null}
                     </TableCol>
                     <TableCol className="flex flex-row justify-evenly w-[12%]">
-                      <button className="ring-1 ring-gray-500 w-20 h-8 text-[10px] text-white rounded leading-5 tracking-[.21em] hover:bg-[#404040] outline-none">
-                        OPEN
-                      </button>
-
+                      <Link to="/workspace">
+                        <button className="ring-1 ring-gray-500 w-20 h-8 text-[10px] text-white rounded leading-5 tracking-[.21em] hover:bg-[#404040] outline-none">
+                          OPEN
+                        </button>
+                      </Link>
                       <div className="dropdown dropdown-end h-[32px]">
                         <button tabIndex="0">
                           <DetailIcon className="hover:bg-[#404040] cursor-pointer" />

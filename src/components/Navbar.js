@@ -1,6 +1,10 @@
 import * as React from "react";
 import { Link, useLocation } from "react-router-dom";
 
+import { AuthContext } from "../pages/context/AuthContext";
+import Checkbox from "../components/core/common/Checkbox";
+import InputText from "./core/common/InputText";
+
 import {
   BaseIcon,
   SearchIcon,
@@ -14,25 +18,37 @@ import {
   LocationSearchIcon,
 } from "./Svg";
 
-// context
-import { AuthContext } from "../pages/context/AuthContext";
-// core components
-import Checkbox from "../components/core/common/Checkbox";
-import InputText from "./core/common/InputText";
+const MainMenu = [
+  {
+    icon: <BaseIcon />,
+  },
+];
 
+const WorkSpaceMenu = [
+  {
+    name: "John Wick Chapter 4",
+    active: true,
+  },
+  {
+    name: "Apple Trees",
+    active: false,
+  },
+  {
+    name: "Young Katyusha",
+    active: false,
+  },
+];
 export default function Navbar(props) {
   const location = useLocation();
   const { setIsAuthenticated } = React.useContext(AuthContext);
   const [showLogoutModal, setShowLogoutModal] = React.useState(false);
   const [showAlarmModal, setShowAlarmModal] = React.useState(false);
-
-  const [searchDropdownMenu, setSearchDropdownMenu] = React.useState(false);
-  const [setSearchDropdownValue] = React.useState("");
-
   const [showSettingModal, setShowSettingModal] = React.useState(false);
-  const [openTab, setOpenTab] = React.useState(1);
   const [languageType, setLanguageType] = React.useState("English");
   const [theme, setTheme] = React.useState(true);
+  const [openTab, setOpenTab] = React.useState(1);
+  const [searchDropdownMenu, setSearchDropdownMenu] = React.useState(false);
+  const [setSearchDropdownValue] = React.useState("");
 
   const [initRecentItemCount, setInitRecentItemCount] = React.useState(15);
   const [initAutoSaveCount, setInitAutoSaveCount] = React.useState(15);
@@ -52,6 +68,14 @@ export default function Navbar(props) {
   const [checkedFormatScan, setCheckedFormatScan] = React.useState(false);
   const [checkedFormatAlways, setCheckedFormatAlways] = React.useState(false);
 
+  function handleSearchChange(event) {
+    setSearchDropdownValue(event.target.value);
+  }
+
+  function handleTheme(event) {
+    setTheme(event.target.value);
+  }
+
   if (location.pathname === "/") {
     return null;
   }
@@ -69,252 +93,262 @@ export default function Navbar(props) {
     return null;
   } else {
     return (
-      <div className="w-full h-14 bg-[#161616]">
-        <div className="bg-[#161616] p-0 min-h-0 flex flex-row w-full items-center">
-          <div className="w-14 h-14 bg-[#0E0E0E]">
-            <div className="!inline-flex flex flex-row p-4 h-full hover:bg-neutral-800 hover:cursor-pointer">
-              <BaseIcon />
-            </div>
+      <div className="w-full h-14 bg-[#161616] select-none">
+        <div className="bg-[#161616] p-0 min-h-0 flex flex-row w-full items-center justify-between">
+          <div className="tabs bg-[#161616] flex w-fit">
+            {MainMenu.map((menu, index) => (
+              <MainMenuItem icon={menu.icon} key={index} />
+            ))}
+            {location.pathname === "/workspace"
+              ? WorkSpaceMenu.map((menu, index) => (
+                  <WorkSpaceItem
+                    name={menu.name}
+                    active={menu.active}
+                    key={index}
+                  />
+                ))
+              : ""}
           </div>
+          <div className="flex items-center">
+            <div className="w-fit">
+              <div className="search">
+                <div className="mr-6 w-[32px] h-[32px] min-h-0 p-0 bg-transparent hover:bg-[#4F4F4F] active:bg-[#4F4F4F] border-none cursor-pointer rounded-[4px]">
+                  <label
+                    htmlFor="my-modal-4"
+                    className="btn modal-button w-[32px] h-[32px] min-h-0 p-0 bg-transparent hover:bg-[#4F4F4F] active:bg-[#4F4F4F] border-none rounded-[4px]"
+                  >
+                    <SearchIcon />
+                  </label>
+                </div>
 
-          <div className="w-full items-center flex justify-end">
-            <div className="search">
-              <div className="mr-6 w-[32px] h-[32px] min-h-0 p-0 bg-transparent hover:bg-[#4F4F4F] active:bg-[#4F4F4F] border-none cursor-pointer rounded-[4px]">
-                <label
-                  htmlFor="my-modal-4"
-                  className="btn modal-button w-[32px] h-[32px] min-h-0 p-0 bg-transparent hover:bg-[#4F4F4F] active:bg-[#4F4F4F] border-none rounded-[4px]"
-                >
-                  <SearchIcon />
+                <input
+                  type="checkbox"
+                  id="my-modal-4"
+                  className="modal-toggle"
+                />
+                <label htmlFor="my-modal-4" className="modal">
+                  <div className="flex flex-col drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] z-50 absolute top-[90px] left-1/2 -translate-x-1/2 translate-y-[85px] w-[400px] rounded-md">
+                    <div className="flex flex-row items-center justify-between w-full h-[40px] bg-[#161616] border border-[#404040] rounded-[4px] p p-[10px]">
+                      <button>
+                        <SmallSearchIcon />
+                      </button>
+                      <input
+                        className="ml-2 bg-transparent w-full text-white focus:outline-none text-[12px] placeholder-[#5F5F5F]"
+                        type="text"
+                        placeholder="Search Text, Characters, Locations..."
+                        onChange={handleSearchChange}
+                        onMouseDown={() => {
+                          setSearchDropdownMenu(!searchDropdownMenu);
+                        }}
+                      />
+                    </div>
+
+                    {searchDropdownMenu ? (
+                      <div className="mt-2 flex flex-col w-full border border-[#2B2B2B]">
+                        <div className="flex flex-row items-center px-2 py-1.5 bg-[#161616]  border-b border-[#2B2B2B]">
+                          <TextSearchIcon />
+                          <label className="ml-1.5 mr-1.5 w-[328px] text-[12px] text-white text-left font-extrabold leading-5">
+                            ...kentucky fried chicken...
+                          </label>
+                          <label className="text-[12px] text-[#5F5F5F]">
+                            Text
+                          </label>
+                        </div>
+                        <div className="flex flex-row items-center px-2 py-1.5 bg-[#161616]  border-b border-[#2B2B2B]">
+                          <CharacterSearchIcon />
+                          <label className="ml-1.5 mr-1.5 w-[328px] text-[12px] text-white text-left font-extrabold leading-5">
+                            Keeanu Reeves
+                          </label>
+                          <label className="text-[12px] text-[#5F5F5F]">
+                            Characters
+                          </label>
+                        </div>
+                        <div className="flex flex-row items-center px-2 py-1.5 bg-[#161616]  border-b border-[#2B2B2B]">
+                          <LocationSearchIcon />
+                          <label className="ml-1.5 mr-1.5 w-[328px] text-[12px] text-white text-left font-extrabold leading-5">
+                            Main Kentucky Street
+                          </label>
+                          <label className="text-[12px] text-[#5F5F5F]">
+                            Locations
+                          </label>
+                        </div>
+                        <div className="flex flex-row items-center px-2 py-1.5 bg-[#161616] ">
+                          <input type="checkbox" />
+                          <label className="ml-1.5 mr-1.5 w-[328px] text-[12px] text-white text-left font-extrabold leading-5">
+                            Scroll keys mimic MS Word
+                          </label>
+                          <label className="text-[12px] text-[#5F5F5F]">
+                            Settings
+                          </label>
+                        </div>
+                      </div>
+                    ) : null}
+                  </div>
                 </label>
               </div>
+            </div>
 
-              <input type="checkbox" id="my-modal-4" className="modal-toggle" />
-              <label htmlFor="my-modal-4" className="modal">
-                <div className="flex flex-col drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] z-50 absolute top-[90px] left-1/2 -translate-x-1/2 translate-y-[85px] w-[400px] rounded-md">
-                  <div className="flex flex-row items-center justify-between w-full h-[40px] bg-[#161616] border border-[#404040] rounded-[4px] p p-[10px]">
-                    <button>
-                      <SmallSearchIcon />
+            <div className="mr-6 dropdown dropdown-end p-0 w-[32px] h-[32px] flex items-center justify-center hover:bg-[#4F4F4F] active:bg-[#4F4F4F] focus:bg-[#4F4F4F] rounded-[4px]">
+              <button
+                tabIndex="0"
+                className={
+                  "w-[32px] h-[32px] flex items-center justify-center rounded-[4px] active:bg-[#4F4F4F] focus:bg-[#4F4F4F] " +
+                  (showAlarmModal ? "active" : null)
+                }
+                onClick={() => {
+                  setShowAlarmModal(true);
+                }}
+              >
+                <BellIcon />
+              </button>
+              {showAlarmModal === true && (
+                <ul
+                  tabIndex="0"
+                  className="cursor-pointer drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact dropdown-content mt-[260px] shadow bg-[#2B2B2B] border border-[#161616] rounded-[4px] w-[400px]"
+                >
+                  <div className="alarm-modal-header flex flex-row justify-between items-center py-[14px] w-full h-8 border-b border-[#161616]">
+                    <label className="ml-[24px] text-[9px] text-white font-extrabold leading-5 tracking-[.21em]">
+                      NOTIFICATIONS
+                    </label>
+                    <button
+                      className="mr-[10px] hover:bg-[#4F4F4F]"
+                      onClick={() => {
+                        setShowAlarmModal(false);
+                      }}
+                    >
+                      <img
+                        className="w-[20px] h-[20px]"
+                        src="assets/img/dashboard/close.png"
+                        alt="close"
+                      />
                     </button>
-                    <input
-                      className="ml-2 bg-transparent w-full h-8 text-white text-[12px] outline-none border border-[#161616] focus:border-[#161616] placeholder-[#5F5F5F]"
-                      type="text"
-                      placeholder="Search Text, Characters, Locations..."
-                      onChange={(e) => {
-                        setSearchDropdownValue(e.target.value);
-                      }}
-                      onMouseDown={() => {
-                        setSearchDropdownMenu(!searchDropdownMenu);
-                      }}
-                    />
                   </div>
-
-                  {searchDropdownMenu ? (
-                    <div className="mt-2 flex flex-col w-full border border-[#2B2B2B]">
-                      <div className="flex flex-row items-center px-2 py-1.5 bg-[#161616]  border-b border-[#2B2B2B]">
-                        <TextSearchIcon />
-                        <label className="ml-1.5 mr-1.5 w-[328px] text-[12px] text-white text-left font-extrabold leading-5">
-                          ...kentucky fried chicken...
+                  <div className="alarm-modal-content flex flex-col px-[24px] py-[16px] w-full">
+                    <label className="text-[9px] text-white font-extrabold leading-5 tracking-[.21em]">
+                      TODAY
+                    </label>
+                    <div className="image-alarm mt-3 flex flex-row justify-between items-center">
+                      <ImageAlarmIcon />
+                      <div className="w-[250px]">
+                        <label className="text-[#1DAEFF] text-[12px] leading-5">
+                          Andrey Mashkov
                         </label>
-                        <label className="text-[12px] text-[#5F5F5F]">
-                          Text
+                        &nbsp;
+                        <label className="text-white text-[12px] leading-5">
+                          added New Location to the project
                         </label>
-                      </div>
-                      <div className="flex flex-row items-center px-2 py-1.5 bg-[#161616]  border-b border-[#2B2B2B]">
-                        <CharacterSearchIcon />
-                        <label className="ml-1.5 mr-1.5 w-[328px] text-[12px] text-white text-left font-extrabold leading-5">
-                          Keeanu Reeves
-                        </label>
-                        <label className="text-[12px] text-[#5F5F5F]">
-                          Characters
+                        &nbsp;
+                        <label className="text-[#1DAEFF] text-[12px] leading-5">
+                          Apple Trees
                         </label>
                       </div>
-                      <div className="flex flex-row items-center px-2 py-1.5 bg-[#161616]  border-b border-[#2B2B2B]">
-                        <LocationSearchIcon />
-                        <label className="ml-1.5 mr-1.5 w-[328px] text-[12px] text-white text-left font-extrabold leading-5">
-                          Main Kentucky Street
-                        </label>
-                        <label className="text-[12px] text-[#5F5F5F]">
-                          Locations
-                        </label>
-                      </div>
-                      <div className="flex flex-row items-center px-2 py-1.5 bg-[#161616] ">
-                        <input type="checkbox" />
-                        <label className="ml-1.5 mr-1.5 w-[328px] text-[12px] text-white text-left font-extrabold leading-5">
-                          Scroll keys mimic MS Word
-                        </label>
-                        <label className="text-[12px] text-[#5F5F5F]">
-                          Settings
+                      <div>
+                        <label className="text-[#5F5F5F] text-[9px] font-extrabold leading-5 tracking-[.1em]">
+                          14:02
                         </label>
                       </div>
                     </div>
-                  ) : null}
+                    <div className="image-alarm mt-3 flex flex-row justify-between items-center">
+                      <PersonAlarmIcon />
+                      <div className="w-[250px]">
+                        <label className="text-[#1DAEFF] text-[12px] leading-5">
+                          Andrey Mashkov
+                        </label>
+                        &nbsp;
+                        <label className="text-white text-[12px] leading-5">
+                          added New Location to the project
+                        </label>
+                        &nbsp;
+                        <label className="text-[#1DAEFF] text-[12px] leading-5">
+                          Apple Trees
+                        </label>
+                      </div>
+                      <div>
+                        <label className="text-[#5F5F5F] text-[9px] font-extrabold leading-5 tracking-[.1em]">
+                          14:02
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </ul>
+              )}
+            </div>
+
+            <div className="dropdown dropdown-end mr-6">
+              <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img src="assets/img/dashboard/Avatar.png" alt="Avatar" />
                 </div>
               </label>
-            </div>
-          </div>
-
-          <div className="mr-6 dropdown dropdown-end p-0 w-[32px] h-[32px] flex items-center justify-center hover:bg-[#4F4F4F] active:bg-[#4F4F4F] focus:bg-[#4F4F4F] rounded-[4px]">
-            <button
-              tabIndex="0"
-              className={
-                "w-[32px] h-[32px] flex items-center justify-center rounded-[4px] active:bg-[#4F4F4F] focus:bg-[#4F4F4F] " +
-                (showAlarmModal ? "active" : null)
-              }
-              onClick={() => {
-                setShowAlarmModal(true);
-              }}
-            >
-              <BellIcon />
-            </button>
-            {showAlarmModal === true && (
               <ul
                 tabIndex="0"
-                className="cursor-pointer drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact dropdown-content mt-[260px] shadow bg-[#2B2B2B] border border-[#161616] rounded-[4px] w-[400px]"
+                className="cursor-pointer drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact dropdown-content mt-3 shadow bg-[#161616] border border-[#464646] w-32 h-40 mr-2 mt-0 rounded-[4px]"
               >
-                <div className="alarm-modal-header flex flex-row justify-between items-center py-[14px] w-full h-8 border-b border-[#161616]">
-                  <label className="ml-[24px] text-[9px] text-white font-extrabold leading-5 tracking-[.21em]">
-                    NOTIFICATIONS
+                <Link
+                  className="cursor-pointer flex flex-row px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] rounded-t-[4px]"
+                  to="/profile"
+                >
+                  <img
+                    className="cursor-pointer p-0 w-5 h-5"
+                    src="assets/img/dashboard/person.png"
+                    alt="profile"
+                  />
+                  <label className="cursor-pointer p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em]">
+                    PROFILE
                   </label>
-                  <button
-                    className="mr-[10px] hover:bg-[#4F4F4F]"
-                    onClick={() => {
-                      setShowAlarmModal(false);
-                    }}
-                  >
-                    <img
-                      className="w-[20px] h-[20px]"
-                      src="assets/img/dashboard/close.png"
-                      alt="close"
-                    />
-                  </button>
-                </div>
-                <div className="alarm-modal-content flex flex-col px-[24px] py-[16px] w-full">
-                  <label className="text-[9px] text-white font-extrabold leading-5 tracking-[.21em]">
-                    TODAY
+                </Link>
+                <button className="cursor-pointer flex flex-row px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D]">
+                  <img
+                    className="cursor-pointer p-0 w-5 h-5"
+                    src="assets/img/dashboard/shield.png"
+                    alt="shield"
+                  />
+                  <label className="cursor-pointer p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em]">
+                    PRIVACY
                   </label>
-                  <div className="image-alarm mt-3 flex flex-row justify-between items-center">
-                    <ImageAlarmIcon />
-                    <div className="w-[250px]">
-                      <label className="text-[#1DAEFF] text-[12px] leading-5">
-                        Andrey Mashkov
-                      </label>
-                      &nbsp;
-                      <label className="text-white text-[12px] leading-5">
-                        added New Location to the project
-                      </label>
-                      &nbsp;
-                      <label className="text-[#1DAEFF] text-[12px] leading-5">
-                        Apple Trees
-                      </label>
-                    </div>
-                    <div>
-                      <label className="text-[#5F5F5F] text-[9px] font-extrabold leading-5 tracking-[.1em]">
-                        14:02
-                      </label>
-                    </div>
-                  </div>
-                  <div className="image-alarm mt-3 flex flex-row justify-between items-center">
-                    <PersonAlarmIcon />
-                    <div className="w-[250px]">
-                      <label className="text-[#1DAEFF] text-[12px] leading-5">
-                        Andrey Mashkov
-                      </label>
-                      &nbsp;
-                      <label className="text-white text-[12px] leading-5">
-                        added New Location to the project
-                      </label>
-                      &nbsp;
-                      <label className="text-[#1DAEFF] text-[12px] leading-5">
-                        Apple Trees
-                      </label>
-                    </div>
-                    <div>
-                      <label className="text-[#5F5F5F] text-[9px] font-extrabold leading-5 tracking-[.1em]">
-                        14:02
-                      </label>
-                    </div>
-                  </div>
-                </div>
+                </button>
+                <button
+                  className="cursor-pointer flex flex-row px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D]"
+                  onClick={() => {
+                    setShowSettingModal(true);
+                  }}
+                >
+                  <img
+                    className="cursor-pointer p-0 w-5 h-5"
+                    src="assets/img/dashboard/settings.png"
+                    alt="settings"
+                  />
+                  <label className="cursor-pointer p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em]">
+                    SETTINGS
+                  </label>
+                </button>
+                <button className="cursor-pointer flex flex-row px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D]">
+                  <img
+                    className="cursor-pointer p-0 w-5 h-5"
+                    src="assets/img/dashboard/question-mark-circle.png"
+                    alt="FAQ"
+                  />
+                  <label className="cursor-pointer p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em]">
+                    FAQ
+                  </label>
+                </button>
+                <button
+                  className="cursor-pointer flex flex-row px-2 py-1.5 h-8 hover:bg-[#5D5D5D] rounded-b-[4px]"
+                  onClick={() => {
+                    setShowLogoutModal(true);
+                  }}
+                >
+                  <img
+                    className="cursor-pointer p-0 w-5 h-5"
+                    src="assets/img/dashboard/log-out.png"
+                    alt="log-out"
+                  />
+                  <label className="cursor-pointer p-0 ml-2 text-[9px] text-[#DD5E5E] font-extrabold text-white leading-5 tracking-[.21em]">
+                    LOG OUT
+                  </label>
+                </button>
               </ul>
-            )}
-          </div>
-
-          <div className="dropdown dropdown-end mr-4 h-[40px]">
-            <button tabIndex="0" className="w-[40px] h-[40px] outline-none">
-              <img
-                className="w-[40px] h-[40px] rounded-[24px]"
-                src="assets/img/dashboard/Avatar.png"
-                alt="Avatar"
-              />
-            </button>
-            <ul
-              tabIndex="0"
-              className="cursor-pointer drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact dropdown-content mt-3 shadow bg-[#161616] border border-[#464646] w-32 h-40 rounded-[4px]"
-            >
-              <Link
-                className="cursor-pointer flex flex-row px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] rounded-t-[4px]"
-                to="/profile"
-              >
-                <img
-                  className="cursor-pointer p-0 w-5 h-5"
-                  src="assets/img/dashboard/person.png"
-                  alt="profile"
-                />
-                <label className="cursor-pointer p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em]">
-                  PROFILE
-                </label>
-              </Link>
-              <button className="cursor-pointer flex flex-row px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D]">
-                <img
-                  className="cursor-pointer p-0 w-5 h-5"
-                  src="assets/img/dashboard/shield.png"
-                  alt="shield"
-                />
-                <label className="cursor-pointer p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em]">
-                  PRIVACY
-                </label>
-              </button>
-              <button
-                className="cursor-pointer flex flex-row px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D]"
-                onClick={() => {
-                  setShowSettingModal(true);
-                }}
-              >
-                <img
-                  className="cursor-pointer p-0 w-5 h-5"
-                  src="assets/img/dashboard/settings.png"
-                  alt="settings"
-                />
-                <label className="cursor-pointer p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em]">
-                  SETTINGS
-                </label>
-              </button>
-              <button className="cursor-pointer flex flex-row px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D]">
-                <img
-                  className="cursor-pointer p-0 w-5 h-5"
-                  src="assets/img/dashboard/question-mark-circle.png"
-                  alt="FAQ"
-                />
-                <label className="cursor-pointer p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em]">
-                  FAQ
-                </label>
-              </button>
-              <button
-                className="cursor-pointer flex flex-row px-2 py-1.5 h-8 hover:bg-[#5D5D5D] rounded-b-[4px]"
-                onClick={() => {
-                  setShowLogoutModal(true);
-                }}
-              >
-                <img
-                  className="cursor-pointer p-0 w-5 h-5"
-                  src="assets/img/dashboard/log-out.png"
-                  alt="log-out"
-                />
-                <label className="cursor-pointer p-0 ml-2 text-[9px] text-[#DD5E5E] font-extrabold text-white leading-5 tracking-[.21em]">
-                  LOG OUT
-                </label>
-              </button>
-            </ul>
+            </div>
           </div>
         </div>
 
@@ -357,7 +391,6 @@ export default function Navbar(props) {
                 onClick={() => {
                   setIsAuthenticated(false);
                   localStorage.removeItem("auth");
-                  localStorage.removeItem("showModal");
                 }}
               >
                 LOG OUT
@@ -558,9 +591,7 @@ export default function Navbar(props) {
                       name="theme"
                       value="light"
                       defaultChecked={theme}
-                      onChange={(e) => {
-                        setTheme(e.target.value);
-                      }}
+                      onChange={handleTheme}
                     />
                     <label className="ml-3 text-[12px] leading-5 text-white">
                       Light Mode
@@ -570,9 +601,7 @@ export default function Navbar(props) {
                       type="radio"
                       name="theme"
                       value="dark"
-                      onChange={(e) => {
-                        setTheme(e.target.value);
-                      }}
+                      onChange={handleTheme}
                     />
                     <label className="ml-3 text-[12px] leading-5 text-white">
                       Dark Mode
@@ -712,3 +741,28 @@ export default function Navbar(props) {
     );
   }
 }
+
+export const MainMenuItem = (props) => {
+  return (
+    <div className="!inline-flex flex flex-row p-4 h-full hover:bg-neutral-800 hover:cursor-pointer">
+      {props.icon}
+    </div>
+  );
+};
+
+export const WorkSpaceItem = (props) => {
+  const tabClass =
+    `tab flex text-white p-3 h-full ` +
+    (props.active ? "bg-[#0E0E0E]" : "bg-[#161616]");
+
+  return (
+    <div className={tabClass}>
+      {props.name}
+      {props.active && (
+        <div className="w-4 h-4 rounded-md hover:bg-slate-700 flex items-center justify-center ml-2">
+          &times;
+        </div>
+      )}
+    </div>
+  );
+};

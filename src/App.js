@@ -2,6 +2,10 @@ import * as React from "react";
 import { BrowserRouter as Router, useRoutes } from "react-router-dom";
 import "./App.css";
 
+// auth context
+import { AuthContext } from "./pages/context/AuthContext";
+import { ProjectContext } from "./pages/context/ProjectContext";
+
 import Onboard from "./pages/onboard";
 import Login from "./pages/login";
 import Register from "./pages/register";
@@ -12,10 +16,7 @@ import Dashboard from "./pages/dashboard";
 import NewProject from "./pages/newproject";
 import EditProject from "./pages/editproject";
 import Profile from "./pages/profile";
-
-// auth context
-import { AuthContext } from "./pages/context/AuthContext";
-import { ProjectContext } from "./pages/context/ProjectContext";
+import Workspace from "./pages/workspace";
 
 function App() {
   let routes = useRoutes([
@@ -28,7 +29,7 @@ function App() {
     { path: "/new-project", element: <NewProject /> },
     { path: "/edit-project", element: <EditProject /> },
     { path: "/profile", element: <Profile /> },
-    // ...
+    { path: "/workspace", element: <Workspace /> },
   ]);
   return routes;
 }
