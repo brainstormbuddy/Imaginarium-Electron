@@ -32,6 +32,7 @@ export default function Table(props) {
           <TableCol className="w-[13%]">LASTOPENED</TableCol>
           <TableCol className="w-[11%]">AUTHOR</TableCol>
           <TableCol className="w-1/10">COLLABORATORS</TableCol>
+          
         </TableHeaderRow>
       </TableHeader>
       {selected === "Recent" ? (

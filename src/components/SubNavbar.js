@@ -34,6 +34,7 @@ import {
 } from "./Svg";
 
 import { AuthContext } from "../pages/context/AuthContext";
+import { ProjectContext } from "../pages/context/ProjectContext";
 import RoleChooser from "./core/common/RoleChooser";
 import Collabrator from "./core/common/Collabrator";
 import ExportModal from "./core/common/ExportModal";
@@ -226,6 +227,7 @@ export const DashboardSubNavbar = () => {
     menu.classList.toggle("h-auto");
   }
 
+  const { setSelected } = React.useContext(ProjectContext);
   const [projectsType, setProjectsType] = React.useState("ALL PROJECTS");
   const [openProjectsType, setOpenProjectsType] = React.useState(false);
   const [checkedShowFinish, setCheckedShowFinsh] = React.useState(false);
@@ -248,6 +250,7 @@ export const DashboardSubNavbar = () => {
             }
             onClick={() => {
               setProjectType(1);
+              setSelected("Recent");
             }}
           >
             <RecentIcon />
@@ -260,6 +263,7 @@ export const DashboardSubNavbar = () => {
             }
             onClick={() => {
               setProjectType(2);
+              setSelected("Movie");
             }}
           >
             <MovieIcon />
@@ -272,6 +276,7 @@ export const DashboardSubNavbar = () => {
             }
             onClick={() => {
               setProjectType(3);
+              setSelected("TV Series");
             }}
           >
             <SeriesIcon />
@@ -284,6 +289,7 @@ export const DashboardSubNavbar = () => {
             }
             onClick={() => {
               setProjectType(4);
+              setSelected("Book");
             }}
           >
             <BooksIcon />

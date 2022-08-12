@@ -33,6 +33,7 @@
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-sliding-pane": "^7.1.0",
     "rgb-hex": "^4.0.0",
     "sass": "^1.52.3",
     "tailwind-scrollbar-hide": "^1.1.7",

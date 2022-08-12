@@ -62,7 +62,7 @@ const TinyMceEditor = (props) => {
 
     return (
         <div className="w-[65%]  h-[calc(100vh-112px)]" >
-            <div className="CustomScroll h-full w-full overflow-y-auto flex  justify-center ml-[-6px]">
+            <div className="CustomScroll h-full w-full overflow-y-auto flex  justify-center">
                 <Editor
                     apiKey="1fh52zkwtcwiski4p6orfwfxd8vcerxbdw33uug1lc7g6yoi"
                     onInit={(evt, editor) => editorRef.current = editor}
