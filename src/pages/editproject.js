@@ -13,7 +13,7 @@ import {
   LoglinePlusIcon,
 } from "../components/Svg";
 
-function EditProject() {
+export default function EditProject() {
   const [projectType, setProjectType] = React.useState(1);
   const [initAct, setInitAct] = React.useState("School1");
   const [openAct, setOpenAct] = React.useState(false);
@@ -482,5 +482,3 @@ function EditProject() {
     </>
   );
 }
-
-export default EditProject;

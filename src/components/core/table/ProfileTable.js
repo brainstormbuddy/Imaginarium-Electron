@@ -53,7 +53,7 @@ const projects = [
   },
 ];
 
-export default function Table(props) {
+export default function ProfileTable(props) {
   const [showLeaveModal, setShowLeaveModal] = React.useState(false);
   const [showRevokeModal, setShowRevokeModal] = React.useState(false);
   const [checked, setChecked] = React.useState(false);

@@ -1,10 +1,10 @@
 import * as React from "react";
 
 // core components
-import Table from "../components/core/table/Table";
+import DashboardTable from "../components/core/table/DashboardTable";
 import Checkbox from "../components/core/common/Checkbox";
 
-function Dashboard() {
+export default function Dashboard() {
   const [showModal, setShowModal] = React.useState();
   const [checked, setChecked] = React.useState(false);
 
@@ -15,7 +15,7 @@ function Dashboard() {
 
   return (
     <div className="p-8 bg-[#0A0A0A] w-full h-[calc(100vh-112px)] overflow-auto">
-      <Table />
+      <DashboardTable />
 
       {showModal === null && (
         <>
@@ -61,5 +61,3 @@ function Dashboard() {
     </div>
   );
 }
-
-export default Dashboard;

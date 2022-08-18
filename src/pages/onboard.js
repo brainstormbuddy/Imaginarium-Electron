@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 
-function Onboard() {
+export default function Onboard() {
   const [indexOfSlide, setIndexOfSlide] = useState(0);
 
   const carouselProp = {
@@ -153,4 +153,3 @@ function Onboard() {
   );
 }
 
-export default Onboard;

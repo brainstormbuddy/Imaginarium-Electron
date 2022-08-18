@@ -15,7 +15,7 @@ import Layout from "./components/Layout";
 import Dashboard from "./pages/dashboard";
 import NewProject from "./pages/newproject";
 import EditProject from "./pages/editproject";
-import Profile from "./pages/profile";
+// import Profile from "./pages/profile";
 import Workspace from "./pages/workspace";
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
     { path: "/dashboard", element: <Dashboard /> },
     { path: "/new-project", element: <NewProject /> },
     { path: "/edit-project", element: <EditProject /> },
-    { path: "/profile", element: <Profile /> },
+    // { path: "/profile", element: <Profile /> },
     { path: "/workspace", element: <Workspace /> },
   ]);
   return routes;

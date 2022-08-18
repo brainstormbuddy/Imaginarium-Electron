@@ -9,7 +9,7 @@ import {
 // core components
 import InputText from "../components/core/common/InputText";
 
-function NewProject() {
+export default function NewProject() {
   const [projectName, setProjectName] = React.useState("");
   const [initAct, setInitAct] = React.useState("School1");
   const [openAct, setOpenAct] = React.useState(false);
@@ -404,5 +404,3 @@ function NewProject() {
     </div>
   );
 }
-
-export default NewProject;

@@ -98,7 +98,7 @@ function loadFile(event) {
   }
 }
 
-function Profile() {
+export default function Profile() {
   // 1 year range
   let startDate = moment().add(-364, "days");
   let dateRange = [startDate, moment()];
@@ -358,5 +358,3 @@ function Profile() {
     </div>
   );
 }
-
-export default Profile;

@@ -8,7 +8,7 @@ import { AuthContext } from "./context/AuthContext";
 // core componets
 import InputText from "../components/core/common/InputText";
 
-function Login() {
+export default function Login() {
   const { setIsAuthenticated } = React.useContext(AuthContext);
 
   const responseGoogle = (response) => {
@@ -114,7 +114,7 @@ function Login() {
               cookiePolicy={"single_host_origin"}
             />
           </div>
-          <div className="mb:3">
+          <div className="mb-3">
             <AppleLogin
               // clientId="299862850495-2gkvdsg2qhda3k1akosvnijj2rqfrvre.apps.googleusercontent.com"
               clientId="com.react.apple.login"
@@ -148,5 +148,3 @@ function Login() {
     </div>
   );
 }
-
-export default Login;

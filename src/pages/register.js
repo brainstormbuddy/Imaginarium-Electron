@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // core components
 import InputText from "../components/core/common/InputText";
 
-function Register() {
+export default function Register() {
   return (
     <div className="w-full h-[calc(100vh]">
       <div className="relative !w-full h-[calc(100vh)] bg-[url('/public/assets/img/background.png')] bg-center bg-cover bg-no-repeat">
@@ -105,5 +105,3 @@ function Register() {
     </div>
   );
 }
-
-export default Register;

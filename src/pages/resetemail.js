@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // core components
 import InputText from "../components/core/common/InputText";
 
-function ResetEmail() {
+export default function ResetEmail() {
   return (
     <div className="w-full h-[calc(100vh]">
       <div className="relative !w-full h-[calc(100vh)] bg-[url('/public/assets/img/background.png')] bg-center bg-cover bg-no-repeat">
@@ -69,5 +69,3 @@ function ResetEmail() {
     </div>
   );
 }
-
-export default ResetEmail;

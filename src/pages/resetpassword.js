@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // core components
 import InputText from "../components/core/common/InputText";
 
-function ResetPassword() {
+export default function ResetPassword() {
   // const [isShown, setIsSHown] = useState(false);
 
   // const [values, setValues] = React.useState({
@@ -112,5 +112,3 @@ function ResetPassword() {
     </div>
   );
 }
-
-export default ResetPassword;

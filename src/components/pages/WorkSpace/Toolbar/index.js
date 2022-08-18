@@ -16,7 +16,7 @@ const ToolBar = (props) => {
     }
     return (
         <div className="w-[24rem] bg-[#161616]  select-none">
-            <div className="tabs w-full border-b border-[#262626] pt-2">
+            <div className="tabs w-[24rem] border-b border-[#262626] pt-2">
                 <div className={tabClass(0)} onClick={handleClick(0)}>
                     <ShuffleIcon />
                 </div>
@@ -30,7 +30,7 @@ const ToolBar = (props) => {
                     <VoiceMemo />
                 </div>
             </div>
-            <div className="w-full max-h-[calc(100vh-154px)] ">
+            <div className="w-[24rem] max-h-[calc(100vh-154px)] ">
                 {value === 0 && <div></div>}
                 {value === 1 && <OptionalSection state={state} setState={setState} />}
                 {value === 2 && <CommentSection />}
