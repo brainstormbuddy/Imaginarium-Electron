@@ -341,11 +341,11 @@ export default function WorkSpaceNavbar() {
                         <button className="w-8 h-8 text-[#F39C12]">
                           <AlertTriIcon />
                         </button>
-                        <button className="rounded w-8 h-8 bg-[#DD5E5E] flex items-center justify-center">
+                        <button className="rounded w-8 h-8 flex items-center justify-center bg-[#DD5E5E] border border-[#404040] hover:bg-[#5F5F5F]">
                           <MicOffIcon />
                         </button>
                         <div className="dropdown w-8 h-8">
-                          <button className="border border-[#404040] rounded w-8 h-8 flex items-center justify-center"
+                          <button className="border border-[#404040] rounded w-8 h-8 flex items-center justify-center hover:bg-[#5F5F5F]"
                             onClick={(e) => {
                               setVoiceChatSettingModal(isVoiceChatSettingModal => !isVoiceChatSettingModal);
 
@@ -512,11 +512,14 @@ export default function WorkSpaceNavbar() {
                           )}
                         </div>
 
-                        <button className="border border-[#404040] rounded w-8 h-8 flex items-center justify-center">
+                        <button className="border border-[#404040] rounded w-8 h-8 flex items-center justify-center hover:bg-[#5F5F5F]"
+                        onClick={()=> {
+                          setHeaderPhoneModal(false);
+                        }}>
                           <DownloadRIghtIcon />
                         </button>
 
-                        <button className="mr-[10px] w-8 h-8 flex items-center justify-center rounded hover:bg-[#4F4F4F]"
+                        <button className="border border-[#404040] mr-[10px] w-8 h-8 flex items-center justify-center rounded hover:bg-[#5F5F5F]"
                           onClick={() => {
                             setVoiceCollapase(!isVoiceCollapased)
                             setHeaderPhoneModal(isHeaderPhoneModal => !isHeaderPhoneModal)
