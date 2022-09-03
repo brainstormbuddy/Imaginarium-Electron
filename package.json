@@ -46,8 +46,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "elec": "electron public/electron.js",
-    "start": "SET PORT=3002 && react-scripts start",
+    "elec": "electron main.js",
+    "start": "SET PORT=3000 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
