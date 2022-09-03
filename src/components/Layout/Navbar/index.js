@@ -133,7 +133,7 @@ export default function Navbar(props) {
                         <SmallSearchIcon />
                       </button>
                       <input
-                        className="ml-2 ring-offset-0 focus:border-[#161616] focus:outline-none bg-transparent border-[#161616] w-full h-[36px] text-white focus:outline-none text-[12px] placeholder-[#5F5F5F]"
+                        className="ml-2 ring-offset-0 focus:border-[#161616] bg-transparent border-[#161616] w-full h-[36px] text-white focus:outline-none text-[12px] placeholder-[#5F5F5F]"
                         type="text"
                         placeholder="Search Text, Characters, Locations..."
                         onChange={handleSearchChange}
@@ -282,7 +282,7 @@ export default function Navbar(props) {
               </label>
               <ul
                 tabIndex="0"
-                className="cursor-pointer drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact dropdown-content mt-3 shadow bg-[#161616] border border-[#464646] w-32 h-40 mr-2 mt-0 rounded-[4px]"
+                className="cursor-pointer drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact dropdown-content mt-3 shadow bg-[#161616] border border-[#464646] w-32 h-40 mr-2 rounded-[4px]"
               >
                 <Link
                   className="cursor-pointer flex flex-row px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] rounded-t-[4px]"
@@ -343,7 +343,7 @@ export default function Navbar(props) {
                     src="assets/img/dashboard/log-out.png"
                     alt="log-out"
                   />
-                  <label className="cursor-pointer p-0 ml-2 text-[9px] text-[#DD5E5E] font-extrabold text-white leading-5 tracking-[.21em]">
+                  <label className="cursor-pointer p-0 ml-2 text-[9px] text-[#DD5E5E] font-extrabold leading-5 tracking-[.21em]">
                     LOG OUT
                   </label>
                 </button>
@@ -399,7 +399,7 @@ export default function Navbar(props) {
           </div>
         ) : null}
         {showSettingModal ? (
-          <div className="z-20 fixed flex flex-col top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[585px] h-auto bg-[#2B2B2B] border border-[#161616] rounded-md">
+          <div className="z-20 fixed flex flex-col top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[585px] bg-[#2B2B2B] border border-[#161616] rounded-md">
             <div className="setting-modal-header flex flex-row justify-between items-center py-[14px] w-full h-8 border-b border-[#161616]">
               <label className="ml-[24px] text-[9px] text-white font-extrabold leading-5 tracking-[.21em]">
                 SETTINGS
@@ -744,7 +744,7 @@ export default function Navbar(props) {
 
 export const MainMenuItem = (props) => {
   return (
-    <div className="!inline-flex flex flex-row p-4 h-full hover:bg-neutral-800 hover:cursor-pointer">
+    <div className="!inline-flex flex-row p-4 h-full hover:bg-neutral-800 hover:cursor-pointer">
       {props.icon}
     </div>
   );

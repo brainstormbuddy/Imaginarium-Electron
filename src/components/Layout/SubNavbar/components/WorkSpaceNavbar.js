@@ -1,5 +1,8 @@
 import * as React from "react";
 
+// project context
+import { ProjectContext } from "../../../../pages/context/ProjectContext";
+
 import MainSubNavbar from "./MainSubNavbar";
 
 import RoleChooser from "../../../core/common/RoleChooser";
@@ -32,6 +35,9 @@ import {
 } from "../../../Svg";
 
 export default function WorkSpaceNavbar() {
+  const { currentProjectType, setCurrentProjectType } =
+    React.useContext(ProjectContext);
+
   function toggleMenu() {
     var menu = document.getElementById("menu");
 
@@ -99,11 +105,12 @@ export default function WorkSpaceNavbar() {
     },
   ];
 
-  const [projectType, setProjectType] = React.useState(1);
+  // const [projectType, setProjectType] = React.useState(1);
   const [isOpenScript, setOpenScript] = React.useState(false);
   const [isOpenPage, setOpenPage] = React.useState(false);
   const [isHeaderPhoneModal, setHeaderPhoneModal] = React.useState(false);
-  const [isVoiceChatSettingModal, setVoiceChatSettingModal] = React.useState(false);
+  const [isVoiceChatSettingModal, setVoiceChatSettingModal] =
+    React.useState(false);
   const [isShareModal, setShareModal] = React.useState(false);
   const [columns, setColumns] = React.useState(CollabratorData);
   const [gmailVal, setGmailVal] = React.useState("stephenking@gmail.com");
@@ -113,14 +120,20 @@ export default function WorkSpaceNavbar() {
   const [projectForm, setProjectForm] = React.useState(
     "Microsoft Word (*.docx)"
   );
-  const [microVoiceChatForm, setMicroVoiceChatForm] = React.useState("Default - Speakers (Logitech PRO X Wirele...")
-  const [isOpenMircoVoiceChatForm, setOpenMicroVoiceChatForm] = React.useState(false)
+  const [microVoiceChatForm, setMicroVoiceChatForm] = React.useState(
+    "Default - Speakers (Logitech PRO X Wirele..."
+  );
+  const [isOpenMircoVoiceChatForm, setOpenMicroVoiceChatForm] =
+    React.useState(false);
 
-  const [speakerVoiceChatForm, setSpeakerVoiceChatForm] = React.useState("Default - Speakers (Logitech PRO X Wirele...")
-  const [isOpenSpeakerVoiceChatForm, setOpenSpeakerVoiceChatForm] = React.useState(false)
-  const microVoiceChatFormRef = React.useRef(null)
-  const speakerVoiceChatFormRef = React.useRef(null)
-  const [isVoiceCollapased, setVoiceCollapase] = React.useState(false)
+  const [speakerVoiceChatForm, setSpeakerVoiceChatForm] = React.useState(
+    "Default - Speakers (Logitech PRO X Wirele..."
+  );
+  const [isOpenSpeakerVoiceChatForm, setOpenSpeakerVoiceChatForm] =
+    React.useState(false);
+  const microVoiceChatFormRef = React.useRef(null);
+  const speakerVoiceChatFormRef = React.useRef(null);
+  const [isVoiceCollapased, setVoiceCollapase] = React.useState(false);
 
   const handleGmailVal = (val) => {
     setGmailVal(val);
@@ -140,31 +153,37 @@ export default function WorkSpaceNavbar() {
 
   React.useEffect(() => {
     function handleClickOutSide(e) {
-      if (microVoiceChatFormRef.current && !microVoiceChatFormRef.current.contains(e.target)) {
-        setOpenMicroVoiceChatForm(false)
+      if (
+        microVoiceChatFormRef.current &&
+        !microVoiceChatFormRef.current.contains(e.target)
+      ) {
+        setOpenMicroVoiceChatForm(false);
       }
     }
 
-    document.addEventListener("mousedown", handleClickOutSide)
+    document.addEventListener("mousedown", handleClickOutSide);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutSide)
-    }
-  }, [microVoiceChatFormRef])
+      document.removeEventListener("mousedown", handleClickOutSide);
+    };
+  }, [microVoiceChatFormRef]);
 
   React.useEffect(() => {
     function handleClickOutSide(e) {
-      if (speakerVoiceChatFormRef.current && !speakerVoiceChatFormRef.current.contains(e.target)) {
-        setOpenSpeakerVoiceChatForm(false)
+      if (
+        speakerVoiceChatFormRef.current &&
+        !speakerVoiceChatFormRef.current.contains(e.target)
+      ) {
+        setOpenSpeakerVoiceChatForm(false);
       }
     }
 
-    document.addEventListener("mousedown", handleClickOutSide)
+    document.addEventListener("mousedown", handleClickOutSide);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutSide)
-    }
-  }, [speakerVoiceChatFormRef])
+      document.removeEventListener("mousedown", handleClickOutSide);
+    };
+  }, [speakerVoiceChatFormRef]);
 
   return (
     <div className="flex w-full h-14 bg-neutral-840 select-none">
@@ -177,11 +196,11 @@ export default function WorkSpaceNavbar() {
         >
           <button
             className={
-              "!inline-flex flex flex-row p-4 space-x-2 h-full cursor-pointer  outline-none	items-center " +
-              (projectType === 1 ? "bg-black-rgba" : "bg-[#0E0E0E]")
+              "!inline-flex flex-row p-4 space-x-2 h-full cursor-pointer  outline-none	items-center " +
+              (currentProjectType === 1 ? "bg-black-rgba" : "bg-[#0E0E0E]")
             }
             onClick={() => {
-              setProjectType(1);
+              setCurrentProjectType(1);
             }}
           >
             <TextSearchIcon />
@@ -189,11 +208,11 @@ export default function WorkSpaceNavbar() {
           </button>
           <button
             className={
-              "!inline-flex flex flex-row p-4 space-x-2 h-full cursor-pointer  outline-none items-cen+ter " +
-              (projectType === 2 ? "bg-black-rgba" : "bg-[#0E0E0E]")
+              "!inline-flex flex-row p-4 space-x-2 h-full cursor-pointer  outline-none items-cen+ter " +
+              (currentProjectType === 2 ? "bg-black-rgba" : "bg-[#0E0E0E]")
             }
             onClick={() => {
-              setProjectType(2);
+              setCurrentProjectType(2);
             }}
           >
             <CharacterSearchIcon />
@@ -202,10 +221,10 @@ export default function WorkSpaceNavbar() {
           <button
             className={
               "flex flex-row p-4 space-x-2 h-full cursor-pointer  outline-none items-center " +
-              (projectType === 3 ? "bg-black-rgba" : "bg-[#0E0E0E]")
+              (currentProjectType === 3 ? "bg-black-rgba" : "bg-[#0E0E0E]")
             }
             onClick={() => {
-              setProjectType(3);
+              setCurrentProjectType(3);
             }}
           >
             <LocationSearchIcon />
@@ -233,12 +252,8 @@ export default function WorkSpaceNavbar() {
         </div>
         <div className="flex items-center flex-row justify-between">
           <div className="flex items-center gap-2">
-
             <div className="dropdown w-10 h-10 flex justify-center items-center hover:bg-[#2b2b2b]">
-              <div
-                tabIndex="0"
-                onClick={() => setOpenScript(true)}
-              >
+              <div tabIndex="0" onClick={() => setOpenScript(true)}>
                 <div className=" rounded cursor-pointer">
                   <ScriptView />
                 </div>
@@ -273,10 +288,7 @@ export default function WorkSpaceNavbar() {
             </div>
 
             <div className="dropdown w-10 h-10 flex justify-center items-center hover:bg-[#2b2b2b]">
-              <div
-                tabIndex={0}
-                onClick={() => setOpenPage(true)}
-              >
+              <div tabIndex={0} onClick={() => setOpenPage(true)}>
                 <div className="bg-[#2b2b2b] rounded cursor-pointer">
                   <OneWindow />
                 </div>
@@ -303,7 +315,13 @@ export default function WorkSpaceNavbar() {
               )}
             </div>
 
-            <div className={(isVoiceCollapased ? "flex flex-row items-center gap-x-2" : "rounded-[24px] flex flex-row items-center gap-x-2 border border-[#1DAEFF]")}>
+            <div
+              className={
+                isVoiceCollapased
+                  ? "flex flex-row items-center gap-x-2"
+                  : "rounded-[24px] flex flex-row items-center gap-x-2 border border-[#1DAEFF]"
+              }
+            >
               {!isVoiceCollapased && (
                 <div className="dropdown">
                   <div className="w-8 h-8 flex justify-center items-center bg-[#0E0E0E] border border-[#404040] rounded-full hover:bg-[#2b2b2b]">
@@ -316,8 +334,10 @@ export default function WorkSpaceNavbar() {
                 <div
                   className="placeholder cursor-pointer"
                   onClick={() => {
-                    setHeaderPhoneModal(isHeaderPhoneModal => !isHeaderPhoneModal)
-                    setVoiceChatSettingModal(false)
+                    setHeaderPhoneModal(
+                      (isHeaderPhoneModal) => !isHeaderPhoneModal
+                    );
+                    setVoiceChatSettingModal(false);
                   }}
                 >
                   <div className="flex justify-center items-center bg-[#0E0E0E] w-8 h-8 border border-[#404040] rounded-full hover:bg-[#2b2b2b]">
@@ -325,9 +345,7 @@ export default function WorkSpaceNavbar() {
                   </div>
                 </div>
                 {isHeaderPhoneModal && (
-                  <ul
-                    className="cursor-pointer drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact !visible !opacity-100 !transition-none !transform-none dropdown-content shadow bg-[#2B2B2B] border border-[#161616] rounded-[4px] w-[300px] mt-8 -ml-80 mr-6"
-                  >
+                  <ul className="cursor-pointer drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact !visible !opacity-100 !transition-none !transform-none dropdown-content shadow bg-[#2B2B2B] border border-[#161616] rounded-[4px] w-[300px] mt-8 -ml-80 mr-6">
                     <div className=" flex flex-row justify-between items-center py-[14px] w-full h-14 border-b border-[#161616]  pl-5">
                       <div className="avatar placeholder">
                         <div className="bg-[#2b2b2b] text-white rounded-full w-9">
@@ -345,22 +363,25 @@ export default function WorkSpaceNavbar() {
                           <MicOffIcon />
                         </button>
                         <div className="dropdown w-8 h-8">
-                          <button className="border border-[#404040] rounded w-8 h-8 flex items-center justify-center hover:bg-[#5F5F5F]"
+                          <button
+                            className="border border-[#404040] rounded w-8 h-8 flex items-center justify-center hover:bg-[#5F5F5F]"
                             onClick={(e) => {
-                              setVoiceChatSettingModal(isVoiceChatSettingModal => !isVoiceChatSettingModal);
+                              setVoiceChatSettingModal(
+                                (isVoiceChatSettingModal) =>
+                                  !isVoiceChatSettingModal
+                              );
 
                               e.stopPropagation();
-                            }
-                            }
+                            }}
                           >
                             <SettingIcon />
                           </button>
                           {isVoiceChatSettingModal && (
-                            <ul
-                              className="list-none mt-36 w-[332px] ml-[-210px] drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact dropdown-content !visible !opacity-100 !transition-none !transform-none shadow bg-[#161616] border border-[#161616] w-40 rounded-[4px]"
-                            >
+                            <ul className="list-none mt-36 w-[332px] ml-[-210px] drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact dropdown-content !visible !opacity-100 !transition-none !transform-none shadow bg-[#161616] border border-[#161616] rounded-[4px]">
                               <div className="flex flex-row justify-between w-full h-12 pl-[24px] pr-[14px] py-[14px] bg-[#2B2B2B]">
-                                <p className="uppercase tracking-[.21em] text-white font-extrabold leading-5 text-[9px]">voice chat settings</p>
+                                <p className="uppercase tracking-[.21em] text-white font-extrabold leading-5 text-[9px]">
+                                  voice chat settings
+                                </p>
                                 <button
                                   className="hover:bg-[#4F4F4F]"
                                   onClick={() => {
@@ -378,7 +399,9 @@ export default function WorkSpaceNavbar() {
                                 <div className="flex flex-col">
                                   <div className="flex flex-row">
                                     <MicIcon />
-                                    <p className="uppercase tracking-[.21em] text-white font-extrabold leading-5 text-[9px] px-2">Microphone</p>
+                                    <p className="uppercase tracking-[.21em] text-white font-extrabold leading-5 text-[9px] px-2">
+                                      Microphone
+                                    </p>
                                   </div>
                                   <div className="pt-2 flex flex-row w-[290px] justify-between">
                                     <div className="dropdown w-full">
@@ -409,25 +432,33 @@ export default function WorkSpaceNavbar() {
                                           <li
                                             className="flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
                                             onClick={(e) => {
-                                              setMicroVoiceChatForm("Default - Speakers (Logitech PRO X Wirele...");
+                                              setMicroVoiceChatForm(
+                                                "Default - Speakers (Logitech PRO X Wirele..."
+                                              );
                                               setOpenMicroVoiceChatForm(false);
                                             }}
                                           >
-                                            Default - Microphone (Logitech PRO X Wireless)
+                                            Default - Microphone (Logitech PRO X
+                                            Wireless)
                                           </li>
                                           <li
                                             className="flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
                                             onClick={(e) => {
-                                              setMicroVoiceChatForm("Communications - Microphone (Logitech ...");
+                                              setMicroVoiceChatForm(
+                                                "Communications - Microphone (Logitech ..."
+                                              );
                                               setOpenMicroVoiceChatForm(false);
                                             }}
                                           >
-                                            Communications - Microphone (Logitech PRO X...
+                                            Communications - Microphone
+                                            (Logitech PRO X...
                                           </li>
                                           <li
                                             className="flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
                                             onClick={(e) => {
-                                              setMicroVoiceChatForm("Microphone (Logitech c922 webcam)");
+                                              setMicroVoiceChatForm(
+                                                "Microphone (Logitech c922 webcam)"
+                                              );
                                               setOpenMicroVoiceChatForm(false);
                                             }}
                                           >
@@ -436,7 +467,6 @@ export default function WorkSpaceNavbar() {
                                         </ul>
                                       )}
                                     </div>
-
                                   </div>
                                 </div>
                               </div>
@@ -445,7 +475,9 @@ export default function WorkSpaceNavbar() {
                                 <div className="flex flex-col">
                                   <div className="flex flex-row">
                                     <HeadPhoneIcon />
-                                    <p className="uppercase tracking-[.21em] text-white font-extrabold leading-5 text-[9px] px-2">Microphone</p>
+                                    <p className="uppercase tracking-[.21em] text-white font-extrabold leading-5 text-[9px] px-2">
+                                      Microphone
+                                    </p>
                                   </div>
                                   <div className="pt-2 flex flex-row w-[290px] justify-between">
                                     <div className="dropdown w-full">
@@ -476,26 +508,40 @@ export default function WorkSpaceNavbar() {
                                           <li
                                             className="flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
                                             onClick={(e) => {
-                                              setSpeakerVoiceChatForm("Default - Speakers (Logitech PRO X Wirele...");
-                                              setOpenSpeakerVoiceChatForm(false);
+                                              setSpeakerVoiceChatForm(
+                                                "Default - Speakers (Logitech PRO X Wirele..."
+                                              );
+                                              setOpenSpeakerVoiceChatForm(
+                                                false
+                                              );
                                             }}
                                           >
-                                            Default - Microphone (Logitech PRO X Wireless)
+                                            Default - Microphone (Logitech PRO X
+                                            Wireless)
                                           </li>
                                           <li
                                             className="flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
                                             onClick={(e) => {
-                                              setSpeakerVoiceChatForm("Communications - Microphone (Logitech ...");
-                                              setOpenSpeakerVoiceChatForm(false);
+                                              setSpeakerVoiceChatForm(
+                                                "Communications - Microphone (Logitech ..."
+                                              );
+                                              setOpenSpeakerVoiceChatForm(
+                                                false
+                                              );
                                             }}
                                           >
-                                            Communications - Microphone (Logitech PRO X...
+                                            Communications - Microphone
+                                            (Logitech PRO X...
                                           </li>
                                           <li
                                             className="flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border-b border-[#464646] hover:bg-[#5D5D5D]"
                                             onClick={(e) => {
-                                              setSpeakerVoiceChatForm("Microphone (Logitech c922 webcam)");
-                                              setOpenSpeakerVoiceChatForm(false);
+                                              setSpeakerVoiceChatForm(
+                                                "Microphone (Logitech c922 webcam)"
+                                              );
+                                              setOpenSpeakerVoiceChatForm(
+                                                false
+                                              );
                                             }}
                                           >
                                             Microphone (Logitech c922 webcam)
@@ -503,26 +549,29 @@ export default function WorkSpaceNavbar() {
                                         </ul>
                                       )}
                                     </div>
-
                                   </div>
                                 </div>
                               </div>
-
                             </ul>
                           )}
                         </div>
 
-                        <button className="border border-[#404040] rounded w-8 h-8 flex items-center justify-center hover:bg-[#5F5F5F]"
-                        onClick={()=> {
-                          setHeaderPhoneModal(false);
-                        }}>
+                        <button
+                          className="border border-[#404040] rounded w-8 h-8 flex items-center justify-center hover:bg-[#5F5F5F]"
+                          onClick={() => {
+                            setHeaderPhoneModal(false);
+                          }}
+                        >
                           <DownloadRIghtIcon />
                         </button>
 
-                        <button className="border border-[#404040] mr-[10px] w-8 h-8 flex items-center justify-center rounded hover:bg-[#5F5F5F]"
+                        <button
+                          className="border border-[#404040] mr-[10px] w-8 h-8 flex items-center justify-center rounded hover:bg-[#5F5F5F]"
                           onClick={() => {
-                            setVoiceCollapase(!isVoiceCollapased)
-                            setHeaderPhoneModal(isHeaderPhoneModal => !isHeaderPhoneModal)
+                            setVoiceCollapase(!isVoiceCollapased);
+                            setHeaderPhoneModal(
+                              (isHeaderPhoneModal) => !isHeaderPhoneModal
+                            );
                           }}
                         >
                           <CollapseIcon />
@@ -567,7 +616,11 @@ export default function WorkSpaceNavbar() {
               </div>
 
               <div>
-                <img className="w-[40px] h-[40px]" src="assets/img/Active.png" />
+                <img
+                  className="w-[40px] h-[40px]"
+                  alt="active"
+                  src="assets/img/Active.png"
+                />
               </div>
             </div>
 

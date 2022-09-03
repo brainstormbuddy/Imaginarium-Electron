@@ -12,13 +12,13 @@ export default function NewProjectSubNavbar() {
       <div className="w-full flex justify-between">
         <div>
           <Link
-            className="!inline-flex flex flex-row p-4 space-x-2 h-full"
+            className="!inline-flex flex-row p-4 space-x-2 h-full"
             to="/dashboard"
           >
             <BackIcon />
             <span className="text-white">Back</span>
           </Link>
-          <div className="!inline-flex flex flex-row p-4 space-x-2 h-full hover:bg-[#1F1F1F] cursor-pointer">
+          <div className="!inline-flex flex-row p-4 space-x-2 h-full hover:bg-[#1F1F1F] cursor-pointer">
             <EditIcon />
             <span className="text-white">New Project</span>
           </div>
@@ -27,7 +27,7 @@ export default function NewProjectSubNavbar() {
           <div className="flex items-center">
             <Link
               className="mr-7 flex justify-center items-center rounded-md px-[6px] text-center w-28 h-8 text-white bg-gradient-to-r from-[#FEAC6D] to-[#AE61ED] font-extrabold text-[10px] tracking-widest leading-5 hover:opacity-80"
-              to="/new-project"
+              to="/project/new"
             >
               CREATE
             </Link>

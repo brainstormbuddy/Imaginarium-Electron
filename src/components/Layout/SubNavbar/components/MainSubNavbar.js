@@ -14,7 +14,7 @@ export default function MainSubNavbar() {
       <div className="dropdown">
         <div
           tabIndex="0"
-          className=" w-14 h-14 !inline-flex flex flex-row p-4 h-full hover:bg-[#1F1F1F] cursor-pointer"
+          className=" w-14 !inline-flex flex-row p-4 h-full hover:bg-[#1F1F1F] cursor-pointer"
           onClick={() => {
             setOpenSubNav(true);
           }}
@@ -29,7 +29,7 @@ export default function MainSubNavbar() {
           >
             <Link
               className="flex flex-row px-2 py-1.5 h-8 font-extrabold text-center text-white text-[9px] leading-5 border-b border-[#2B2B2B] hover:bg-[#5D5D5D]"
-              to="/new-project"
+              to="/project/new"
             >
               New Project
             </Link>

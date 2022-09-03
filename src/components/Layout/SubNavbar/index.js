@@ -6,19 +6,16 @@ import EditSubNavbar from "./components/EditSubNavbar";
 import ProfileSubNavbar from "./components/ProfileSubNavbar";
 import WorkSpaceNavbar from "./components/WorkSpaceNavbar";
 
-
-
 export default function SubNavbar(props) {
   const location = useLocation();
 
   return (
     <>
       {location.pathname === "/dashboard" && <DashboardSubNavbar />}
-      {location.pathname === "/new-project" && <NewProjectSubNavbar />}
-      {location.pathname === "/edit-project" && <EditSubNavbar />}
+      {location.pathname === "/project/new" && <NewProjectSubNavbar />}
+      {location.pathname === "/project/edit" && <EditSubNavbar />}
       {location.pathname === "/profile" && <ProfileSubNavbar />}
       {location.pathname === "/workspace" && <WorkSpaceNavbar />}
-      
     </>
   );
 }

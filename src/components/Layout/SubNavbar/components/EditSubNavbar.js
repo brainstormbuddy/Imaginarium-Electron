@@ -12,13 +12,13 @@ export default function EditSubNavbar() {
       <div className="w-full flex justify-between">
         <div>
           <Link
-            className="!inline-flex flex flex-row p-4 space-x-2 h-full"
+            className="!inline-flex flex-row p-4 space-x-2 h-full"
             to="/dashboard"
           >
             <BackIcon />
             <span className="text-white">Back</span>
           </Link>
-          <div className="!inline-flex flex flex-row p-4 space-x-2 h-full hover:bg-[#1F1F1F] cursor-pointer">
+          <div className="!inline-flex flex-row p-4 space-x-2 h-full hover:bg-[#1F1F1F] cursor-pointer">
             <EditIcon />
             <span className="text-white">Edit Project</span>
           </div>

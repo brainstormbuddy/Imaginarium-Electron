@@ -18,13 +18,13 @@ export default function ProfileSubNavbar() {
       <div className="w-full flex justify-between">
         <div>
           <Link
-            className="!inline-flex flex flex-row p-4 space-x-2 h-full hover:bg-neutral-900 cursor-pointer"
+            className="!inline-flex flex-row p-4 space-x-2 h-full hover:bg-neutral-900 cursor-pointer"
             to="/dashboard"
           >
             <BackIcon />
             <span className="text-white">Back</span>
           </Link>
-          <div className="!inline-flex flex flex-row p-4 space-x-2 h-full hover:bg-neutral-900 cursor-pointer active:bg-[#1F1F1F]">
+          <div className="!inline-flex flex-row p-4 space-x-2 h-full hover:bg-neutral-900 cursor-pointer active:bg-[#1F1F1F]">
             <ProfileIcon />
             <span className="text-white">Profile</span>
           </div>
@@ -117,7 +117,7 @@ export default function ProfileSubNavbar() {
                     {showProject ? (
                       <ul
                         tabIndex="0"
-                        className="menu menu-compact dropdown-content mt-[40px] bg-[#161616] w-full h-[56px] mt-0 rounded-[4px]"
+                        className="menu menu-compact dropdown-content bg-[#161616] w-full h-[56px] mt-0 rounded-[4px]"
                       >
                         <li
                           className="bg-[#161616] flex flex-row px-2 py-1.5 h-8 text-center text-white text-[12px] leading-5 border border-[#404040] hover:bg-[#5D5D5D]"

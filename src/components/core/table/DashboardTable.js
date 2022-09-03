@@ -52,7 +52,7 @@ export default function DashboardTable(props) {
             </TableCol>
             <TableCol className="flex flex-row items-center w-1/15">
               {project.project_type_icon}
-              <span className="leading-5 ml-3 text-[14px] leading-5 text-white">
+              <span className="leading-5 ml-3 text-[14px] text-white">
                 {project.project_type}
               </span>
             </TableCol>
@@ -122,7 +122,7 @@ export default function DashboardTable(props) {
                   >
                     <Link
                       className="flex flex-row px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] cursor-pointer"
-                      to="/edit-project"
+                      to="/project/edit"
                     >
                       <img
                         className="p-0 w-5 h-5 cursor-pointer"
@@ -624,28 +624,28 @@ export const ProjectDetail = (props) => {
         </label>
 
         <div className="flex flex-wrap w-full">
-          <div className="mr-2 mb-2 flex justify-center items-center justify-between w-auto h-6 rounded-[15px] px-2 py-0.5 border border-[#404040]">
+          <div className="mr-2 mb-2 flex justify-center items-center w-auto h-6 rounded-[15px] px-2 py-0.5 border border-[#404040]">
             <img
               className="w-4 h-4"
               src="assets/img/dashboard/genres1.png"
               alt="genres1"
             />
           </div>
-          <div className="mr-2 mb-2 flex justify-center items-center justify-between w-auto h-6 rounded-[15px] px-2 py-0.5 border border-[#404040]">
+          <div className="mr-2 mb-2 flex justify-center items-center w-auto h-6 rounded-[15px] px-2 py-0.5 border border-[#404040]">
             <img
               className="w-4 h-4"
               src="assets/img/dashboard/genres2.png"
               alt="genres2"
             />
           </div>
-          <div className="mr-2 mb-2 flex justify-center items-center justify-between w-auto h-6 rounded-[15px] px-2 py-0.5 border border-[#404040]">
+          <div className="mr-2 mb-2 flex justify-center items-center w-auto h-6 rounded-[15px] px-2 py-0.5 border border-[#404040]">
             <img
               className="w-4 h-4"
               src="assets/img/dashboard/genres3.png"
               alt="genres3"
             />
           </div>
-          <div className="mr-2 mb-2 flex justify-center items-center justify-between w-auto h-6 rounded-[15px] px-2 py-0.5 border border-[#404040]">
+          <div className="mr-2 mb-2 flex justify-center items-center w-auto h-6 rounded-[15px] px-2 py-0.5 border border-[#404040]">
             <img
               className="w-4 h-4"
               src="assets/img/dashboard/genres4.png"

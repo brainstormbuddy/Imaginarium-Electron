@@ -1,21 +1,29 @@
 import React, { useState } from "react";
-import { MenuData } from "./MenuData";
-import { RenderTree } from "./RenderTree";
-import { values } from "lodash";
-// import {Toogle} from ".Toogle"
-import { FileMenu, FileText, MsgSquare, ChevronUp } from "../../../Svg";
-import SlidingPane from "react-sliding-pane";
-import InputText from "../../../core/common/InputText";
 import "react-sliding-pane/dist/react-sliding-pane.css";
+import { values } from "lodash";
+
+// context
+import { ProjectContext } from "../../../../pages/context/ProjectContext";
+
+// utils
+import { MenuText } from "./MenuData/MenuText";
+import { MenuCharacters } from "./MenuData/MenuCharacters";
+import { MenuLocations } from "./MenuData/MenuLocations";
+import { RenderTree } from "./RenderTree";
+import { FileMenu, FileText, MsgSquare } from "../../../Svg";
+
+const title = ["Project structure", "All Characters", "All Locations"];
 
 export const MenuBar = () => {
+  const { currentProjectType } = React.useContext(ProjectContext);
   const [isPaneOpen, setPaneOpen] = useState(false);
+  const [treeItem, setTreeItem] = useState([]);
 
-  const [treeItem, setTreeItem] = useState(MenuData);
   const getRootNodes = () => {
     const treeItems = treeItem;
     return values(treeItems).filter((node) => node.depth === 0);
   };
+
   const getChildNodes = (node) => {
     const treeItems = treeItem;
     if (!node.children) return [];
@@ -27,21 +35,34 @@ export const MenuBar = () => {
     treeItems[node.path].isOpen = !node.isOpen;
     setTreeItem({ ...treeItems });
   };
+
+  React.useEffect(() => {
+    if (currentProjectType === 1) setTreeItem(MenuText);
+
+    if (currentProjectType === 2) setTreeItem(MenuCharacters);
+
+    if (currentProjectType === 3) setTreeItem(MenuLocations);
+  }, [currentProjectType]);
+
   return (
     <div className="w-[20rem] bg-[#161616] min-h-[calc(100vh-112px)] relative select-none ">
       <div className="flex flex-col items-start pl-3 pt-3 pr-2 pb-3 border-b border-gray-600">
         <label className="flex flex-row justify-center items-center gap-4 px-1 py-2">
           <FileMenu />
-          <p className="text-xs text-white font-normal">PROJECT STRUCTURE</p>
+          <p className="text-xs text-white font-normal">
+            {title[currentProjectType - 1]}
+          </p>
         </label>
       </div>
-      <div className="flex flex-col items-start pl-3 pt-3 pr-2 pb-3">
-        <label className="flex flex-row items-center gap-3 px-1 py-2">
-          <FileText />
-          <p className="text-sm text-white">Title Page</p>
-        </label>
-      </div>
-      <div className="flex flex-col pl-2 pr-2 w-full max-h-[calc(100vh-270px)] overflow-y-auto">
+      {currentProjectType === 1 && (
+        <div className="flex flex-col items-start pl-3 pt-3 pr-2 pb-3">
+          <label className="flex flex-row items-center gap-3 px-1 py-2">
+            <FileText />
+            <p className="text-sm text-white">Title Page</p>
+          </label>
+        </div>
+      )}
+      <div className="flex flex-col gap-2 p-2 w-full max-h-[calc(100vh-210px)] overflow-y-auto">
         {getRootNodes(treeItem).map((node, index) => (
           <RenderTree
             node={node}
