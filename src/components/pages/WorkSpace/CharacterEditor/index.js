@@ -339,7 +339,6 @@ export default function CharacterEditor(props) {
           </div>
         ))}
       </CharacterBoardWrapper>
-
       {/* Modals */}
       {showNewCharacterModal && (
         <Modal

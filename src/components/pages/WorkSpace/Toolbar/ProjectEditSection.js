@@ -12,7 +12,6 @@ import {
   CharacterEditIcon,
   DeleteIcon,
   ControlIcon,
-  CameraIcon,
   ArrowLeftIcon,
   AlertIcon,
   RoundPlusIcon,
@@ -216,7 +215,7 @@ export default function ProjectEditSection() {
 
   const GroupModal = () => {
     return (
-      <div className="absolute drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] top-10 flex flex-col w-[340px] h-auto bg-[#2B2B2B] border border-[#161616] rounded-md">
+      <div className="absolute z-10 drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] top-1/2 right-4 flex flex-col w-[340px] h-auto bg-[#2B2B2B] border border-[#161616] rounded-md">
         <div className="flex flex-row justify-between items-center py-[14px] w-full border-b border-[#161616]">
           <label className="font-extrabold ml-[24px] text-[9px] text-white leading-5 tracking-[.21em] uppercase">
             Edit Group
@@ -383,116 +382,11 @@ export default function ProjectEditSection() {
           </div>
         </div>
 
-        <div className="relative p-4 flex flex-col gap-y-2 border-b border-[#2B2B2B]">
+        <div className="p-4 flex flex-col gap-y-2 border-b border-[#2B2B2B]">
           <div className="flex flex-row justify-between">
             <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] uppercase">
               Group
             </label>
-            {showGroupModal && <GroupModal />}
-
-            {showAttachHeroModal && (
-              <div className="absolute drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] top-10 flex flex-col w-[340px] h-auto bg-[#2B2B2B] border border-[#161616] rounded-md">
-                <div className="flex flex-row justify-between items-center py-[14px] w-full border-b border-[#161616]">
-                  <label className="font-extrabold ml-[24px] text-[9px] text-white leading-5 tracking-[.21em] uppercase">
-                    assign character
-                  </label>
-                  <button
-                    className="mr-[10px] hover:bg-[#4F4F4F]"
-                    onClick={() => {
-                      setShowAttachHeroModal(false);
-                    }}
-                  >
-                    <img
-                      className="w-[20px] h-[20px]"
-                      src="assets/img/dashboard/close.png"
-                      alt="close"
-                    />
-                  </button>
-                </div>
-
-                <div className="group-modal-content mx-6 my-4 flex flex-col gap-y-2">
-                  <div className="flex items-center justify-between w-full h-8 bg-[#161616] border border-[#404040] rounded-[4px] px-2 py-1.5">
-                    <input
-                      className="w-full bg-transparent h-6 text-white border border-[#161616] focus:border-[#161616] text-[12px] placeholder-[#5F5F5F]"
-                      type="text"
-                      placeholder=""
-                    />
-                    <button>
-                      <img
-                        className="outline-none"
-                        width={20}
-                        height={20}
-                        src="assets/img/profile/search.png"
-                        alt="search"
-                      />
-                    </button>
-                  </div>
-
-                  <div className="flex flex-col gap-y-3">
-                    <label className="flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
-                      Result
-                    </label>
-                  </div>
-                  <div className="flex flex-col gap-y-3 max-h-[120px] overflow-scroll">
-                    <div className="flex flex-row justify-between items-center p-1 rounded bg-[#1dacff] bg-opacity-30">
-                      <div className="flex flex-row">
-                        <img
-                          className="rounded-[24px] border border-[#2B2B2B]"
-                          src="assets/img/Workspace/location/group-avatar5.png"
-                          alt="avatar1"
-                        />
-                        <label className="pl-2 flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
-                          superman
-                        </label>
-                      </div>
-                      <CheckboxIcon />
-                    </div>
-
-                    <div className="flex flex-row justify-between items-center p-1 rounded bg-[#1dacff] bg-opacity-30">
-                      <div className="flex flex-row">
-                        <img
-                          className="rounded-[24px] border border-[#2B2B2B]"
-                          src="assets/img/Workspace/location/group-avatar6.png"
-                          alt="avatar1"
-                        />
-                        <label className="pl-2 flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
-                          Batman
-                        </label>
-                      </div>
-                      <CheckboxIcon />
-                    </div>
-
-                    <div className="flex flex-row justify-between items-center p-1 rounded bg-transparent">
-                      <div className="flex flex-row">
-                        <img
-                          className="rounded-[24px] border border-[#2B2B2B]"
-                          src="assets/img/Workspace/location/group-avatar7.png"
-                          alt="avatar1"
-                        />
-                        <label className="pl-2 flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
-                          Wonder Woman
-                        </label>
-                      </div>
-                      <CheckboxIcon />
-                    </div>
-
-                    <div className="flex flex-row justify-between items-center p-1 rounded bg-transparent">
-                      <div className="flex flex-row">
-                        <img
-                          className="rounded-[24px] border border-[#2B2B2B]"
-                          src="assets/img/Workspace/location/group-avatar8.png"
-                          alt="avatar1"
-                        />
-                        <label className="pl-2 flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
-                          traffic aman
-                        </label>
-                      </div>
-                      <CheckboxIcon />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
 
             <div
               className="hover:bg-blue-rgba-24 cursor-pointer"
@@ -688,6 +582,112 @@ export default function ProjectEditSection() {
           body={DeleteModalBody}
           footer={DeleteModalFooter}
         />
+      )}
+
+      {showGroupModal && <GroupModal />}
+
+      {showAttachHeroModal && (
+        <div className="absolute drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] top-1/2 right-[380px] flex flex-col w-[340px] h-auto bg-[#2B2B2B] border border-[#161616] rounded-md">
+          <div className="flex flex-row justify-between items-center py-[14px] w-full border-b border-[#161616]">
+            <label className="font-extrabold ml-[24px] text-[9px] text-white leading-5 tracking-[.21em] uppercase">
+              assign character
+            </label>
+            <button
+              className="mr-[10px] hover:bg-[#4F4F4F]"
+              onClick={() => {
+                setShowAttachHeroModal(false);
+              }}
+            >
+              <img
+                className="w-[20px] h-[20px]"
+                src="assets/img/dashboard/close.png"
+                alt="close"
+              />
+            </button>
+          </div>
+
+          <div className="group-modal-content mx-6 my-4 flex flex-col gap-y-2">
+            <div className="flex items-center justify-between w-full h-8 bg-[#161616] border border-[#404040] rounded-[4px] px-2 py-1.5">
+              <input
+                className="w-full bg-transparent h-6 text-white border border-[#161616] focus:border-[#161616] text-[12px] placeholder-[#5F5F5F]"
+                type="text"
+                placeholder=""
+              />
+              <button>
+                <img
+                  className="outline-none"
+                  width={20}
+                  height={20}
+                  src="assets/img/profile/search.png"
+                  alt="search"
+                />
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-y-3">
+              <label className="flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
+                Result
+              </label>
+            </div>
+            <div className="flex flex-col gap-y-3 max-h-[120px] overflow-scroll">
+              <div className="flex flex-row justify-between items-center p-1 rounded bg-[#1dacff] bg-opacity-30">
+                <div className="flex flex-row">
+                  <img
+                    className="rounded-[24px] border border-[#2B2B2B]"
+                    src="assets/img/Workspace/location/group-avatar5.png"
+                    alt="avatar1"
+                  />
+                  <label className="pl-2 flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
+                    superman
+                  </label>
+                </div>
+                <CheckboxIcon />
+              </div>
+
+              <div className="flex flex-row justify-between items-center p-1 rounded bg-[#1dacff] bg-opacity-30">
+                <div className="flex flex-row">
+                  <img
+                    className="rounded-[24px] border border-[#2B2B2B]"
+                    src="assets/img/Workspace/location/group-avatar6.png"
+                    alt="avatar1"
+                  />
+                  <label className="pl-2 flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
+                    Batman
+                  </label>
+                </div>
+                <CheckboxIcon />
+              </div>
+
+              <div className="flex flex-row justify-between items-center p-1 rounded bg-transparent">
+                <div className="flex flex-row">
+                  <img
+                    className="rounded-[24px] border border-[#2B2B2B]"
+                    src="assets/img/Workspace/location/group-avatar7.png"
+                    alt="avatar1"
+                  />
+                  <label className="pl-2 flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
+                    Wonder Woman
+                  </label>
+                </div>
+                <CheckboxIcon />
+              </div>
+
+              <div className="flex flex-row justify-between items-center p-1 rounded bg-transparent">
+                <div className="flex flex-row">
+                  <img
+                    className="rounded-[24px] border border-[#2B2B2B]"
+                    src="assets/img/Workspace/location/group-avatar8.png"
+                    alt="avatar1"
+                  />
+                  <label className="pl-2 flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
+                    traffic aman
+                  </label>
+                </div>
+                <CheckboxIcon />
+              </div>
+            </div>
+          </div>
+        </div>
       )}
     </>
   );
