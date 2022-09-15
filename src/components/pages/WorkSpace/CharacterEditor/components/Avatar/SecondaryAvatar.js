@@ -33,13 +33,17 @@ export default function SecondaryAvatar(props) {
             </>
           )}
         </div>
-        <div className="relative w-full flex justify-center">
-          <div
-            className={`w-10 h-10 2xl:w-20 2xl:h-20 self-center flex items-center justify-center bg-[#2B2B2B] ${
-              url === "" && "ring-[1px] ring-gray-600"
-            } rounded-full overflow-hidden ${
-              brand ? "ring ring-purple-500" : ""
-            }`}
+        <div className="group relative w-full flex justify-center cursor-pointer">
+          <button
+            className={`w-10 h-10 2xl:w-20 2xl:h-20 self-center flex items-center justify-center bg-[#2B2B2B] rounded-full overflow-hidden hover:ring hover:ring-[#1DAEFF] focus:ring focus:ring-[#1DAEFF]
+              ${
+                url === "" && "ring-[1px] ring-gray-600"
+              } 
+              ${
+                brand ? "ring ring-purple-500" : ""
+              }
+              `
+            }
           >
             {url ? (
               <>
@@ -63,7 +67,7 @@ export default function SecondaryAvatar(props) {
                 {name.split(" ")[0][0] + name.split(" ")[1][0]}
               </span>
             )}
-          </div>
+          </button>
 
           {brand && (
             <div className="absolute -top-1 p-[1px] bg-purple-500 uppercase text-white text-center text-[8px] font-bold tracking-[.1em] rounded">

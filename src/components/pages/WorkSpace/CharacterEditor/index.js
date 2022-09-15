@@ -22,7 +22,6 @@ import {
   BigPlusButtonIcon,
   LaurelA,
   LaurelB,
-  CameraIcon,
   ArrowLeftIcon,
 } from "../../../Svg";
 
@@ -276,14 +275,14 @@ export default function CharacterEditor(props) {
 
       <TopWrapper>
         <LeaderCard
-          bg="assets/img/workspace/leadA.png"
+          type="Protagonist"
           name="John Wick"
           laurel={<LaurelA />}
           avatar={<PrimaryAvatar url="assets/img/dashboard/dreamcast1.png" />}
           direction="left"
         />
         <LeaderCard
-          bg="assets/img/workspace/leadB.png"
+          type="Antagonist"
           name="Adam Milton"
           laurel={<LaurelB />}
           avatar={<PrimaryAvatar url="assets/img/dashboard/dreamcast4.png" />}

@@ -83,7 +83,7 @@ export default function ProjectEditSection() {
                 Photo
               </label>
               <label className="flex uppercase leading-5 text-[9px] text-white tracking-[.25em]">
-                Action Name
+                Actor Name
               </label>
             </div>
             <div className="flex">

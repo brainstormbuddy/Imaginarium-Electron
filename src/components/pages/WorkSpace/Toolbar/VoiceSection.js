@@ -69,7 +69,7 @@ const VoiceSection = () => {
     <div>
       <div className="flex items-start justify-between p-3 gap-3 border-b border-[#262626]">
         <div
-          className="px-4 py-1.5 h-10 bg-[#161616] border border-[#404040] cursor-pointer rounded-[4px] w-full flex items-center gap-6 hover:bg-[#404040] "
+          className="px-4 py-1.5 h-10 bg-[#161616] border border-[#404040] cursor-pointer rounded-[4px] w-full flex items-center gap-2 hover:bg-[#404040] "
           onClick={() => setVoiceOpen(true)}
         >
           <PlusIcon />
@@ -256,7 +256,7 @@ const VoiceSection = () => {
               <div className="flex justify-between w-full">
                 <div className="flex items-center justify-between gap-2 w-full">
                   <label className="text-white uppercase text-xs tracking-[.21rem]">
-                    Voice Memo Name{" "}
+                    Voice Memo Name
                   </label>
                   <div className="text-white uppercase text-xs tracking-[.21rem] w-5 h-5 hover:bg-[#404040] rounded flex items-center justify-center">
                     <PenIcon />
@@ -272,6 +272,7 @@ const VoiceSection = () => {
                 <div>
                   {index % 2 ? (
                     <img
+                    className="w-[90%]"
                       src={
                         process.env.PUBLIC_URL +
                         "/assets/img/Workspace/VoiceLineLight.png"
@@ -280,6 +281,7 @@ const VoiceSection = () => {
                     />
                   ) : (
                     <img
+                      className="w-[90%]"
                       src={
                         process.env.PUBLIC_URL +
                         "/assets/img/Workspace/VoiceLineDark.png"
