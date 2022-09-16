@@ -333,6 +333,8 @@ export default function CharacterEditor(props) {
                 url={row.url}
                 name={row.name}
                 brand={row.brand}
+                changeActorImage={props.changeActorImage}
+                changeActorName={props.changeActorName}
               />
             ))}
           </div>

@@ -92,7 +92,7 @@ export const MenuBar = () => {
         </div>
       )}
       {isPaneOpen && (
-        <div className="absolute bottom-[0px] w-full overflow-scroll">
+        <div className="absolute bottom-[0px] w-full overflow-scroll  border-t-2 border-[#262626]">
           <div className="flex flex-col overflow-scroll">
             <div className="pl-3 pr-2 pb-1 h-8 bg-[#161616] flex items-center justify-between">
               <MsgSquare />

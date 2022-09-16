@@ -4,13 +4,12 @@ import ReactApexChart from "react-apexcharts";
 export const ProjectInformationSection = () => {
   const series1 = [15, 13];
   const options1 = {
-    chart: {
-      type: "donut",
-    },
     colors: ["#1BA1E2", "#AA00FF"],
     stroke: {
       colors: ["#1BA1E2", "#AA00FF"],
+      width: "1",
     },
+    height: "256",
     labels: ["Male", "Female"],
     dataLabels: {
       enabled: false,
@@ -32,7 +31,7 @@ export const ProjectInformationSection = () => {
     subtitle: {
       text: "15 M / 13 F",
       align: "center",
-      offsetY: 115,
+      offsetY: 110,
       floating: false,
       style: {
         fontSize: "12px",
@@ -108,6 +107,7 @@ export const ProjectInformationSection = () => {
     colors: ["#008A00", "#A4C400", "#F0A30A", "#825A2C"],
     stroke: {
       colors: ["#008A00", "#A4C400", "#F0A30A", "#825A2C"],
+      width: "1",
     },
     labels: ["Kid-18", "19-25", "26-40", "41-Older"],
     dataLabels: {
@@ -205,6 +205,7 @@ export const ProjectInformationSection = () => {
     colors: ["#FFFFFF", "#2B2B2B", "#E3C800"],
     stroke: {
       colors: ["#FFFFFF", "#2B2B2B", "#E3C800"],
+      width: "1",
     },
     labels: ["White", "Black", "Asian"],
     dataLabels: {
@@ -295,9 +296,9 @@ export const ProjectInformationSection = () => {
   };
 
   return (
-    <div className="flex flex-col divide-y divide-[#2B2B2B] max-h-[500px] overflow-scroll">
-      <div id="chart1">
-        <ReactApexChart options={options1} series={series1} type="donut" />
+    <div className="flex flex-col divide-y divide-[#2B2B2B] max-h-[calc(100vh-154px)] overflow-scroll">
+      <div className="">
+        <ReactApexChart options={options1} series={series1} type="donut" height="256px" />
       </div>
       <div id="chart2">
         <ReactApexChart options={options2} series={series2} type="donut" />

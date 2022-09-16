@@ -13,6 +13,8 @@ function createWindow() {
   const mainWindow = new BrowserWindow({
     width: dimensions.width,
     height: dimensions.height,
+    minWidth: 1250,
+    minHeight: 700,
     show: false,
     // titleBarStyle: 'customButtonsOnHover',
     // titleBarOverlay: true,

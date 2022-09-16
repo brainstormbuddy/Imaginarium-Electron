@@ -22,6 +22,7 @@ import { ProjectInformationSection } from "./ProjectInformationSection";
 import { ProjectContext } from "../../../../pages/context/ProjectContext";
 
 const ToolBar = (props) => {
+  const actorImage = props;
   const { currentProjectType } = React.useContext(ProjectContext);
   const [value, setValue] = useState(0);
   const { state, setState } = props;
@@ -84,7 +85,7 @@ const ToolBar = (props) => {
           <div className="w-[327px] max-h-[calc(100vh-154px)] ">
             {value === 0 && <ProjectInformationSection />}
             {value === 1 && (
-              <ProjectEditSection />
+              <ProjectEditSection actorInfo = {props.actorInfo} />
             )}
             {value === 2 && <CommentSection />}
             {value === 3 && <VoiceSection />}

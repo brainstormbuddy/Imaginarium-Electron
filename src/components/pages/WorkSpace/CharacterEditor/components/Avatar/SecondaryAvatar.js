@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export default function SecondaryAvatar(props) {
-  const { start, end, middle, url, name, brand } = props;
+  const { start, end, middle, url, name, brand, changeActorImage, changeActorName } = props;
   return (
     <div className="relative flex flex-col gap-2 items-center justify-center">
       <div className="w-full">
@@ -44,6 +44,10 @@ export default function SecondaryAvatar(props) {
               }
               `
             }
+            onClick={()=> {
+              props.changeActorImage(url);
+              props.changeActorName(name);
+            }}
           >
             {url ? (
               <>
@@ -63,7 +67,7 @@ export default function SecondaryAvatar(props) {
                 />
               </>
             ) : (
-              <span className=" uppercase text-center text-[10px] font-bold tracking-[.15rem]">
+              <span className="uppercase text-center text-[10px] leading-5 text-[#CDCDCD] font-bold tracking-[.15rem]">
                 {name.split(" ")[0][0] + name.split(" ")[1][0]}
               </span>
             )}

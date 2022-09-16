@@ -31,7 +31,7 @@ function loadFile(event) {
   }
 }
 
-export default function ProjectEditSection() {
+export default function ProjectEditSection(props) {
   const [showEditModal, setShowEditModal] = React.useState(false);
   const [showDeleteModal, setShowDeleteModal] = React.useState(false);
   const [showGroupModal, setShowGroupModal] = React.useState(false);
@@ -371,13 +371,21 @@ export default function ProjectEditSection() {
             Actor Information
           </label>
           <div className="flex flex-row items-center gap-x-2">
-            <img
-              className="w-8 h-8 rounded-[24px] border-[#404040]"
-              src="assets/img/Workspace/characters/10.png"
-              alt="tersa"
-            />
+            {props.actorInfo[0] ? (
+              <img
+                className="w-8 h-8 rounded-[24px] border-[#404040]"
+                // src="assets/img/Workspace/characters/10.png"
+                src={props.actorInfo[0]}
+                alt="actor"
+              />
+            ) : (
+              <span className="w-8 h-8 2xl:w-20 2xl:h-20 self-center flex items-center justify-center bg-[#2B2B2B] rounded-full uppercase text-center text-[10px] leading-5 text-[#CDCDCD] font-bold tracking-[.15rem]">
+                {props.actorInfo[1].split(" ")[0][0] +
+                  props.actorInfo[1].split(" ")[1][0]}
+              </span>
+            )}
             <label className="text-white text-[12px] leading-5">
-              Teresa Black
+              {props.actorInfo[1]}
             </label>
           </div>
         </div>

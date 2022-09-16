@@ -40,16 +40,27 @@ export default function WorkSpace() {
     fName: "Helvetica",
   });
 
+  const [actorImage, setActorImage] = useState("");
+  const [actorName, setActorName] = useState("");
+
+  const changeActorImage = (url) => {
+    setActorImage(url);
+  };
+
+  const changeActorName = (name) => {
+    setActorName(name);
+  };
+
   return (
     <div className="flex items-stretch bg-[#0A0A0A]">
       <MenuBar />
       {currentProjectType === 1 && (
         <TinyMceEditor state={state} setState={setState} />
       )}
-      {currentProjectType === 2 && <CharacterEditor />}
+      {currentProjectType === 2 && <CharacterEditor changeActorImage = {changeActorImage} changeActorName = {changeActorName} />}
 
-      {currentProjectType === 3 && <div className="flex-auto" />}
-      <ToolBar state={state} setState={setState} />
+      {currentProjectType === 3 && <div className="flex-auto" /> }
+      <ToolBar state={state} setState={setState} actorInfo={[actorImage, actorName]} />
     </div>
   );
 }
