@@ -18,11 +18,11 @@ function createWindow() {
     show: false,
     // titleBarStyle: 'customButtonsOnHover',
     // titleBarOverlay: true,
-    titleBarOverlay: {
-      color: '#2f3241',
-      symbolColor: '#74b1be',
-      height: 50
-    },
+    // titleBarOverlay: {
+    //   color: '#2f3241',
+    //   symbolColor: '#74b1be',
+    //   height: 50
+    // },
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
