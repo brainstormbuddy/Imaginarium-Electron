@@ -5,6 +5,10 @@ import "./App.css";
 // context
 import { AuthContext } from "./pages/context/AuthContext";
 import { ProjectContext } from "./pages/context/ProjectContext";
+import { LocationContext } from "./pages/context/LocationContext";
+
+// fetch json data
+import { locations } from "./components/pages/WorkSpace/LocationEditor/data/Locations";
 
 import Onboard from "./pages/Onboard/onboard";
 import Login from "./pages/Auth/login";
@@ -38,6 +42,9 @@ const AppWrapper = () => {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
   const [selected, setSelected] = React.useState("");
   const [currentProjectType, setCurrentProjectType] = React.useState(1);
+  const [selectedLocation, setSelectedLocation] = React.useState([]);
+  const [filteredLocations, setFilteredLocations] = React.useState(locations);
+
   const value = React.useMemo(
     () => ({ isAuthenticated, setIsAuthenticated }),
     [isAuthenticated]
@@ -52,13 +59,22 @@ const AppWrapper = () => {
     [currentProjectType, selected]
   );
 
+  const location = React.useMemo(() => ({
+    selectedLocation,
+    setSelectedLocation,
+    filteredLocations,
+    setFilteredLocations,
+  }), [selectedLocation, filteredLocations]);
+
   return (
     <Router>
       <AuthContext.Provider value={value}>
         <ProjectContext.Provider value={project}>
-          <Layout>
-            <App />
-          </Layout>
+          <LocationContext.Provider value={location}>
+            <Layout>
+              <App />
+            </Layout>
+          </LocationContext.Provider>
         </ProjectContext.Provider>
       </AuthContext.Provider>
     </Router>

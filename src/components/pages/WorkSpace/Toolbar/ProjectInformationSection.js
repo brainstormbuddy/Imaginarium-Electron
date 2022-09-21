@@ -1,7 +1,7 @@
 import * as React from "react";
 import ReactApexChart from "react-apexcharts";
 
-export const ProjectInformationSection = () => {
+export default function ProjectInformationSection() {
   const series1 = [15, 13];
   const options1 = {
     colors: ["#1BA1E2", "#AA00FF"],
@@ -298,7 +298,12 @@ export const ProjectInformationSection = () => {
   return (
     <div className="flex flex-col divide-y divide-[#2B2B2B] max-h-[calc(100vh-154px)] overflow-scroll">
       <div className="">
-        <ReactApexChart options={options1} series={series1} type="donut" height="256px" />
+        <ReactApexChart
+          options={options1}
+          series={series1}
+          type="donut"
+          height="256px"
+        />
       </div>
       <div id="chart2">
         <ReactApexChart options={options2} series={series2} type="donut" />
@@ -308,4 +313,4 @@ export const ProjectInformationSection = () => {
       </div>
     </div>
   );
-};
+}

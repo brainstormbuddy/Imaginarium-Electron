@@ -15,14 +15,15 @@ import ToolbarWrapper from "./components/ToolbarWrapper";
 import OptionalSection from "./OptionalSection";
 import CommentSection from "./CommentSection";
 import VoiceSection from "./VoiceSection";
+import ProjectInformationSection from "./ProjectInformationSection";
 import ProjectEditSection from "./ProjectEditSection";
-import { ProjectInformationSection } from "./ProjectInformationSection";
+import LocationInformationSection from "./LocationInformationSection";
+import LocationEditSection from "./LocationEditSection";
 
 // project context
 import { ProjectContext } from "../../../../pages/context/ProjectContext";
 
 const ToolBar = (props) => {
-  const actorImage = props;
   const { currentProjectType } = React.useContext(ProjectContext);
   const [value, setValue] = useState(0);
   const { state, setState } = props;
@@ -72,7 +73,9 @@ const ToolBar = (props) => {
             <div className={tabClass(0)} onClick={handleClick(0)}>
               <PieChartIcon />
             </div>
-            <div className={tabClass(1)} onClick={handleClick(1)}>
+            <div className={tabClass(1)} onClick={
+              handleClick(1)
+            }>
               <OptionVerticalIcon />
             </div>
             <div className={tabClass(2)} onClick={handleClick(2)}>
@@ -86,6 +89,32 @@ const ToolBar = (props) => {
             {value === 0 && <ProjectInformationSection />}
             {value === 1 && (
               <ProjectEditSection actorInfo = {props.actorInfo} />
+            )}
+            {value === 2 && <CommentSection />}
+            {value === 3 && <VoiceSection />}
+          </div>
+        </>
+      )}
+       {currentProjectType === 3 && (
+        <>
+          <div className="tabs w-[327px] border-b border-[#262626] pt-2">
+            <div className={tabClass(0)} onClick={handleClick(0)}>
+              <PieChartIcon />
+            </div>
+            <div className={tabClass(1)} onClick={handleClick(1)}>
+              <OptionVerticalIcon />
+            </div>
+            <div className={tabClass(2)} onClick={handleClick(2)}>
+              <MsgCircle />
+            </div>
+            <div className={tabClass(3)} onClick={handleClick(3)}>
+              <VoiceMemo />
+            </div>
+          </div>
+          <div className="w-[327px] max-h-[calc(100vh-154px)] ">
+            {value === 0 && <LocationInformationSection />}
+            {value === 1 && (
+              <LocationEditSection />
             )}
             {value === 2 && <CommentSection />}
             {value === 3 && <VoiceSection />}

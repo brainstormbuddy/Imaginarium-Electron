@@ -30,3 +30,11 @@ body {
   --tw-ring-offset-width: 0px
   --tw-ring-color: #0e0e0e;
 }
+
+.slide {
+  @apply !z-0
+}
+
+.control-dots {
+  @apply !m-0 h-6 bg-[#101010]
+}

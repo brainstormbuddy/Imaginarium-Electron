@@ -45,7 +45,7 @@ export const MenuBar = () => {
   }, [currentProjectType]);
 
   return (
-    <div className="w-[20rem] bg-[#161616] min-h-[calc(100vh-112px)] relative select-none ">
+    <div className="min-w-[20rem] bg-[#161616] min-h-[calc(100vh-112px)] relative select-none ">
       <div className="flex flex-col items-start pl-3 pt-3 pr-2 pb-3 border-b border-gray-600">
         <label className="flex flex-row justify-center items-center gap-4 px-1 py-2">
           <FileMenu />

@@ -1,158 +1,247 @@
 import * as React from "react";
+
+// context
+import { LocationContext } from "../../../../pages/context/LocationContext";
+
 // core components
-import { Input, TextArea } from "../../../core/Input";
-import { Dropdown } from "../../../core/Dropdown/Dropdown";
+import { TextArea } from "../../../core/Input";
 import { PrimaryButton } from "../../../core/Button";
 import Modal from "../../../core/Modal/Modal";
-
-// components
-import CharacterSide from "../CharacterEditor/components/CharacterSide";
 
 import {
   CharacterEditIcon,
   DeleteIcon,
   ControlIcon,
-  ArrowLeftIcon,
-  AlertIcon,
   RoundPlusIcon,
   CheckboxIcon,
+  CloseIcon,
 } from "../../../Svg";
 
-const gender = ["Male", "Female"];
-const races = ["White", "Black", "Asian"];
-const sides = ["protagonist", "antagonist", "neutral"];
-
-function loadFile(event) {
-  const image = document.getElementById("output");
+function loadFile1(event) {
+  const image = document.getElementById("output1");
   console.log("image" + image);
   image.src = URL.createObjectURL(event.target.files[0]);
   if (image.src !== null) {
-    // setShowUpload(false);
   }
 }
 
-export default function ProjectEditSection(props) {
+function loadFile2(event) {
+  const image = document.getElementById("output2");
+  image.src = URL.createObjectURL(event.target.files[0]);
+  if (image.src !== null) {
+  }
+}
+
+function loadFile3(event) {
+  const image = document.getElementById("output3");
+  image.src = URL.createObjectURL(event.target.files[0]);
+  if (image.src !== null) {
+  }
+}
+
+function loadFile4(event) {
+  const image = document.getElementById("output4");
+  image.src = URL.createObjectURL(event.target.files[0]);
+  if (image.src !== null) {
+  }
+}
+
+function loadFile5(event) {
+  const image = document.getElementById("output5");
+  image.src = URL.createObjectURL(event.target.files[0]);
+  if (image.src !== null) {
+  }
+}
+
+function loadFile6(event) {
+  const image = document.getElementById("output6");
+  image.src = URL.createObjectURL(event.target.files[0]);
+  if (image.src !== null) {
+  }
+}
+
+export default function LocationEditSection(props) {
+  const { selectedLocation, filteredLocations, setFilteredLocations } =
+    React.useContext(LocationContext);
+
   const [showEditModal, setShowEditModal] = React.useState(false);
   const [showDeleteModal, setShowDeleteModal] = React.useState(false);
   const [showGroupModal, setShowGroupModal] = React.useState(false);
   const [showAttachHeroModal, setShowAttachHeroModal] = React.useState(false);
 
-  const [cSide, setCSide] = React.useState(0);
-  const [characterName, setCharacterName] = React.useState("");
-  const [characterAge, setCharacterAge] = React.useState("");
-  const [actionName, setActionName] = React.useState("");
-  const [groupName, setGroupName] = React.useState("");
-
   const EditModalBody = React.useMemo(() => {
     return (
       <>
         <div className="flex flex-col divide-y divide-[#161616] max-h-[450px] overflow-scroll">
-          <div className="grid grid-cols-2 px-6 py-4 gap-3">
-            <Input
-              label="Name"
-              name="name"
-              value={characterName}
-              onChange={(e) => setCharacterName(e.target.value)}
-              placeholder="Ex. John Wick"
-            />
-            <Dropdown label="Gender" menus={gender} />
-            <Input
-              label="Age"
-              name="age"
-              value={characterAge}
-              onChange={(e) => {
-                setCharacterAge(e.target.value);
-              }}
-              placeholder="Ex. 40"
-            />
-            <Dropdown label="Race" menus={races} />
+          <div className="relative w-full min-h-[160px] bg-[url('/public/assets/img/Workspace/pool.png')] bg-center bg-cover bg-no-repeat">
+            <h1 className="absolute bottom-6 left-6 uppercase text-white text-[24px] font-extrabold leading-6 tracking-[.1em]">
+              Body in the Pool
+            </h1>
           </div>
 
-          <div className="px-6 py-4 gap-3">
-            <CharacterSide
-              label="Character Side"
-              items={sides}
-              currentSide={cSide}
-              handleSetCurrentSide={setCSide}
-            />
-          </div>
-
-          <div className="px-6 py-4">
-            <div className="flex gap-3">
-              <label className="flex-none w-[78px] uppercase leading-5 text-[9px] text-white tracking-[.25em]">
-                Photo
-              </label>
-              <label className="flex uppercase leading-5 text-[9px] text-white tracking-[.25em]">
-                Actor Name
-              </label>
-            </div>
-            <div className="flex">
-              <div className="img-upload">
-                <input
-                  type="file"
-                  className="hidden"
-                  name="image"
-                  id="file"
-                  onChange={loadFile}
-                />
-                <div className="w-[72px] h-[72px] bg-[#0E0E0E] border border-[#404040] ring-offset-0 focus:border-white focus:outline-none rounded-md cursor-pointer">
-                  <label htmlFor="file" className="cursor-pointer">
-                    <img
-                      id="output"
-                      className="w-[72px] h-[72px]"
-                      src="assets/img/Workspace/image-upload.png"
-                      alt="logo"
-                    />
-                  </label>
-                </div>
+          <div className="px-6 py-4 grid grid-cols-3 gap-2">
+            <div className="img-upload">
+              <input
+                type="file"
+                className="hidden"
+                name="image"
+                id="file4"
+                onChange={loadFile4}
+              />
+              <div className="w-full h-full bg-[#0E0E0E] border border-[#404040] ring-offset-0 focus:border-white focus:outline-none rounded-md cursor-pointer">
+                <label htmlFor="file4" className="cursor-pointer">
+                  <img
+                    id="output4"
+                    className="w-full h-full"
+                    src="assets/img/Workspace/wallpaper.png"
+                    alt="logo"
+                  />
+                </label>
               </div>
-              <div className="pl-1.5 flex flex-col w-full gap-y-2">
-                <Input name="actor" placeholder="Ex. Keanu Reeves" />
-                <div className="group relative col-span-2 h-8 flex items-center justify-center gap-x-2 pr-3 py-[6px] pl-[6px] rounded border border-[#404040] hover:bg-blue-rgba-24 cursor-pointer">
-                  <label className="text-center uppercase leading-5 text-[10px] text-white tracking-[.25em] cursor-pointer ">
-                    Look Up
-                  </label>
-                  <ArrowLeftIcon />
-                </div>
+            </div>
+            <div className="img-upload">
+              <input
+                type="file"
+                className="hidden"
+                name="image"
+                id="file5"
+                onChange={loadFile5}
+              />
+              <div className="w-full h-full bg-[#0E0E0E] border border-[#404040] ring-offset-0 focus:border-white focus:outline-none rounded-md cursor-pointer">
+                <label htmlFor="file5" className="cursor-pointer">
+                  <img
+                    id="output5"
+                    className="w-full h-full"
+                    src="assets/img/Workspace/wallpaper.png"
+                    alt="logo"
+                  />
+                </label>
+              </div>
+            </div>
+            <div className="img-upload">
+              <input
+                type="file"
+                className="hidden"
+                name="image"
+                id="file6"
+                onChange={loadFile6}
+              />
+              <div className="w-full h-full bg-[#0E0E0E] border border-[#404040] ring-offset-0 focus:border-white focus:outline-none rounded-md cursor-pointer">
+                <label htmlFor="file6" className="cursor-pointer">
+                  <img
+                    id="output6"
+                    className="w-full h-full"
+                    src="assets/img/Workspace/wallpaper.png"
+                    alt="logo"
+                  />
+                </label>
               </div>
             </div>
           </div>
 
           <div className="px-6 py-4">
-            <TextArea label="Role" placeholder="Once time in a galaxy..." />
+            <div className="flex flex-row justify-between">
+              <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] uppercase">
+                Characters on location
+              </label>
+              <div className="hover:bg-blue-rgba-24 cursor-pointer">
+                <RoundPlusIcon />
+              </div>
+            </div>
+            <div className="pt-2 grid grid-cols-2 gap-3">
+              <div className="flex flex-row justify-between">
+                <div className="flex flex-row gap-x-2">
+                  <img
+                    className="w-5 h-5 rounded-[24px] border border-[#404040]"
+                    src="assets/img/Workspace/location/avatar1.png"
+                    alt="sahara"
+                  />
+                  <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] capitalize">
+                    joe hang
+                  </label>
+                </div>
+                <div className="hover:bg-blue-rgba-24 cursor-pointer">
+                  <CloseIcon />
+                </div>
+              </div>
+
+              <div className="flex flex-row justify-between">
+                <div className="flex flex-row gap-x-2">
+                  <img
+                    className="w-5 h-5 rounded-[24px] border border-[#404040]"
+                    src="assets/img/Workspace/location/avatar2.png"
+                    alt="sahara"
+                  />
+                  <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] capitalize">
+                    big bro
+                  </label>
+                </div>
+                <div className="hover:bg-blue-rgba-24 cursor-pointer">
+                  <CloseIcon />
+                </div>
+              </div>
+
+              <div className="flex flex-row justify-between">
+                <div className="flex flex-row gap-x-2">
+                  <img
+                    className="w-5 h-5 rounded-[24px] border border-[#404040]"
+                    src="assets/img/Workspace/location/avatar3.png"
+                    alt="sahara"
+                  />
+                  <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] capitalize">
+                    que
+                  </label>
+                </div>
+                <div className="hover:bg-blue-rgba-24 cursor-pointer">
+                  <CloseIcon />
+                </div>
+              </div>
+
+              <div className="flex flex-row justify-between">
+                <div className="flex flex-row gap-x-2">
+                  <img
+                    className="w-5 h-5 rounded-[24px] border border-[#404040]"
+                    src="assets/img/Workspace/location/avatar4.png"
+                    alt="sahara"
+                  />
+                  <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] capitalize">
+                    the prophet
+                  </label>
+                </div>
+                <div className="hover:bg-blue-rgba-24 cursor-pointer">
+                  <CloseIcon />
+                </div>
+              </div>
+
+              <div className="flex flex-row justify-between">
+                <div className="flex flex-row gap-x-2">
+                  <img
+                    className="w-5 h-5 rounded-[24px] border border-[#404040]"
+                    src="assets/img/Workspace/location/avatar4.png"
+                    alt="sahara"
+                  />
+                  <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] capitalize">
+                    loren bow
+                  </label>
+                </div>
+                <div className="hover:bg-blue-rgba-24 cursor-pointer">
+                  <CloseIcon />
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="px-6 py-4">
-            <TextArea
-              label="Ethnicity"
-              placeholder="Once time in a galaxy..."
-            />
+            <TextArea label="Actions" placeholder="Once time in a galaxy..." />
           </div>
 
           <div className="px-6 py-4">
-            <TextArea
-              label="Orientation"
-              placeholder="Once time in a galaxy..."
-            />
-          </div>
-
-          <div className="px-6 py-4">
-            <TextArea
-              label="Disability"
-              placeholder="Once time in a galaxy..."
-            />
-          </div>
-
-          <div className="px-6 py-4">
-            <TextArea
-              label="Occupation"
-              placeholder="Once time in a galaxy..."
-            />
+            <TextArea label="Weather" placeholder="Once time in a galaxy..." />
           </div>
         </div>
       </>
     );
-  }, [cSide, characterName, characterAge, actionName]);
+  }, []);
 
   const EditModalFooter = React.useMemo(() => {
     return (
@@ -165,53 +254,40 @@ export default function ProjectEditSection(props) {
   const DeleteModalBody = React.useMemo(() => {
     return (
       <div className="mx-6 my-4">
-        <label className="text-white text-[12px] leading-5">
-          This action can not be undone. The character is already present in
-          following scenes:
-        </label>
-        <div className="flex flex-col gap-y-4 max-h-[120px] overflow-scroll">
-          <div className="flex flex-row gap-x-2">
-            <AlertIcon />
-            <label className="text-white text-[12px] leading-5 tracking-[.1em] uppercase">
-              Scene 1
-            </label>
-          </div>
-          <div className="flex flex-row gap-x-2">
-            <AlertIcon />
-            <label className="text-white text-[12px] leading-5 tracking-[.1em] uppercase">
-              Scene 2
-            </label>
-          </div>
-          <div className="flex flex-row gap-x-2">
-            <AlertIcon />
-            <label className="text-white text-[12px] leading-5 tracking-[.1em] uppercase">
-              Scene 3
-            </label>
-          </div>
-          <div className="flex flex-row gap-x-2">
-            <AlertIcon />
-            <label className="text-white text-[12px] leading-5 tracking-[.1em] uppercase">
-              Scene 4
-            </label>
-          </div>
-          <div className="flex flex-row gap-x-2">
-            <AlertIcon />
-            <label className="text-white text-[12px] leading-5 tracking-[.1em] uppercase">
-              Scene 5
-            </label>
-          </div>
-        </div>
+        <p className="text-white text-[12px] leading-5">
+          This action can not be undone.
+        </p>
       </div>
     );
   }, []);
 
   const DeleteModalFooter = React.useMemo(() => {
     return (
-      <div className="flex justify-end">
-        <PrimaryButton label="SAVE" handleClick={() => {}} />
+      <div className="flex justify-end gap-3">
+        <button
+          className="flex justify-center items-center w-[100px] h-8 text-white text-[10px] font-extrabold tracking-[.21em] border-[#404040] border rounded hover:bg-blue-rgba-24 cursor-pointer"
+          onClick={() => {
+            setShowDeleteModal(false);
+          }}
+        >
+          CANCEL
+        </button>
+        <button
+          className="flex justify-center items-center w-[100px] h-8 bg-[#DD5E5E] text-white text-[10px] font-extrabold tracking-[.21em] rounded cursor-pointer hover:opacity-90"
+          onClick={() => {
+            const index = filteredLocations.map((location) => location.location_id).indexOf(selectedLocation.location_id);
+            setFilteredLocations((filteredLocations) => [
+              ...filteredLocations.slice(0, index),
+              ...filteredLocations.slice(index + 1, filteredLocations.length)
+            ])
+            setShowDeleteModal(false);
+          }}
+        >
+          DELETE
+        </button>
       </div>
     );
-  }, []);
+  }, [filteredLocations, selectedLocation.location_id, setFilteredLocations]);
 
   const GroupModal = () => {
     return (
@@ -235,15 +311,6 @@ export default function ProjectEditSection(props) {
         </div>
 
         <div className="group-modal-content mx-6 my-4 flex flex-col gap-y-4">
-          <Input
-            label="Group Name"
-            name="group"
-            value={groupName}
-            onChange={(e) => {
-              setGroupName(e.target.value);
-            }}
-            placeholder="Ex. Mafia"
-          />
           <div className="flex flex-col gap-y-3">
             <div className="flex justify-between">
               <label className="flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
@@ -339,78 +406,74 @@ export default function ProjectEditSection(props) {
 
         <div className="p-4 flex flex-col gap-y-2 border-b border-[#2B2B2B]">
           <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] uppercase">
-            Character Information
+            Location Info
           </label>
+          <div className="flex flex-row gap-2">
+            <div className="img-upload">
+              <input
+                type="file"
+                className="hidden"
+                name="image"
+                id="file1"
+                onChange={loadFile1}
+              />
+              <div className="w-[93px] h-20 bg-[#0E0E0E] border border-[#404040] ring-offset-0 focus:border-white focus:outline-none rounded-md cursor-pointer">
+                <label htmlFor="file1" className="cursor-pointer">
+                  <img
+                    id="output1"
+                    className="w-[93px] h-[80px]"
+                    src={selectedLocation.location_images[0].src}
+                    alt="logo"
+                  />
+                </label>
+              </div>
+            </div>
+            <div className="img-upload">
+              <input
+                type="file"
+                className="hidden"
+                name="image"
+                id="file2"
+                onChange={loadFile2}
+              />
+              <div className="w-[93px] h-20 bg-[#0E0E0E] border border-[#404040] ring-offset-0 focus:border-white focus:outline-none rounded-md cursor-pointer">
+                <label htmlFor="file2" className="cursor-pointer">
+                  <img
+                    id="output2"
+                    className="w-[93px] h-[80px]"
+                    src={selectedLocation.location_images[1].src}
+                    alt="logo"
+                  />
+                </label>
+              </div>
+            </div>
+            <div className="img-upload">
+              <input
+                type="file"
+                className="hidden"
+                name="image"
+                id="file3"
+                onChange={loadFile3}
+              />
+              <div className="w-[93px] h-20 bg-[#0E0E0E] border border-[#404040] ring-offset-0 focus:border-white focus:outline-none rounded-md cursor-pointer">
+                <label htmlFor="file3" className="cursor-pointer">
+                  <img
+                    id="output3"
+                    className="w-[93px] h-[80px]"
+                    src={selectedLocation.location_images[2].src}
+                    alt="logo"
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
           <div className="flex flex-row justify-start gap-x-2">
             <label className="text-white text-[12px] leading-5">Name:</label>
+
             <label className="text-white text-[12px] leading-5">
-              Teresa Black
+              Body in the Pool
             </label>
           </div>
-          <div className="flex flex-row gap-x-2">
-            <div className="w-20 border-r border-r-[#2B2B2B]">
-              <label className="text-white text-[12px] leading-5">
-                Age: 40
-              </label>
-            </div>
-            <div className="w-24 border-r border-r-[#2B2B2B]">
-              <label className="text-white text-[12px] leading-5">
-                Gender: Female
-              </label>
-            </div>
-            <div className="w-20">
-              <label className="text-white text-[12px] leading-5">
-                Neutral
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <div className="p-4 flex flex-col gap-y-2 border-b border-[#2B2B2B]">
-          <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] uppercase">
-            Actor Information
-          </label>
-          <div className="flex flex-row items-center gap-x-2">
-            {props.actorInfo[0] ? (
-              <img
-                className="w-8 h-8 rounded-[24px] border-[#404040]"
-                // src="assets/img/Workspace/characters/10.png"
-                src={props.actorInfo[0]}
-                alt="actor"
-              />
-            ) : props.actorInfo[0] !== "" ? (
-              <span className="w-8 h-8 2xl:w-20 2xl:h-20 self-center flex items-center justify-center bg-[#2B2B2B] rounded-full uppercase text-center text-[10px] leading-5 text-[#CDCDCD] font-bold tracking-[.15rem]">
-                {props.actorInfo[1].split(" ")[0][0] +
-                  props.actorInfo[1].split(" ")[1][0]}
-              </span>
-            ) : (
-              <span className="w-8 h-8 2xl:w-20 2xl:h-20 self-center flex items-center justify-center bg-[#2B2B2B] rounded-full uppercase text-center text-[10px] leading-5 text-[#CDCDCD] font-bold tracking-[.15rem]"></span>
-            )}
-            <label className="text-white text-[12px] leading-5">
-              {props.actorInfo[1]}
-            </label>
-          </div>
-        </div>
-
-        <div className="p-4 flex flex-col gap-y-2 border-b border-[#2B2B2B]">
-          <div className="flex flex-row justify-between">
-            <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] uppercase">
-              Group
-            </label>
-
-            <div
-              className="hover:bg-blue-rgba-24 cursor-pointer"
-              onClick={() => {
-                setShowGroupModal(true);
-              }}
-            >
-              <CharacterEditIcon />
-            </div>
-          </div>
-
-          <label className="text-[#5F5F5F] text-[12px] leading-5">
-            This character is not attached to any group
-          </label>
         </div>
 
         <div className="p-4 flex flex-col gap-y-2 border-b border-[#2B2B2B]">
@@ -461,17 +524,17 @@ export default function ProjectEditSection(props) {
 
         <div className="p-4 flex flex-col gap-y-2 border-b border-[#2B2B2B]">
           <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] uppercase">
-            Appears in locations
+            Characters on location
           </label>
           <div className="flex flex-row justify-between items-center">
             <div className="flex flex-row gap-x-2">
               <img
-                className="w-5 h-5 rounded border border-[#404040]"
-                src="assets/img/Workspace/location/avatar1.png"
-                alt="sahara"
+                className="w-5 h-5 rounded-[24px] border border-[#404040]"
+                src={selectedLocation.location_collaborators[0].src}
+                alt={selectedLocation.location_collaborators[0].name}
               />
-              <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] uppercase">
-                Sahara Desert
+              <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] capitalize">
+                {selectedLocation.location_collaborators[0].name}
               </label>
             </div>
             <div className="hover:bg-blue-rgba-24 cursor-pointer">
@@ -481,12 +544,12 @@ export default function ProjectEditSection(props) {
           <div className="flex flex-row justify-between items-center">
             <div className="flex flex-row gap-x-2">
               <img
-                className="w-5 h-5 rounded border border-[#404040]"
-                src="assets/img/Workspace/location/avatar2.png"
-                alt="sahara"
+                className="w-5 h-5 rounded-[24px] border border-[#404040]"
+                src={selectedLocation.location_collaborators[1].src}
+                alt={selectedLocation.location_collaborators[1].name}
               />
-              <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] uppercase">
-                body in the pool
+              <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] capitalize">
+                {selectedLocation.location_collaborators[1].name}
               </label>
             </div>
             <div className="hover:bg-blue-rgba-24 cursor-pointer">
@@ -496,12 +559,12 @@ export default function ProjectEditSection(props) {
           <div className="flex flex-row justify-between items-center">
             <div className="flex flex-row gap-x-2">
               <img
-                className="w-5 h-5 rounded border border-[#404040]"
-                src="assets/img/Workspace/location/avatar3.png"
-                alt="sahara"
+                className="w-5 h-5 rounded-[24px] border border-[#404040]"
+                src={selectedLocation.location_collaborators[2].src}
+                alt={selectedLocation.location_collaborators[2].name}
               />
-              <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] uppercase">
-                statues room
+              <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] capitalize">
+                {selectedLocation.location_collaborators[2].name}
               </label>
             </div>
             <div className="hover:bg-blue-rgba-24 cursor-pointer">
@@ -511,12 +574,27 @@ export default function ProjectEditSection(props) {
           <div className="flex flex-row justify-between items-center">
             <div className="flex flex-row gap-x-2">
               <img
-                className="w-5 h-5 rounded border border-[#404040]"
-                src="assets/img/Workspace/location/avatar4.png"
-                alt="sahara"
+                className="w-5 h-5 rounded-[24px] border border-[#404040]"
+                src={selectedLocation.location_collaborators[3].src}
+                alt={selectedLocation.location_collaborators[3].name}
               />
-              <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] uppercase">
-                main Kentucky street
+              <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] capitalize">
+                {selectedLocation.location_collaborators[3].name}
+              </label>
+            </div>
+            <div className="hover:bg-blue-rgba-24 cursor-pointer">
+              <ControlIcon />
+            </div>
+          </div>
+          <div className="flex flex-row justify-between items-center">
+            <div className="flex flex-row gap-x-2">
+              <img
+                className="w-5 h-5 rounded-[24px] border border-[#404040]"
+                src={selectedLocation.location_collaborators[4].src}
+                alt={selectedLocation.location_collaborators[4].name}
+              />
+              <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] capitalize">
+                {selectedLocation.location_collaborators[4].name}
               </label>
             </div>
             <div className="hover:bg-blue-rgba-24 cursor-pointer">
@@ -527,7 +605,7 @@ export default function ProjectEditSection(props) {
 
         <div className="p-4 flex flex-col gap-y-2 border-b border-[#2B2B2B]">
           <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] uppercase">
-            Role
+            Action
           </label>
           <label className="text-[#CDCDCD] text-[12px] leading-5">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -537,37 +615,7 @@ export default function ProjectEditSection(props) {
 
         <div className="p-4 flex flex-col gap-y-2 border-b border-[#2B2B2B]">
           <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] uppercase">
-            Ethnicity
-          </label>
-          <label className="text-[#CDCDCD] text-[12px] leading-5">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </label>
-        </div>
-
-        <div className="p-4 flex flex-col gap-y-2 border-b border-[#2B2B2B]">
-          <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] uppercase">
-            Orientation
-          </label>
-          <label className="text-[#CDCDCD] text-[12px] leading-5">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </label>
-        </div>
-
-        <div className="p-4 flex flex-col gap-y-2 border-b border-[#2B2B2B]">
-          <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] uppercase">
-            Disability
-          </label>
-          <label className="text-[#CDCDCD] text-[12px] leading-5">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </label>
-        </div>
-
-        <div className="p-4 flex flex-col gap-y-2 border-b border-[#2B2B2B]">
-          <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] uppercase">
-            Occupation
+            Weather
           </label>
           <label className="text-[#CDCDCD] text-[12px] leading-5">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -578,7 +626,7 @@ export default function ProjectEditSection(props) {
 
       {showEditModal && (
         <Modal
-          title="Edit Character"
+          title="Edit Location"
           handleClose={() => setShowEditModal(false)}
           body={EditModalBody}
           footer={EditModalFooter}
@@ -587,7 +635,7 @@ export default function ProjectEditSection(props) {
 
       {showDeleteModal && (
         <Modal
-          title="delete character"
+          title="Delete Location"
           handleClose={() => setShowDeleteModal(false)}
           body={DeleteModalBody}
           footer={DeleteModalFooter}

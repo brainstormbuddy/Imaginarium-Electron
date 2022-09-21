@@ -419,7 +419,6 @@ export default function DashboardTable(props) {
                 onClick={() => {
                   setShowDeleteModal(false);
                   delete projects[id - 1];
-                  console.log(id);
                 }}
               >
                 DELETE

@@ -87,8 +87,6 @@ export default function Onboard() {
       <div className="screen2">
         <div
           className="relative !w-full bg-[url('/public/assets/img/screen2.png')] h-[calc(100vh)] bg-center bg-cover bg-no-repeat"
-          src="assets/img/screen2.png"
-          alt="screen2"
         />
         <img
           className="absolute top-6	left-6 !w-auto h-6"
@@ -120,8 +118,6 @@ export default function Onboard() {
       <div className="screen3">
         <div
           className="relative !w-full bg-[url('/public/assets/img/screen3.png')] h-[calc(100vh)] bg-center bg-cover bg-no-repeat"
-          src="assets/img/screen3.png"
-          alt="screen3"
         />
         <img
           className="absolute top-6	left-6 !w-auto h-6"

@@ -1,18 +1,28 @@
 import React, { useState } from "react";
 
-// project context
+// context
 import { ProjectContext } from "../context/ProjectContext";
+import { LocationContext } from "../context/LocationContext";
 
 // page components
 import { MenuBar } from "../../components/pages/WorkSpace/MenuBar";
 import ToolBar from "../../components/pages/WorkSpace/Toolbar";
 import CharacterEditor from "../../components/pages/WorkSpace/CharacterEditor";
 import TinyMceEditor from "../../components/pages/WorkSpace/Text/TinyMceEditor";
+import LocationEditor from "../../components/pages/WorkSpace/LocationEditor";
 
 import "../../basicStyle.css";
 
 export default function WorkSpace() {
   const { currentProjectType } = React.useContext(ProjectContext);
+  const {
+    setSelectedLocation,
+    filteredLocations,
+  } = React.useContext(LocationContext);
+
+  React.useEffect(() => {
+    setSelectedLocation(filteredLocations[0]);
+  }, [filteredLocations, setSelectedLocation]);
 
   const [state, setState] = useState({
     editorState: "<p>Hello World</p>",
@@ -59,7 +69,7 @@ export default function WorkSpace() {
       )}
       {currentProjectType === 2 && <CharacterEditor changeActorImage = {changeActorImage} changeActorName = {changeActorName} />}
 
-      {currentProjectType === 3 && <div className="flex-auto" /> }
+      {currentProjectType === 3 && <LocationEditor />}
       <ToolBar state={state} setState={setState} actorInfo={[actorImage, actorName]} />
     </div>
   );

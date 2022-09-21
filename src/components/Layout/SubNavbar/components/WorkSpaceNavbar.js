@@ -191,7 +191,7 @@ export default function WorkSpaceNavbar() {
       <div className="w-full flex items-center justify-between">
         <div
           id="menu"
-          className="hidden sm:visible sm:fixed sm:left-14 sm:top-28 z-50 sm:bg-[#1e1e1e] sm:rounded-tr-lg sm:rounded-bl-lg
+          className="hidden sm:visible sm:fixed sm:left-14 sm:top-28 sm:bg-[#1e1e1e] sm:rounded-tr-lg sm:rounded-bl-lg
             md:visible md:relative md:flex md:p-0 md:bg-transparent md:flex-row md:top-0 md:left-0  "
         >
           <button
