@@ -213,7 +213,7 @@ export default function LocationEditor(props) {
               </Carousel>
             </div>
             <div className="w-full h-[54px] flex flex-row items-center justify-between px-[18px] py-4 bg-[#161616] rounded-b-[16px]">
-              <div className="flex flex-row items-center gap-4">
+              <div className="flex flex-row items-center gap-2">
                 <p className="uppercase font-extrabold text-[9px] text-white leading-5	tracking-[.21em]">
                   {location.location_name}
                 </p>
@@ -224,7 +224,7 @@ export default function LocationEditor(props) {
                   </p>
                 </div>
               </div>
-              <div className="flex gap-4">
+              <div className="flex gap-2">
                 <div className="flex flex-row relative">
                   <div className="absolute z-5 right-[56px] w-[20px] h-[20px] rounded-[24px]">
                     <img
