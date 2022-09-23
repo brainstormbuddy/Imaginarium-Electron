@@ -4,9 +4,9 @@ import * as React from "react";
 import { LocationContext } from "../../../../pages/context/LocationContext";
 
 // core components
-import { TextArea } from "../../../core/Input";
-import { PrimaryButton } from "../../../core/Button";
-import Modal from "../../../core/Modal/Modal";
+import { TextArea } from "../../../core/input";
+import { PrimaryButton } from "../../../core/button";
+import {Modal} from "../../../core/modal";
 
 import {
   CharacterEditIcon,
@@ -73,7 +73,7 @@ export default function LocationEditSection(props) {
     return (
       <>
         <div className="flex flex-col divide-y divide-[#161616] max-h-[450px] overflow-scroll">
-          <div className="relative w-full min-h-[160px] bg-[url('/public/assets/img/Workspace/pool.png')] bg-center bg-cover bg-no-repeat">
+          <div className="relative w-full min-h-[160px] bg-[url('/public/assets/img/workspace/pool.png')] bg-center bg-cover bg-no-repeat">
             <h1 className="absolute bottom-6 left-6 uppercase text-white text-[24px] font-extrabold leading-6 tracking-[.1em]">
               Body in the Pool
             </h1>
@@ -93,7 +93,7 @@ export default function LocationEditSection(props) {
                   <img
                     id="output4"
                     className="w-full h-full"
-                    src="assets/img/Workspace/wallpaper.png"
+                    src="assets/img/workspace/wallpaper.png"
                     alt="logo"
                   />
                 </label>
@@ -112,7 +112,7 @@ export default function LocationEditSection(props) {
                   <img
                     id="output5"
                     className="w-full h-full"
-                    src="assets/img/Workspace/wallpaper.png"
+                    src="assets/img/workspace/wallpaper.png"
                     alt="logo"
                   />
                 </label>
@@ -131,7 +131,7 @@ export default function LocationEditSection(props) {
                   <img
                     id="output6"
                     className="w-full h-full"
-                    src="assets/img/Workspace/wallpaper.png"
+                    src="assets/img/workspace/wallpaper.png"
                     alt="logo"
                   />
                 </label>
@@ -153,7 +153,7 @@ export default function LocationEditSection(props) {
                 <div className="flex flex-row gap-x-2">
                   <img
                     className="w-5 h-5 rounded-[24px] border border-[#404040]"
-                    src="assets/img/Workspace/location/avatar1.png"
+                    src="assets/img/workspace/location/avatar1.png"
                     alt="sahara"
                   />
                   <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] capitalize">
@@ -169,7 +169,7 @@ export default function LocationEditSection(props) {
                 <div className="flex flex-row gap-x-2">
                   <img
                     className="w-5 h-5 rounded-[24px] border border-[#404040]"
-                    src="assets/img/Workspace/location/avatar2.png"
+                    src="assets/img/workspace/location/avatar2.png"
                     alt="sahara"
                   />
                   <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] capitalize">
@@ -185,7 +185,7 @@ export default function LocationEditSection(props) {
                 <div className="flex flex-row gap-x-2">
                   <img
                     className="w-5 h-5 rounded-[24px] border border-[#404040]"
-                    src="assets/img/Workspace/location/avatar3.png"
+                    src="assets/img/workspace/location/avatar3.png"
                     alt="sahara"
                   />
                   <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] capitalize">
@@ -201,7 +201,7 @@ export default function LocationEditSection(props) {
                 <div className="flex flex-row gap-x-2">
                   <img
                     className="w-5 h-5 rounded-[24px] border border-[#404040]"
-                    src="assets/img/Workspace/location/avatar4.png"
+                    src="assets/img/workspace/location/avatar4.png"
                     alt="sahara"
                   />
                   <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] capitalize">
@@ -217,7 +217,7 @@ export default function LocationEditSection(props) {
                 <div className="flex flex-row gap-x-2">
                   <img
                     className="w-5 h-5 rounded-[24px] border border-[#404040]"
-                    src="assets/img/Workspace/location/avatar4.png"
+                    src="assets/img/workspace/location/avatar4.png"
                     alt="sahara"
                   />
                   <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] capitalize">
@@ -329,7 +329,7 @@ export default function LocationEditSection(props) {
               <div className="flex flex-row gap-x-2">
                 <img
                   className="rounded-[24px]"
-                  src="assets/img/Workspace/location/group-avatar1.png"
+                  src="assets/img/workspace/location/group-avatar1.png"
                   alt="avatar1"
                 />
                 <label className="flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
@@ -340,7 +340,7 @@ export default function LocationEditSection(props) {
               <div className="flex flex-row gap-x-2">
                 <img
                   className="rounded-[24px]"
-                  src="assets/img/Workspace/location/group-avatar2.png"
+                  src="assets/img/workspace/location/group-avatar2.png"
                   alt="avatar1"
                 />
                 <label className="flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
@@ -351,7 +351,7 @@ export default function LocationEditSection(props) {
               <div className="flex flex-row gap-x-2">
                 <img
                   className="rounded-[24px]"
-                  src="assets/img/Workspace/location/group-avatar3.png"
+                  src="assets/img/workspace/location/group-avatar3.png"
                   alt="avatar1"
                 />
                 <label className="flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
@@ -362,7 +362,7 @@ export default function LocationEditSection(props) {
               <div className="flex flex-row gap-x-2">
                 <img
                   className="rounded-[24px]"
-                  src="assets/img/Workspace/location/group-avatar4.png"
+                  src="assets/img/workspace/location/group-avatar4.png"
                   alt="avatar1"
                 />
                 <label className="flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
@@ -692,7 +692,7 @@ export default function LocationEditSection(props) {
                 <div className="flex flex-row">
                   <img
                     className="rounded-[24px] border border-[#2B2B2B]"
-                    src="assets/img/Workspace/location/group-avatar5.png"
+                    src="assets/img/workspace/location/group-avatar5.png"
                     alt="avatar1"
                   />
                   <label className="pl-2 flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
@@ -706,7 +706,7 @@ export default function LocationEditSection(props) {
                 <div className="flex flex-row">
                   <img
                     className="rounded-[24px] border border-[#2B2B2B]"
-                    src="assets/img/Workspace/location/group-avatar6.png"
+                    src="assets/img/workspace/location/group-avatar6.png"
                     alt="avatar1"
                   />
                   <label className="pl-2 flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
@@ -720,7 +720,7 @@ export default function LocationEditSection(props) {
                 <div className="flex flex-row">
                   <img
                     className="rounded-[24px] border border-[#2B2B2B]"
-                    src="assets/img/Workspace/location/group-avatar7.png"
+                    src="assets/img/workspace/location/group-avatar7.png"
                     alt="avatar1"
                   />
                   <label className="pl-2 flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
@@ -734,7 +734,7 @@ export default function LocationEditSection(props) {
                 <div className="flex flex-row">
                   <img
                     className="rounded-[24px] border border-[#2B2B2B]"
-                    src="assets/img/Workspace/location/group-avatar8.png"
+                    src="assets/img/workspace/location/group-avatar8.png"
                     alt="avatar1"
                   />
                   <label className="pl-2 flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">

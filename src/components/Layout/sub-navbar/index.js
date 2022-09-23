@@ -6,7 +6,7 @@ import EditSubNavbar from "./components/EditSubNavbar";
 import ProfileSubNavbar from "./components/ProfileSubNavbar";
 import WorkSpaceNavbar from "./components/WorkSpaceNavbar";
 
-export default function SubNavbar(props) {
+export default function SubNavbar() {
   const location = useLocation();
 
   return (

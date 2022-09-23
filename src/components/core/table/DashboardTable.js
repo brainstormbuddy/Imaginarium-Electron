@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-//call hook
+// call hook
 import { ProjectContext } from "../../../pages/context/ProjectContext";
-//core component
+// core component
 import Checkbox from "../common/Checkbox";
-//json data
+// json data
 import { projects } from "./data/projects";
 //svg
 import { DetailIcon, DropDownIcon } from "../../Svg";

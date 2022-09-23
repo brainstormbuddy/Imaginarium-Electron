@@ -275,7 +275,7 @@ const VoiceSection = () => {
                     className="w-[90%]"
                       src={
                         process.env.PUBLIC_URL +
-                        "/assets/img/Workspace/VoiceLineLight.png"
+                        "/assets/img/workspace/VoiceLineLight.png"
                       }
                       alt=""
                     />
@@ -284,7 +284,7 @@ const VoiceSection = () => {
                       className="w-[90%]"
                       src={
                         process.env.PUBLIC_URL +
-                        "/assets/img/Workspace/VoiceLineDark.png"
+                        "/assets/img/workspace/VoiceLineDark.png"
                       }
                       alt=""
                     />

@@ -6,9 +6,9 @@ import { values } from "lodash";
 import { ProjectContext } from "../../../../pages/context/ProjectContext";
 
 // utils
-import { MenuText } from "./MenuData/MenuText";
-import { MenuCharacters } from "./MenuData/MenuCharacters";
-import { MenuLocations } from "./MenuData/MenuLocations";
+import { MenuText } from "./data/MenuText";
+import { MenuCharacters } from "./data/MenuCharacters";
+import { MenuLocations } from "./data/MenuLocations";
 import { RenderTree } from "./RenderTree";
 import { FileMenu, FileText, MsgSquare } from "../../../Svg";
 
@@ -75,18 +75,18 @@ export const MenuBar = () => {
       {!isPaneOpen && (
         <div className="absolute bottom-0 w-full select-none">
           <div className="border-[1px] border-[#262626]" />
-          <div className="pl-3 pr-2 pb-1 h-8 flex items-center justify-between">
+          <div
+            className="pl-3 pr-2 pb-1 h-8 flex items-center justify-between cursor-pointer"
+            onClick={() => {
+              setPaneOpen(!isPaneOpen);
+            }}
+          >
             <MsgSquare />
-            <label
-              className="flex flex-row items-center gap-3 px-1 py-2"
-              onClick={() => {
-                setPaneOpen(!isPaneOpen);
-              }}
-            >
+            <label className="flex flex-row items-center gap-3 px-1 py-2 cursor-pointer">
               <p className="text-xs text-white font-normal">
                 COLLABORATION CHAT
               </p>
-              <div className="badge badge-secondary text-xs">999</div>
+              <div className="badge badge-secondary text-xs cursor-pointer">999</div>
             </label>
           </div>
         </div>
@@ -94,20 +94,19 @@ export const MenuBar = () => {
       {isPaneOpen && (
         <div className="absolute bottom-[0px] w-full overflow-scroll  border-t-2 border-[#262626]">
           <div className="flex flex-col overflow-scroll">
-            <div className="pl-3 pr-2 pb-1 h-8 bg-[#161616] flex items-center justify-between">
+            <div
+              className="pl-3 pr-2 pb-1 h-8 bg-[#161616] flex items-center justify-between cursor-pointer"
+              onClick={() => {
+                setPaneOpen(!isPaneOpen);
+              }}
+            >
               <MsgSquare />
-              <label
-                className="flex flex-row items-center gap-3 px-1 py-2"
-                onClick={() => {
-                  setPaneOpen(!isPaneOpen);
-                }}
-              >
+              <label className="flex flex-row items-center gap-3 px-1 py-2 cursor-pointer">
                 <p className="text-xs text-white font-normal">
                   COLLABORATION CHAT
                 </p>
-                <div className="badge badge-secondary text-xs">999</div>
+                <div className="badge badge-secondary text-xs cursor-pointer">999</div>
               </label>
-              {console.log(isPaneOpen)}
             </div>
             <div className=" bg-[#161616] pb-2 h-60 overflow-scroll">
               <div className="message">
@@ -195,7 +194,7 @@ export const MenuBar = () => {
               />
               <img
                 className="w-8 h-8"
-                src="assets/svg/Button.svg"
+                src="assets/img/workspace/SendButton.svg"
                 alt="sender"
               />
             </div>

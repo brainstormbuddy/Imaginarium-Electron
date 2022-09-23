@@ -38,3 +38,7 @@ body {
 .control-dots {
   @apply !m-0 h-6 bg-[#101010]
 }
+
+.tox .tox-tinymce .tox-platform-touch {
+  height: 100%;
+}

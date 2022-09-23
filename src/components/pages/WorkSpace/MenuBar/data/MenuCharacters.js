@@ -1,5 +1,5 @@
 // svg
-import { CharacterAdminAIcon, CharacterAdminBIcon, MIcon } from "./SVG";
+import { CharacterAdminAIcon, CharacterAdminBIcon } from "./SVG";
 
 export const MenuCharacters = {
   "/001": {

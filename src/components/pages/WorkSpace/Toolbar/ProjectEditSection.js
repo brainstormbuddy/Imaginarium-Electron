@@ -1,12 +1,12 @@
 import * as React from "react";
 // core components
-import { Input, TextArea } from "../../../core/Input";
-import { Dropdown } from "../../../core/Dropdown/Dropdown";
-import { PrimaryButton } from "../../../core/Button";
-import Modal from "../../../core/Modal/Modal";
+import { Input, TextArea } from "../../../core/input";
+import { Dropdown } from "../../../core/dropdown";
+import { PrimaryButton } from "../../../core/button";
+import { Modal } from "../../../core/modal";
 
 // components
-import CharacterSide from "../CharacterEditor/components/CharacterSide";
+import CharacterSide from "../character-editor/components/CharacterSide";
 
 import {
   CharacterEditIcon,
@@ -40,7 +40,6 @@ export default function ProjectEditSection(props) {
   const [cSide, setCSide] = React.useState(0);
   const [characterName, setCharacterName] = React.useState("");
   const [characterAge, setCharacterAge] = React.useState("");
-  const [actionName, setActionName] = React.useState("");
   const [groupName, setGroupName] = React.useState("");
 
   const EditModalBody = React.useMemo(() => {
@@ -100,7 +99,7 @@ export default function ProjectEditSection(props) {
                     <img
                       id="output"
                       className="w-[72px] h-[72px]"
-                      src="assets/img/Workspace/image-upload.png"
+                      src="assets/img/workspace/image-upload.png"
                       alt="logo"
                     />
                   </label>
@@ -152,7 +151,7 @@ export default function ProjectEditSection(props) {
         </div>
       </>
     );
-  }, [cSide, characterName, characterAge, actionName]);
+  }, [cSide, characterName, characterAge]);
 
   const EditModalFooter = React.useMemo(() => {
     return (
@@ -262,7 +261,7 @@ export default function ProjectEditSection(props) {
               <div className="flex flex-row gap-x-2">
                 <img
                   className="rounded-[24px]"
-                  src="assets/img/Workspace/location/group-avatar1.png"
+                  src="assets/img/workspace/location/group-avatar1.png"
                   alt="avatar1"
                 />
                 <label className="flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
@@ -273,7 +272,7 @@ export default function ProjectEditSection(props) {
               <div className="flex flex-row gap-x-2">
                 <img
                   className="rounded-[24px]"
-                  src="assets/img/Workspace/location/group-avatar2.png"
+                  src="assets/img/workspace/location/group-avatar2.png"
                   alt="avatar1"
                 />
                 <label className="flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
@@ -284,7 +283,7 @@ export default function ProjectEditSection(props) {
               <div className="flex flex-row gap-x-2">
                 <img
                   className="rounded-[24px]"
-                  src="assets/img/Workspace/location/group-avatar3.png"
+                  src="assets/img/workspace/location/group-avatar3.png"
                   alt="avatar1"
                 />
                 <label className="flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
@@ -295,7 +294,7 @@ export default function ProjectEditSection(props) {
               <div className="flex flex-row gap-x-2">
                 <img
                   className="rounded-[24px]"
-                  src="assets/img/Workspace/location/group-avatar4.png"
+                  src="assets/img/workspace/location/group-avatar4.png"
                   alt="avatar1"
                 />
                 <label className="flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
@@ -374,7 +373,7 @@ export default function ProjectEditSection(props) {
             {props.actorInfo[0] ? (
               <img
                 className="w-8 h-8 rounded-[24px] border-[#404040]"
-                // src="assets/img/Workspace/characters/10.png"
+                // src="assets/img/workspace/characters/10.png"
                 src={props.actorInfo[0]}
                 alt="actor"
               />
@@ -467,7 +466,7 @@ export default function ProjectEditSection(props) {
             <div className="flex flex-row gap-x-2">
               <img
                 className="w-5 h-5 rounded border border-[#404040]"
-                src="assets/img/Workspace/location/avatar1.png"
+                src="assets/img/workspace/location/avatar1.png"
                 alt="sahara"
               />
               <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] uppercase">
@@ -482,7 +481,7 @@ export default function ProjectEditSection(props) {
             <div className="flex flex-row gap-x-2">
               <img
                 className="w-5 h-5 rounded border border-[#404040]"
-                src="assets/img/Workspace/location/avatar2.png"
+                src="assets/img/workspace/location/avatar2.png"
                 alt="sahara"
               />
               <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] uppercase">
@@ -497,7 +496,7 @@ export default function ProjectEditSection(props) {
             <div className="flex flex-row gap-x-2">
               <img
                 className="w-5 h-5 rounded border border-[#404040]"
-                src="assets/img/Workspace/location/avatar3.png"
+                src="assets/img/workspace/location/avatar3.png"
                 alt="sahara"
               />
               <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] uppercase">
@@ -512,7 +511,7 @@ export default function ProjectEditSection(props) {
             <div className="flex flex-row gap-x-2">
               <img
                 className="w-5 h-5 rounded border border-[#404040]"
-                src="assets/img/Workspace/location/avatar4.png"
+                src="assets/img/workspace/location/avatar4.png"
                 alt="sahara"
               />
               <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] uppercase">
@@ -644,7 +643,7 @@ export default function ProjectEditSection(props) {
                 <div className="flex flex-row">
                   <img
                     className="rounded-[24px] border border-[#2B2B2B]"
-                    src="assets/img/Workspace/location/group-avatar5.png"
+                    src="assets/img/workspace/location/group-avatar5.png"
                     alt="avatar1"
                   />
                   <label className="pl-2 flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
@@ -658,7 +657,7 @@ export default function ProjectEditSection(props) {
                 <div className="flex flex-row">
                   <img
                     className="rounded-[24px] border border-[#2B2B2B]"
-                    src="assets/img/Workspace/location/group-avatar6.png"
+                    src="assets/img/workspace/location/group-avatar6.png"
                     alt="avatar1"
                   />
                   <label className="pl-2 flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
@@ -672,7 +671,7 @@ export default function ProjectEditSection(props) {
                 <div className="flex flex-row">
                   <img
                     className="rounded-[24px] border border-[#2B2B2B]"
-                    src="assets/img/Workspace/location/group-avatar7.png"
+                    src="assets/img/workspace/location/group-avatar7.png"
                     alt="avatar1"
                   />
                   <label className="pl-2 flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
@@ -686,7 +685,7 @@ export default function ProjectEditSection(props) {
                 <div className="flex flex-row">
                   <img
                     className="rounded-[24px] border border-[#2B2B2B]"
-                    src="assets/img/Workspace/location/group-avatar8.png"
+                    src="assets/img/workspace/location/group-avatar8.png"
                     alt="avatar1"
                   />
                   <label className="pl-2 flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">

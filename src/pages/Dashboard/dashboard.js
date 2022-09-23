@@ -2,7 +2,7 @@ import * as React from "react";
 
 // core components
 import DashboardTable from "../../components/core/table/DashboardTable";
-import Checkbox from "../../components/core/common/Checkbox";
+import { Checkbox } from "../../components/core/checkbox";
 
 export default function Dashboard() {
   const [showModal, setShowModal] = React.useState();
@@ -34,13 +34,12 @@ export default function Dashboard() {
                 {/*footer*/}
                 <div className="flex h-16 p-6 justify-between items-center bg-[#2B2B2B] rounded-[4px]">
                   <Checkbox
+                    label=" Show welcome screen on launch"
                     checked={checked}
-                    onChange={() => {
+                    handleChange={() => {
                       setChecked(!checked);
                     }}
-                  >
-                    Show welcome screen on launch
-                  </Checkbox>
+                  />
                   <button
                     className="w-[100px] h-8  tracking-[.21em] leading-5 font-extrabold text-white text-[10px] border border-[#404040] hover:bg-[#404040] rounded-md"
                     type="button"

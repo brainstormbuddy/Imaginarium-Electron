@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import Navbar from "./Navbar";
-import SubNavbar from "./SubNavbar";
+import Navbar from "./navbar";
+import SubNavbar from "./sub-navbar";
 import { AuthContext } from "../../pages/context/AuthContext";
 
 export default function Layout(props) {

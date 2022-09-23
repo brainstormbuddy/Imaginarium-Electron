@@ -1,10 +1,10 @@
 import * as React from "react";
 
 // core components
-import { PrimaryButton } from "../../../core/Button";
-import { Dropdown } from "../../../core/Dropdown/Dropdown";
-import Modal from "../../../core/Modal/Modal";
-import { Input, TextArea } from "../../../core/Input";
+import { PrimaryButton } from "../../../core/button";
+import { Dropdown } from "../../../core/dropdown";
+import {Modal} from "../../../core/modal";
+import { Input, TextArea } from "../../../core/input";
 
 // components
 import CharacterEditorWrapper from "./components/CharacterEditorWrapper";
@@ -12,8 +12,8 @@ import ActSceneSelectWrapper from "./components/ActSceneSelectWrapper";
 import TopWrapper from "./components/TopWrapper";
 import AddCharacterWrapper from "./components/AddCharacterWrapper";
 import LeaderCard from "./components/LeaderCard";
-import PrimaryAvatar from "./components/Avatar/PrimaryAvatar";
-import SecondaryAvatar from "./components/Avatar/SecondaryAvatar";
+import PrimaryAvatar from "./components/avatar/PrimaryAvatar";
+import SecondaryAvatar from "./components/avatar/SecondaryAvatar";
 import CharacterBoardWrapper from "./components/CharacterBoardWrapper";
 import CharacterSide from "./components/CharacterSide";
 
@@ -52,100 +52,100 @@ const characters = [
   [
     {
       start: true,
-      url: "assets/img/Workspace/characters/1.png",
+      url: "assets/img/workspace/characters/1.png",
       name: "Bob Sand",
     },
     {
       middle: true,
-      url: "assets/img/Workspace/characters/2.png",
+      url: "assets/img/workspace/characters/2.png",
       name: "Rob Sand",
     },
     {
       end: true,
-      url: "assets/img/Workspace/characters/3.png",
+      url: "assets/img/workspace/characters/3.png",
       name: "Christie",
     },
     {
-      url: "assets/img/Workspace/characters/4.png",
+      url: "assets/img/workspace/characters/4.png",
       name: "Jack frost",
     },
     {
-      url: "assets/img/Workspace/characters/5.png",
+      url: "assets/img/workspace/characters/5.png",
       name: "Jason Pickels",
     },
     {
-      url: "assets/img/Workspace/characters/6.png",
+      url: "assets/img/workspace/characters/6.png",
       name: "MS. west",
     },
     {
-      url: "assets/img/Workspace/characters/7.png",
+      url: "assets/img/workspace/characters/7.png",
       name: "Chu wai",
     },
     {
-      url: "assets/img/Workspace/characters/8.png",
+      url: "assets/img/workspace/characters/8.png",
       name: "Andrew swamper",
     },
     {
-      url: "assets/img/Workspace/characters/9.png",
+      url: "assets/img/workspace/characters/9.png",
       name: "walter white",
     },
     {
-      url: "assets/img/Workspace/characters/10.png",
+      url: "assets/img/workspace/characters/10.png",
       name: "teresa black",
     },
     {
-      url: "assets/img/Workspace/characters/11.png",
+      url: "assets/img/workspace/characters/11.png",
       name: "howard martinez",
     },
   ],
   [
     {
-      url: "assets/img/Workspace/characters/12.png",
+      url: "assets/img/workspace/characters/12.png",
       name: "dereck zex",
       brand: "margaret",
     },
     {
-      url: "assets/img/Workspace/characters/13.png",
+      url: "assets/img/workspace/characters/13.png",
       name: "Rob Sand",
     },
     {
-      url: "assets/img/Workspace/characters/14.png",
+      url: "assets/img/workspace/characters/14.png",
       name: "Christie",
     },
     {
-      url: "assets/img/Workspace/characters/15.png",
+      url: "assets/img/workspace/characters/15.png",
       name: "Jack frost",
     },
     {
       start: true,
-      url: "assets/img/Workspace/characters/16.png",
+      url: "assets/img/workspace/characters/16.png",
       name: "Jason Pickels",
     },
     {
       middle: true,
-      url: "assets/img/Workspace/characters/17.png",
+      url: "assets/img/workspace/characters/17.png",
       name: "MS. west",
     },
     {
       middle: true,
-      url: "assets/img/Workspace/characters/18.png",
+      url: "assets/img/workspace/characters/18.png",
       name: "Chu wai",
     },
     {
       end: true,
-      url: "assets/img/Workspace/characters/19.png",
+      url: "assets/img/workspace/characters/19.png",
       name: "Andrew swamper",
     },
     {
-      url: "assets/img/Workspace/characters/20.png",
+      url: "assets/img/workspace/characters/20.png",
       name: "walter white",
     },
     {
-      url: "assets/img/Workspace/characters/21.png",
+      url: "assets/img/workspace/characters/21.png",
       name: "teresa black",
     },
     {
-      url: "assets/img/Workspace/characters/22.png",
+      url: "assets/img/workspace/characters/22.png",
       name: "howard martinez",
     },
   ],
@@ -221,7 +221,7 @@ export default function CharacterEditor(props) {
                   <img
                     id="output"
                     className="w-[72px] h-[72px]"
-                    src="assets/img/Workspace/image-upload.png"
+                    src="assets/img/workspace/image-upload.png"
                     alt="logo"
                   />
                 </label>

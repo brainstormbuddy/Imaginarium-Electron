@@ -4,9 +4,9 @@ import * as React from "react";
 import { LocationContext } from "../../../../pages/context/LocationContext";
 
 // core components
-import { PrimaryButton } from "../../../core/Button";
-import { TextArea } from "../../../core/Input";
-import Modal from "../../../core/Modal/Modal";
+import { PrimaryButton } from "../../../core/button";
+import { TextArea } from "../../../core/input";
+import { Modal } from "../../../core/modal";
 
 // components
 import LocationEditorWrapper from "./components/LocationEditorWrapper";
@@ -48,10 +48,8 @@ function loadFile3(event) {
 }
 
 export default function LocationEditor(props) {
-  const {
-    setSelectedLocation,
-    filteredLocations,
-  } = React.useContext(LocationContext);
+  const { setSelectedLocation, filteredLocations } =
+    React.useContext(LocationContext);
 
   const [showAddModal, setShowAddModal] = React.useState(false);
 
@@ -80,7 +78,7 @@ export default function LocationEditor(props) {
                   <img
                     id="output1"
                     className="w-full h-full"
-                    src="assets/img/Workspace/wallpaper.png"
+                    src="assets/img/workspace/wallpaper.png"
                     alt="logo"
                   />
                 </label>
@@ -99,7 +97,7 @@ export default function LocationEditor(props) {
                   <img
                     id="output2"
                     className="w-full h-full"
-                    src="assets/img/Workspace/wallpaper.png"
+                    src="assets/img/workspace/wallpaper.png"
                     alt="logo"
                   />
                 </label>
@@ -118,7 +116,7 @@ export default function LocationEditor(props) {
                   <img
                     id="output3"
                     className="w-full h-full"
-                    src="assets/img/Workspace/wallpaper.png"
+                    src="assets/img/workspace/wallpaper.png"
                     alt="logo"
                   />
                 </label>

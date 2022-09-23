@@ -59,11 +59,12 @@ const TinyMceEditor = (props) => {
 
   return (
     <div className="flex-auto h-[calc(100vh-112px)]">
-      <div className="CustomScroll h-full w-full overflow-y-auto flex  justify-center">
+      <div className="CustomScroll h-full w-full overflow-y-auto flex justify-center p-10">
         <Editor
           apiKey="1fh52zkwtcwiski4p6orfwfxd8vcerxbdw33uug1lc7g6yoi"
           onInit={(evt, editor) => (editorRef.current = editor)}
           init={{
+            width: "100%",
             autosave_ask_before_unload: true,
             plugins:
               "lists autoresize advlist anchor autolink autosave charmap code quickbars wordcount visualchars visualblocks",
@@ -111,8 +112,6 @@ const TinyMceEditor = (props) => {
               "[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]",
             template_mdate_format:
               "[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]",
-            min_height: 800,
-            width: "90%",
             image_caption: true,
             quickbars_selection_toolbar:
               "bold italic | quicklink h2 h3 blockquote quickimage quicktable",
@@ -134,6 +133,7 @@ const TinyMceEditor = (props) => {
           }}
           value={editorState}
           onEditorChange={() => handleChange()}
+          style={{height: "100%"}}
         />
       </div>
     </div>

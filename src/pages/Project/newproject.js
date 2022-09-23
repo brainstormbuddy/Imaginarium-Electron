@@ -9,7 +9,7 @@ import {
 
 // core components
 import InputText from "../../components/core/common/InputText";
-import { Dropdown } from "../../components/core/Dropdown";
+import { Dropdown } from "../../components/core/dropdown";
 
 const acts = ["School 1", "School 2", "School 3", "Custom"];
 

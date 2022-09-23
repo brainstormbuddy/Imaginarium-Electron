@@ -1,9 +1,9 @@
 import React from "react";
 
 // core components
-import { Input } from "../../components/core/Input/index";
-import { PrimaryLink, SecondaryLink } from "../../components/core/Button";
-import { Logo, BG } from "../../components/pages/Auth";
+import { Input } from "../../components/core/input";
+import { PrimaryLink, SecondaryLink } from "../../components/core/button";
+import { Logo, BG } from "../../components/pages/auth";
 
 export default function Register() {
   return (

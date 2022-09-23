@@ -7,12 +7,11 @@ import AppleLogin from "react-apple-login";
 import { AuthContext } from "../context/AuthContext";
 
 // core components
-import { Input } from "../../components/core/Input/index";
-import InputText from "../../components/core/common/InputText";
-import { PrimaryLink, SecondaryLink } from "../../components/core/Button";
+import { Input } from "../../components/core/input";
+import { PrimaryLink, SecondaryLink } from "../../components/core/button";
 
 // page components
-import { Logo, BG } from "../../components/pages/Auth";
+import { Logo, BG } from "../../components/pages/auth";
 
 export default function Login() {
   const { setIsAuthenticated } = React.useContext(AuthContext);
@@ -59,7 +58,7 @@ export default function Login() {
                   Forgot?
                 </Link>
               </div>
-              <InputText
+              <Input
                 type="password"
                 name="password"
                 placeholder="please enter your password"

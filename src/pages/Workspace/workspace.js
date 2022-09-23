@@ -1,26 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 // context
 import { ProjectContext } from "../context/ProjectContext";
 import { LocationContext } from "../context/LocationContext";
 
 // page components
-import { MenuBar } from "../../components/pages/WorkSpace/MenuBar";
-import ToolBar from "../../components/pages/WorkSpace/Toolbar";
-import CharacterEditor from "../../components/pages/WorkSpace/CharacterEditor";
-import TinyMceEditor from "../../components/pages/WorkSpace/Text/TinyMceEditor";
-import LocationEditor from "../../components/pages/WorkSpace/LocationEditor";
+import { MenuBar } from "../../components/pages/workspace/menubar";
+import ToolBar from "../../components/pages/workspace/toolbar";
+import CharacterEditor from "../../components/pages/workspace/character-editor";
+import TinyMceEditor from "../../components/pages/workspace/text/tmc";
+import LocationEditor from "../../components/pages/workspace/location-editor";
 
 import "../../basicStyle.css";
 
 export default function WorkSpace() {
-  const { currentProjectType } = React.useContext(ProjectContext);
-  const {
-    setSelectedLocation,
-    filteredLocations,
-  } = React.useContext(LocationContext);
+  const { currentProjectType } = useContext(ProjectContext);
+  const { setSelectedLocation, filteredLocations } =
+    useContext(LocationContext);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setSelectedLocation(filteredLocations[0]);
   }, [filteredLocations, setSelectedLocation]);
 
@@ -67,10 +65,19 @@ export default function WorkSpace() {
       {currentProjectType === 1 && (
         <TinyMceEditor state={state} setState={setState} />
       )}
-      {currentProjectType === 2 && <CharacterEditor changeActorImage = {changeActorImage} changeActorName = {changeActorName} />}
+      {currentProjectType === 2 && (
+        <CharacterEditor
+          changeActorImage={changeActorImage}
+          changeActorName={changeActorName}
+        />
+      )}
 
       {currentProjectType === 3 && <LocationEditor />}
-      <ToolBar state={state} setState={setState} actorInfo={[actorImage, actorName]} />
+      <ToolBar
+        state={state}
+        setState={setState}
+        actorInfo={[actorImage, actorName]}
+      />
     </div>
   );
 }

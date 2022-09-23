@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useMemo} from "react";
 import { BrowserRouter as Router, useRoutes } from "react-router-dom";
 import "./App.css";
 
@@ -8,19 +8,20 @@ import { ProjectContext } from "./pages/context/ProjectContext";
 import { LocationContext } from "./pages/context/LocationContext";
 
 // fetch json data
-import { locations } from "./components/pages/WorkSpace/LocationEditor/data/Locations";
+import { Locations } from "./components/pages/workspace/location-editor/data/Locations";
 
-import Onboard from "./pages/Onboard/onboard";
-import Login from "./pages/Auth/login";
-import Register from "./pages/Auth/register";
-import ResetEmail from "./pages/Auth/resetemail";
-import ResetPassword from "./pages/Auth/resetpassword";
-import Layout from "./components/Layout";
-import Dashboard from "./pages/Dashboard/dashboard";
-import NewProject from "./pages/Project/newproject";
-import EditProject from "./pages/Project/editproject";
-import Profile from "./pages/User/profile";
-import Workspace from "./pages/Workspace/workspace";
+import Layout from "./components/layout";
+
+import Onboard from "./pages/onboard/Onboard";
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
+import ResetEmail from "./pages/auth/ResetEmail";
+import ResetPassword from "./pages/auth/ResetPassword";
+import Dashboard from "./pages/dashboard/Dashboard";
+import NewProject from "./pages/project/NewProject";
+import EditProject from "./pages/project/EditProject";
+import Profile from "./pages/user/Profile";
+import Workspace from "./pages/workspace/Workspace";
 
 function App() {
   let routes = useRoutes([
@@ -39,17 +40,17 @@ function App() {
 }
 
 const AppWrapper = () => {
-  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [selected, setSelected] = React.useState("");
-  const [currentProjectType, setCurrentProjectType] = React.useState(1);
-  const [selectedLocation, setSelectedLocation] = React.useState([]);
-  const [filteredLocations, setFilteredLocations] = React.useState(locations);
+  const [currentProjectType, setCurrentProjectType] = useState(1);
+  const [selectedLocation, setSelectedLocation] = useState([]);
+  const [filteredLocations, setFilteredLocations] = useState(Locations);
 
-  const value = React.useMemo(
+  const value = useMemo(
     () => ({ isAuthenticated, setIsAuthenticated }),
     [isAuthenticated]
   );
-  const project = React.useMemo(
+  const project = useMemo(
     () => ({
       currentProjectType,
       selected,
@@ -59,7 +60,7 @@ const AppWrapper = () => {
     [currentProjectType, selected]
   );
 
-  const location = React.useMemo(() => ({
+  const location = useMemo(() => ({
     selectedLocation,
     setSelectedLocation,
     filteredLocations,

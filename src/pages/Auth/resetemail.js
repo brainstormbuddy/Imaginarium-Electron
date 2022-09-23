@@ -1,9 +1,9 @@
 import React from "react";
 
 // core components
-import { BG, Logo } from "../../components/pages/Auth/index";
-import { Input } from "../../components/core/Input/index";
-import { PrimaryLink, SecondaryLink } from "../../components/core/Button/index";
+import { BG, Logo } from "../../components/pages/auth";
+import { Input } from "../../components/core/input";
+import { PrimaryLink, SecondaryLink } from "../../components/core/button";
 
 export default function ResetEmail() {
   return (
