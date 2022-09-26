@@ -59,7 +59,7 @@ const CommentSection = () => {
       ],
     },
     {
-      title: "Characterses",
+      title: "Characters",
       comment: [
         {
           count: 3,
@@ -277,7 +277,7 @@ const CommentSection = () => {
                   <div className="flex justify-between">
                     <div
                       className={
-                        (index % 2 === 1 ? " text-[#1DAEFF] " : " ") +
+                        (index % 2 === 1 ? " text-[#1DAEFF] " : "text-[#5F5F5F] ") +
                         "flex items-center justify-center gap-2"
                       }
                     >
@@ -285,25 +285,25 @@ const CommentSection = () => {
                       <label>{box.count}</label>
                     </div>
                     <div className="flex justify-between gap-2">
-                      <label className="uppercase text-xs tracking-[.21rem]">
+                      <label className="uppercase text-xs tracking-[.21rem] text-[#5F5F5F]">
                         {box.replies}
                       </label>
-                      <label className="uppercase text-xs tracking-[.21rem]">
+                      <label className="uppercase text-xs tracking-[.21rem] text-[#5F5F5F]">
                         Replies
                       </label>
                     </div>
                   </div>
-                  <div className="w-full text-white text-base ">
+                  <div className="w-full text-white text-base">
                     {box.content}
                   </div>
                   <div className="flex justify-between">
                     <div className="flex items-center justify-center gap-2">
-                      <label className="text-xs uppercase tracking-[.21rem]">
+                      <label className="text-xs uppercase tracking-[.21rem] text-[#5F5F5F]">
                         {box.name}
                       </label>
                     </div>
                     <div className="flex justify-between gap-2">
-                      <label className="uppercase text-xs tracking-[.21rem]">
+                      <label className="uppercase text-xs tracking-[.21rem] text-[#5F5F5F]">
                         {box.duration}
                       </label>
                     </div>

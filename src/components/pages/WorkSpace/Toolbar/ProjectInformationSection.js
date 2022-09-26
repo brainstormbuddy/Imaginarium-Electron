@@ -1,37 +1,41 @@
 import * as React from "react";
 import ReactApexChart from "react-apexcharts";
 
+// core components
+import { Dropdown } from "../../../core/dropdown";
+
 export default function ProjectInformationSection() {
+  const menus = ["Trait 1", "Trait 2", "Trait 3"];
   const series1 = [15, 13];
   const options1 = {
+    tooltip: {
+      fillSeriesColor: false,
+    },
+    chart: {
+      redrawOnWindowResize: true,
+    },
+    plotOptions: {
+      pie: {
+        customScale: 1,
+        donut: {
+          size: "75%",
+        },
+        expandOnClick: false,
+      },
+    },
     colors: ["#1BA1E2", "#AA00FF"],
     stroke: {
       colors: ["#1BA1E2", "#AA00FF"],
       width: "1",
     },
-    height: "256",
     labels: ["Male", "Female"],
     dataLabels: {
       enabled: false,
     },
-    title: {
-      text: "GENDER",
-      align: "left",
-
-      offsetX: 16,
-      offsetY: 16,
-      floating: false,
-      style: {
-        fontSize: "14px",
-        fontWeight: "800",
-        fontFamily: "Mulish",
-        color: "#FFFFFF",
-      },
-    },
     subtitle: {
       text: "15 M / 13 F",
       align: "center",
-      offsetY: 110,
+      offsetY: 100,
       floating: false,
       style: {
         fontSize: "12px",
@@ -49,12 +53,12 @@ export default function ProjectInformationSection() {
       position: "bottom",
       horizontalAlign: "center",
       floating: false,
-      fontSize: "14px",
+      fontSize: "12px",
       fontFamily: "Helvetica, Arial",
       fontWeight: 400,
+      lineHeight: 20,
       formatter: undefined,
       inverseOrder: false,
-      width: undefined,
       height: undefined,
       tooltipHoverFormatter: undefined,
       customLegendItems: [],
@@ -68,8 +72,8 @@ export default function ProjectInformationSection() {
         width: 12,
         height: 12,
         strokeWidth: 0,
-        strokeColor: "#fff",
-        fillColors: undefined,
+        strokeColor: "#FFFFFF",
+        fillColors: "#FFFFFF",
         radius: 12,
         customHTML: undefined,
         onClick: undefined,
@@ -101,6 +105,18 @@ export default function ProjectInformationSection() {
 
   const series2 = [18, 25, 20, 12];
   const options2 = {
+    tooltip: {
+      fillSeriesColor: false,
+    },
+    plotOptions: {
+      pie: {
+        customScale: 1,
+        donut: {
+          size: "75%",
+        },
+        expandOnClick: false,
+      },
+    },
     chart: {
       type: "donut",
     },
@@ -112,19 +128,6 @@ export default function ProjectInformationSection() {
     labels: ["Kid-18", "19-25", "26-40", "41-Older"],
     dataLabels: {
       enabled: false,
-    },
-    title: {
-      text: "AGE",
-      align: "left",
-      offsetX: 16,
-      offsetY: 16,
-      floating: false,
-      style: {
-        fontSize: "14px",
-        fontWeight: "800",
-        fontFamily: "Mulish",
-        color: "#FFFFFF",
-      },
     },
     subtitle: {
       text: "18 / 25 / 20 / 12",
@@ -147,9 +150,10 @@ export default function ProjectInformationSection() {
       position: "bottom",
       horizontalAlign: "center",
       floating: false,
-      fontSize: "14px",
+      fontSize: "12px",
       fontFamily: "Helvetica, Arial",
       fontWeight: 400,
+      lineHeight: 20,
       formatter: undefined,
       inverseOrder: false,
       width: undefined,
@@ -199,6 +203,18 @@ export default function ProjectInformationSection() {
 
   const series3 = [30, 25, 20];
   const options3 = {
+    tooltip: {
+      fillSeriesColor: false,
+    },
+    plotOptions: {
+      pie: {
+        customScale: 1,
+        donut: {
+          size: "75%",
+        },
+        expandOnClick: false,
+      },
+    },
     chart: {
       type: "donut",
     },
@@ -211,23 +227,10 @@ export default function ProjectInformationSection() {
     dataLabels: {
       enabled: false,
     },
-    title: {
-      text: "RACE STATS",
-      align: "left",
-      offsetX: 16,
-      offsetY: 16,
-      floating: false,
-      style: {
-        fontSize: "14px",
-        fontWeight: "800",
-        fontFamily: "Mulish",
-        color: "#FFFFFF",
-      },
-    },
     subtitle: {
       text: "30 / 25 / 20",
       align: "center",
-      offsetY: 115,
+      offsetY: 110,
       floating: false,
       style: {
         fontSize: "12px",
@@ -245,9 +248,10 @@ export default function ProjectInformationSection() {
       position: "bottom",
       horizontalAlign: "center",
       floating: false,
-      fontSize: "14px",
+      fontSize: "12px",
       fontFamily: "Helvetica, Arial",
       fontWeight: 400,
+      lineHeight: 20,
       formatter: undefined,
       inverseOrder: false,
       width: undefined,
@@ -297,19 +301,40 @@ export default function ProjectInformationSection() {
 
   return (
     <div className="flex flex-col divide-y divide-[#2B2B2B] max-h-[calc(100vh-154px)] overflow-scroll">
-      <div className="">
-        <ReactApexChart
-          options={options1}
-          series={series1}
-          type="donut"
-          height="256px"
-        />
+      <div className="w-full h-16 p-4">
+        <div className="grid grid-cols-2 gap-2">
+          <Dropdown menus={menus} />
+          <Dropdown menus={menus} />
+        </div>
+      </div>
+      <div id="chart1">
+        <div className="w-full h-68 p-4">
+          <h1 className="uppercase text-[9px] text-white font-extrabold leading-5 tracking-[.21rem]">
+            Gender
+          </h1>
+          <ReactApexChart options={options1} series={series1} type="donut" />
+        </div>
       </div>
       <div id="chart2">
-        <ReactApexChart options={options2} series={series2} type="donut" />
+        <div className="w-full h-68 p-4">
+          <h1 className="uppercase text-[9px] text-white font-extrabold leading-5 tracking-[.21rem]">
+            Age
+          </h1>
+          <ReactApexChart options={options2} series={series2} type="donut" />
+        </div>
       </div>
       <div id="chart3">
-        <ReactApexChart options={options3} series={series3} type="donut" />
+        <div className="w-full h-68 p-4">
+          <h1 className="uppercase text-[9px] text-white font-extrabold leading-5 tracking-[.21rem]">
+            Race Stats
+          </h1>
+          <ReactApexChart
+            options={options3}
+            series={series3}
+            type="donut"
+            height="256px"
+          />
+        </div>
       </div>
     </div>
   );

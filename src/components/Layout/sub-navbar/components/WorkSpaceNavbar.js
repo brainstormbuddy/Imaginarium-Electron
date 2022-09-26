@@ -250,70 +250,75 @@ export default function WorkSpaceNavbar() {
             </ul>
           </div>
         </div>
+
         <div className="flex items-center flex-row justify-between">
           <div className="flex items-center gap-2">
-            <div className="dropdown w-10 h-10 flex justify-center items-center hover:bg-[#2b2b2b]">
-              <div tabIndex="0" onClick={() => setOpenScript(true)}>
-                <div className=" rounded cursor-pointer">
-                  <ScriptView />
+            {currentProjectType === 1 && (
+              <>
+                <div className="dropdown w-10 h-10 flex justify-center items-center hover:bg-[#2b2b2b]">
+                  <div tabIndex="0" onClick={() => setOpenScript(true)}>
+                    <div className=" rounded cursor-pointer">
+                      <ScriptView />
+                    </div>
+                  </div>
+                  {isOpenScript && (
+                    <ul
+                      tabIndex="0"
+                      className="list-none p-0 drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact dropdown-content mt-[150px] ml-[120px] shadow bg-[#161616] border border-[#464646] w-40 max-h-fit rounded-[4px]"
+                    >
+                      <button className="cursor-pointer flex flex-row items-center px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] gap-2">
+                        <InfinityPageViewIcon />
+
+                        <label className="cursor-pointer p-0 ml-1 text-[9px] font-extrabold text-white leading-5 tracking-[.21em]">
+                          SCRIPT VIEW
+                        </label>
+                      </button>
+                      <button className="cursor-pointer flex flex-row items-center px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] gap-2">
+                        <PageViewIcon />
+                        <label className="cursor-pointer p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em]">
+                          PAGE VIEW
+                        </label>
+                      </button>
+                      <button className="cursor-pointer flex flex-row items-center px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] gap-2">
+                        <ScriptViewIcon />
+
+                        <label className="cursor-pointer p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em]">
+                          INFINITY PAGE
+                        </label>
+                      </button>
+                    </ul>
+                  )}
                 </div>
-              </div>
-              {isOpenScript && (
-                <ul
-                  tabIndex="0"
-                  className="list-none p-0 drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact dropdown-content mt-[150px] ml-[120px] shadow bg-[#161616] border border-[#464646] w-40 max-h-fit rounded-[4px]"
-                >
-                  <button className="cursor-pointer flex flex-row items-center px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] gap-2">
-                    <InfinityPageViewIcon />
 
-                    <label className="cursor-pointer p-0 ml-1 text-[9px] font-extrabold text-white leading-5 tracking-[.21em]">
-                      SCRIPT VIEW
-                    </label>
-                  </button>
-                  <button className="cursor-pointer flex flex-row items-center px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] gap-2">
-                    <PageViewIcon />
-                    <label className="cursor-pointer p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em]">
-                      PAGE VIEW
-                    </label>
-                  </button>
-                  <button className="cursor-pointer flex flex-row items-center px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] gap-2">
-                    <ScriptViewIcon />
+                <div className="dropdown w-10 h-10 flex justify-center items-center hover:bg-[#2b2b2b]">
+                  <div tabIndex={0} onClick={() => setOpenPage(true)}>
+                    <div className="bg-[#2b2b2b] rounded cursor-pointer">
+                      <OneWindow />
+                    </div>
+                  </div>
+                  {isOpenPage && (
+                    <ul
+                      tabIndex="0"
+                      className="list-none p-0 drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact dropdown-content mt-[120px] ml-[120px] shadow bg-[#161616] border border-[#464646] w-40 max-h-fit rounded-[4px]"
+                    >
+                      <button className="cursor-pointer flex flex-row items-center px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] gap-2">
+                        <OnePageViewIcon />
 
-                    <label className="cursor-pointer p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em]">
-                      INFINITY PAGE
-                    </label>
-                  </button>
-                </ul>
-              )}
-            </div>
-
-            <div className="dropdown w-10 h-10 flex justify-center items-center hover:bg-[#2b2b2b]">
-              <div tabIndex={0} onClick={() => setOpenPage(true)}>
-                <div className="bg-[#2b2b2b] rounded cursor-pointer">
-                  <OneWindow />
+                        <label className="cursor-pointer p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em]">
+                          ONE SCREEN
+                        </label>
+                      </button>
+                      <button className="cursor-pointer flex flex-row items-center px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] gap-2">
+                        <SplitViewIcon />
+                        <label className="cursor-pointer p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em]">
+                          SPLIT SCREEN
+                        </label>
+                      </button>
+                    </ul>
+                  )}
                 </div>
-              </div>
-              {isOpenPage && (
-                <ul
-                  tabIndex="0"
-                  className="list-none p-0 drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact dropdown-content mt-[120px] ml-[120px] shadow bg-[#161616] border border-[#464646] w-40 max-h-fit rounded-[4px]"
-                >
-                  <button className="cursor-pointer flex flex-row items-center px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] gap-2">
-                    <OnePageViewIcon />
-
-                    <label className="cursor-pointer p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em]">
-                      ONE SCREEN
-                    </label>
-                  </button>
-                  <button className="cursor-pointer flex flex-row items-center px-2 py-1.5 h-8 border-b border-[#464646] hover:bg-[#5D5D5D] gap-2">
-                    <SplitViewIcon />
-                    <label className="cursor-pointer p-0 ml-2 text-[9px] font-extrabold text-white leading-5 tracking-[.21em]">
-                      SPLIT SCREEN
-                    </label>
-                  </button>
-                </ul>
-              )}
-            </div>
+              </>
+            )}
 
             <div
               className={

@@ -2,8 +2,20 @@ import * as React from "react";
 import ReactApexChart from "react-apexcharts";
 
 export default function LocationInformationSection() {
-  const series1 = [1, 2, 2];
-  const options1 = {
+  const series = [1, 2, 2];
+  const options = {
+    tooltip: {
+      fillSeriesColor: false,
+    },
+    plotOptions: {
+      pie: {
+        customScale: 1,
+        donut: {
+          size: "75%",
+        },
+        expandOnClick: false,
+      },
+    },
     colors: ["#6DB95A", "#DD5E5E", "#5F5F5F"],
     stroke: {
       colors: ["#6DB95A", "#DD5E5E", "#5F5F5F"],
@@ -13,20 +25,6 @@ export default function LocationInformationSection() {
     labels: ["Confirmed", "Unconfirmed", "Pending"],
     dataLabels: {
       enabled: false,
-    },
-    title: {
-      text: "Confirmation Statistics",
-      align: "left",
-
-      offsetX: 16,
-      offsetY: 16,
-      floating: false,
-      style: {
-        fontSize: "14px",
-        fontWeight: "800",
-        fontFamily: "Mulish",
-        color: "#FFFFFF",
-      },
     },
     subtitle: {
       text: "5 scenes",
@@ -49,7 +47,7 @@ export default function LocationInformationSection() {
       position: "bottom",
       horizontalAlign: "center",
       floating: false,
-      fontSize: "14px",
+      fontSize: "12px",
       fontFamily: "Helvetica, Arial",
       fontWeight: 400,
       formatter: undefined,
@@ -80,9 +78,6 @@ export default function LocationInformationSection() {
         horizontal: 5,
         vertical: 0,
       },
-      onItemClick: {
-        toggleDataSeries: true,
-      },
       onItemHover: {
         highlightDataSeries: true,
       },
@@ -101,12 +96,16 @@ export default function LocationInformationSection() {
 
   return (
     <div className="flex flex-col border-y border-[#2B2B2B] divide-y divide-[#2B2B2B] max-h-[calc(100vh-154px)] overflow-scroll">
-      <ReactApexChart
-        options={options1}
-        series={series1}
-        type="donut"
-        height="256px"
-      />
+      <div className="w-full h-68 p-4">
+        <h1 className="uppercase text-[9px] text-white font-extrabold leading-5 tracking-[.21rem]">
+          Confirmation Statistics
+        </h1>
+        <ReactApexChart
+          options={options}
+          series={series}
+          type="donut"
+        />
+      </div>
       <div className="p-4 flex flex-col gap-2 ">
         <h3 className="uppercase font-extrabold text-[9px] text-white leading-5	tracking-[.21em]">
           Total Budget Details

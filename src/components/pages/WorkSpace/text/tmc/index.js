@@ -133,7 +133,7 @@ const TinyMceEditor = (props) => {
           }}
           value={editorState}
           onEditorChange={() => handleChange()}
-          style={{height: "100%"}}
+          style={{height: 100 + "% !important"}}
         />
       </div>
     </div>

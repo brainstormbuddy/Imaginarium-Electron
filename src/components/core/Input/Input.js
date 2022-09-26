@@ -4,7 +4,7 @@ export default function Input(props) {
   const { label, name, value, onChange, type, placeholder } = props;
   return (
     <div>
-      <label className="flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
+      <label className="flex flex-start font-extrabold uppercase text-[9px] text-white leading-5 tracking-[.21rem]">
         {label}
       </label>
       <input

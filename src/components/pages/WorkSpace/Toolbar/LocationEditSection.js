@@ -6,7 +6,7 @@ import { LocationContext } from "../../../../pages/context/LocationContext";
 // core components
 import { TextArea } from "../../../core/input";
 import { PrimaryButton } from "../../../core/button";
-import {Modal} from "../../../core/modal";
+import { Modal } from "../../../core/modal";
 
 import {
   CharacterEditIcon,
@@ -66,7 +66,6 @@ export default function LocationEditSection(props) {
 
   const [showEditModal, setShowEditModal] = React.useState(false);
   const [showDeleteModal, setShowDeleteModal] = React.useState(false);
-  const [showGroupModal, setShowGroupModal] = React.useState(false);
   const [showAttachHeroModal, setShowAttachHeroModal] = React.useState(false);
 
   const EditModalBody = React.useMemo(() => {
@@ -79,7 +78,7 @@ export default function LocationEditSection(props) {
             </h1>
           </div>
 
-          <div className="px-6 py-4 grid grid-cols-3 gap-2">
+          <div className="w-full h-28 px-6 py-4 grid grid-cols-3 gap-2">
             <div className="img-upload">
               <input
                 type="file"
@@ -88,11 +87,11 @@ export default function LocationEditSection(props) {
                 id="file4"
                 onChange={loadFile4}
               />
-              <div className="w-full h-full bg-[#0E0E0E] border border-[#404040] ring-offset-0 focus:border-white focus:outline-none rounded-md cursor-pointer">
+              <div className="w-full h-20 bg-[#0E0E0E] border border-[#404040] ring-offset-0 focus:border-white focus:outline-none rounded-md cursor-pointer">
                 <label htmlFor="file4" className="cursor-pointer">
                   <img
                     id="output4"
-                    className="w-full h-full"
+                    className="w-full h-full rounded-md object-cover"
                     src="assets/img/workspace/wallpaper.png"
                     alt="logo"
                   />
@@ -107,11 +106,11 @@ export default function LocationEditSection(props) {
                 id="file5"
                 onChange={loadFile5}
               />
-              <div className="w-full h-full bg-[#0E0E0E] border border-[#404040] ring-offset-0 focus:border-white focus:outline-none rounded-md cursor-pointer">
+              <div className="w-full h-20 bg-[#0E0E0E] border border-[#404040] ring-offset-0 focus:border-white focus:outline-none rounded-md cursor-pointer">
                 <label htmlFor="file5" className="cursor-pointer">
                   <img
                     id="output5"
-                    className="w-full h-full"
+                    className="w-full h-full rounded-md object-cover"
                     src="assets/img/workspace/wallpaper.png"
                     alt="logo"
                   />
@@ -126,11 +125,11 @@ export default function LocationEditSection(props) {
                 id="file6"
                 onChange={loadFile6}
               />
-              <div className="w-full h-full bg-[#0E0E0E] border border-[#404040] ring-offset-0 focus:border-white focus:outline-none rounded-md cursor-pointer">
+              <div className="w-full h-20 bg-[#0E0E0E] border border-[#404040] ring-offset-0 focus:border-white focus:outline-none rounded-md cursor-pointer">
                 <label htmlFor="file6" className="cursor-pointer">
                   <img
                     id="output6"
-                    className="w-full h-full"
+                    className="w-full h-full rounded-md object-cover"
                     src="assets/img/workspace/wallpaper.png"
                     alt="logo"
                   />
@@ -144,9 +143,15 @@ export default function LocationEditSection(props) {
               <label className="font-extrabold text-white text-[9px] leading-5 tracking-[.21em] uppercase">
                 Characters on location
               </label>
-              <div className="hover:bg-blue-rgba-24 cursor-pointer">
+              <button
+                className="hover:bg-blue-rgba-24 cursor-pointer"
+                onClick={() => {
+                  setShowEditModal(false);
+                  setShowAttachHeroModal(true);
+                }}
+              >
                 <RoundPlusIcon />
-              </div>
+              </button>
             </div>
             <div className="pt-2 grid grid-cols-2 gap-3">
               <div className="flex flex-row justify-between">
@@ -275,11 +280,13 @@ export default function LocationEditSection(props) {
         <button
           className="flex justify-center items-center w-[100px] h-8 bg-[#DD5E5E] text-white text-[10px] font-extrabold tracking-[.21em] rounded cursor-pointer hover:opacity-90"
           onClick={() => {
-            const index = filteredLocations.map((location) => location.location_id).indexOf(selectedLocation.location_id);
+            const index = filteredLocations
+              .map((location) => location.location_id)
+              .indexOf(selectedLocation.location_id);
             setFilteredLocations((filteredLocations) => [
               ...filteredLocations.slice(0, index),
-              ...filteredLocations.slice(index + 1, filteredLocations.length)
-            ])
+              ...filteredLocations.slice(index + 1, filteredLocations.length),
+            ]);
             setShowDeleteModal(false);
           }}
         >
@@ -288,93 +295,6 @@ export default function LocationEditSection(props) {
       </div>
     );
   }, [filteredLocations, selectedLocation.location_id, setFilteredLocations]);
-
-  const GroupModal = () => {
-    return (
-      <div className="absolute z-10 drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] top-1/2 right-4 flex flex-col w-[340px] h-auto bg-[#2B2B2B] border border-[#161616] rounded-md">
-        <div className="flex flex-row justify-between items-center py-[14px] w-full border-b border-[#161616]">
-          <label className="font-extrabold ml-[24px] text-[9px] text-white leading-5 tracking-[.21em] uppercase">
-            Edit Group
-          </label>
-          <button
-            className="mr-[10px] hover:bg-[#4F4F4F]"
-            onClick={() => {
-              setShowGroupModal(false);
-            }}
-          >
-            <img
-              className="w-[20px] h-[20px]"
-              src="assets/img/dashboard/close.png"
-              alt="close"
-            />
-          </button>
-        </div>
-
-        <div className="group-modal-content mx-6 my-4 flex flex-col gap-y-4">
-          <div className="flex flex-col gap-y-3">
-            <div className="flex justify-between">
-              <label className="flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
-                Participants
-              </label>
-              <div
-                className="hover:bg-[#4F4F4F]"
-                onClick={() => {
-                  setShowAttachHeroModal(true);
-                }}
-              >
-                <RoundPlusIcon />
-              </div>
-            </div>
-            <div className="flex flex-col gap-y-3">
-              <div className="flex flex-row gap-x-2">
-                <img
-                  className="rounded-[24px]"
-                  src="assets/img/workspace/location/group-avatar1.png"
-                  alt="avatar1"
-                />
-                <label className="flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
-                  Participants
-                </label>
-              </div>
-
-              <div className="flex flex-row gap-x-2">
-                <img
-                  className="rounded-[24px]"
-                  src="assets/img/workspace/location/group-avatar2.png"
-                  alt="avatar1"
-                />
-                <label className="flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
-                  bandit 1
-                </label>
-              </div>
-
-              <div className="flex flex-row gap-x-2">
-                <img
-                  className="rounded-[24px]"
-                  src="assets/img/workspace/location/group-avatar3.png"
-                  alt="avatar1"
-                />
-                <label className="flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
-                  bandit 2
-                </label>
-              </div>
-
-              <div className="flex flex-row gap-x-2">
-                <img
-                  className="rounded-[24px]"
-                  src="assets/img/workspace/location/group-avatar4.png"
-                  alt="avatar1"
-                />
-                <label className="flex flex-start font-extrabold uppercase leading-5 text-[9px] text-white tracking-[.21em]">
-                  bandit 3
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
 
   return (
     <>
@@ -421,7 +341,7 @@ export default function LocationEditSection(props) {
                 <label htmlFor="file1" className="cursor-pointer">
                   <img
                     id="output1"
-                    className="w-[93px] h-[80px]"
+                    className="w-[93px] h-full rounded-md object-cover"
                     src={selectedLocation.location_images[0].src}
                     alt="logo"
                   />
@@ -440,7 +360,7 @@ export default function LocationEditSection(props) {
                 <label htmlFor="file2" className="cursor-pointer">
                   <img
                     id="output2"
-                    className="w-[93px] h-[80px]"
+                    className="w-[93px] h-full rounded-md object-cover"
                     src={selectedLocation.location_images[1].src}
                     alt="logo"
                   />
@@ -459,7 +379,7 @@ export default function LocationEditSection(props) {
                 <label htmlFor="file3" className="cursor-pointer">
                   <img
                     id="output3"
-                    className="w-[93px] h-[80px]"
+                    className="w-[93px] h-full rounded-md object-cover"
                     src={selectedLocation.location_images[2].src}
                     alt="logo"
                   />
@@ -642,10 +562,8 @@ export default function LocationEditSection(props) {
         />
       )}
 
-      {showGroupModal && <GroupModal />}
-
       {showAttachHeroModal && (
-        <div className="absolute drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] top-1/2 right-[380px] flex flex-col w-[340px] h-auto bg-[#2B2B2B] border border-[#161616] rounded-md">
+        <div className="z-50 w-[340px] h-[296px] fixed flex flex-col top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#2B2B2B] border border-[#161616] rounded-md">
           <div className="flex flex-row justify-between items-center py-[14px] w-full border-b border-[#161616]">
             <label className="font-extrabold ml-[24px] text-[9px] text-white leading-5 tracking-[.21em] uppercase">
               assign character
@@ -687,7 +605,7 @@ export default function LocationEditSection(props) {
                 Result
               </label>
             </div>
-            <div className="flex flex-col gap-y-3 max-h-[120px] overflow-scroll">
+            <div className="flex flex-col gap-y-3 max-h-[140px] overflow-scroll">
               <div className="flex flex-row justify-between items-center p-1 rounded bg-[#1dacff] bg-opacity-30">
                 <div className="flex flex-row">
                   <img
@@ -727,7 +645,7 @@ export default function LocationEditSection(props) {
                     Wonder Woman
                   </label>
                 </div>
-                <CheckboxIcon />
+                <CloseIcon />
               </div>
 
               <div className="flex flex-row justify-between items-center p-1 rounded bg-transparent">
@@ -741,7 +659,7 @@ export default function LocationEditSection(props) {
                     traffic aman
                   </label>
                 </div>
-                <CheckboxIcon />
+                <CloseIcon />
               </div>
             </div>
           </div>

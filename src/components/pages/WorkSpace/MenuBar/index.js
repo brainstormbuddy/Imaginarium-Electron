@@ -12,6 +12,9 @@ import { MenuLocations } from "./data/MenuLocations";
 import { RenderTree } from "./RenderTree";
 import { FileMenu, FileText, MsgSquare } from "../../../Svg";
 
+// svg
+import { LocationIcon, UserIcon } from "./data/SVG";
+
 const title = ["Project structure", "All Characters", "All Locations"];
 
 export const MenuBar = () => {
@@ -38,10 +41,7 @@ export const MenuBar = () => {
 
   React.useEffect(() => {
     if (currentProjectType === 1) setTreeItem(MenuText);
-
     if (currentProjectType === 2) setTreeItem(MenuCharacters);
-
-    if (currentProjectType === 3) setTreeItem(MenuLocations);
   }, [currentProjectType]);
 
   return (
@@ -49,7 +49,7 @@ export const MenuBar = () => {
       <div className="flex flex-col items-start pl-3 pt-3 pr-2 pb-3 border-b border-gray-600">
         <label className="flex flex-row justify-center items-center gap-4 px-1 py-2">
           <FileMenu />
-          <p className="text-xs text-white font-normal">
+          <p className="text-xs text-white font-normal uppercase tracking-[.21em]">
             {title[currentProjectType - 1]}
           </p>
         </label>
@@ -62,16 +62,57 @@ export const MenuBar = () => {
           </label>
         </div>
       )}
-      <div className="flex flex-col gap-2 p-2 w-full max-h-[calc(100vh-210px)] overflow-y-auto">
-        {getRootNodes(treeItem).map((node, index) => (
-          <RenderTree
-            node={node}
-            getChildNodes={getChildNodes}
-            onToggle={onToggle}
+
+      {currentProjectType === 3 &&
+        MenuLocations.map((menu, index) => (
+          <div
+            className="w-full h-[44px] px-4 py-1 flex flex-row justify-between items-center text-white  text-sm hover:bg-[#404040] select-none cursor-pointer"
             key={index}
-          />
+          >
+            <div className="flex flex-row items-center gap-2">
+              <LocationIcon />
+              <div className="text-white flex flex-col gap-1">
+                <label className="h-[20px] text-[12px] leading-5">
+                  {menu.name}
+                </label>
+                <div className="h-[14px] flex flex-row gap-1 divide-x divide-[#2B2B2B]">
+                  
+                  <label className="uppercase font-extrabold text-[9px] text-[#5F5F5F] leading-3 tracking-[.1em]">
+                    Completion: {menu.percent}%
+                  </label>
+               
+                  <div className="flex flex-row gap-1 pl-1">
+                    <UserIcon />
+                    <label className="uppercase font-extrabold text-[9px] text-[#5F5F5F] leading-3 tracking-[.1em]">
+                      {menu.collaborator_number}
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {menu.avatar && (
+              <div className="avatar placeholder">
+                <div className="bg-[#2b2b2b] text-white rounded-full w-5">
+                  <img src={menu.avatar} alt="avatar" />
+                </div>
+              </div>
+            )}
+          </div>
         ))}
-      </div>
+
+      {(currentProjectType === 1 || currentProjectType === 2) && (
+        <div className="flex flex-col gap-2 p-2 w-full max-h-[calc(100vh-210px)] overflow-y-auto">
+          {getRootNodes(treeItem).map((node, index) => (
+            <RenderTree
+              node={node}
+              getChildNodes={getChildNodes}
+              onToggle={onToggle}
+              key={index}
+            />
+          ))}
+        </div>
+      )}
+
       {!isPaneOpen && (
         <div className="absolute bottom-0 w-full select-none">
           <div className="border-[1px] border-[#262626]" />
@@ -86,11 +127,14 @@ export const MenuBar = () => {
               <p className="text-xs text-white font-normal">
                 COLLABORATION CHAT
               </p>
-              <div className="badge badge-secondary text-xs cursor-pointer">999</div>
+              <div className="badge badge-secondary text-xs cursor-pointer">
+                999
+              </div>
             </label>
           </div>
         </div>
       )}
+
       {isPaneOpen && (
         <div className="absolute bottom-[0px] w-full overflow-scroll  border-t-2 border-[#262626]">
           <div className="flex flex-col overflow-scroll">
@@ -105,7 +149,9 @@ export const MenuBar = () => {
                 <p className="text-xs text-white font-normal">
                   COLLABORATION CHAT
                 </p>
-                <div className="badge badge-secondary text-xs cursor-pointer">999</div>
+                <div className="badge badge-secondary text-xs cursor-pointer">
+                  999
+                </div>
               </label>
             </div>
             <div className=" bg-[#161616] pb-2 h-60 overflow-scroll">

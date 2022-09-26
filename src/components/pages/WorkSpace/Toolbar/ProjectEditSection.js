@@ -596,7 +596,7 @@ export default function ProjectEditSection(props) {
       {showGroupModal && <GroupModal />}
 
       {showAttachHeroModal && (
-        <div className="absolute drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] top-1/2 right-[380px] flex flex-col w-[340px] h-auto bg-[#2B2B2B] border border-[#161616] rounded-md">
+        <div className="z-50 w-[400px] fixed flex flex-col top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-auto bg-[#2B2B2B] border border-[#161616] divide-y divide-[#161616] rounded-md">
           <div className="flex flex-row justify-between items-center py-[14px] w-full border-b border-[#161616]">
             <label className="font-extrabold ml-[24px] text-[9px] text-white leading-5 tracking-[.21em] uppercase">
               assign character

@@ -4,7 +4,7 @@ import { CopyLinkIcon, DetailIcon, IconicIcon, PenIcon } from "../../../Svg";
 const CommentDialog = (props) => {
     const { setState } = props;
     return (
-        <div className="absolute top-[15rem] right-[25%] flex flex-col">
+        <div className="z-10 absolute top-[15rem] right-[25%] flex flex-col">
             <div className="flex flex-col items-end ">
                 <ul
                     tabIndex="0"

@@ -5,7 +5,7 @@ export default function Modal(props) {
 
   return (
     <>
-      <div className="z-50 fixed flex flex-col top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-auto bg-[#2B2B2B] border border-[#161616] divide-y divide-[#161616] rounded-md">
+      <div className="z-50 w-[400px] fixed flex flex-col top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-auto bg-[#2B2B2B] border border-[#161616] divide-y divide-[#161616] rounded-md">
         {title && (
           <div className="modal-header flex flex-row justify-between items-center py-[14px] w-full">
             <label className="font-extrabold ml-[24px] text-[9px] text-white leading-5 tracking-[.21em] uppercase">

@@ -58,9 +58,16 @@ export default function LocationEditor(props) {
       <>
         <div className="flex flex-col divide-y divide-[#161616] max-h-[450px] overflow-scroll">
           <div className="relative w-full min-h-[160px] flex justify-center items-center bg-gradient-to-t from-black">
-            <h1 className="absolute bottom-6 left-6 uppercase text-[#5F5F5F] text-[24px] font-extrabold leading-6 tracking-[.1em]">
+            {/* <h1 className="absolute bottom-6 left-6 uppercase text-[#5F5F5F] text-[24px] font-extrabold leading-6 tracking-[.1em]">
               Location name
-            </h1>
+            </h1> */}
+            <div className="absolute bottom-6 left-6">
+            <input
+              className=" bg-transparent w-full h-6 uppercase font-extrabold leading-6 tracking-[.1em] text-white border-none focus:border-none	text-[24px] placeholder-[#5F5F5F]"
+              type="text"
+              placeholder="Location name"
+            />
+            </div>
             <WallPaperIcon />
           </div>
 
@@ -194,17 +201,17 @@ export default function LocationEditor(props) {
             <div className="w-full min-h-[160px] rounded-t-[16px]">
               <Carousel {...carouselProp}>
                 <img
-                  className="w-full h-40 rounded-t-[16px]"
+                  className="w-full h-40 rounded-t-[16px] object-cover"
                   src={location.location_images[0].src}
                   alt={location.location_images[0].alt}
                 />
                 <img
-                  className="w-full h-40 rounded-t-[16px] z-0"
+                  className="w-full h-40 rounded-t-[16px] object-cover"
                   src={location.location_images[1].src}
                   alt={location.location_images[1].alt}
                 />
                 <img
-                  className="w-full h-40 rounded-t-[16px] z-0"
+                  className="w-full h-40 rounded-t-[16px] object-cover"
                   src={location.location_images[2].src}
                   alt={location.location_images[2].alt}
                 />
@@ -224,37 +231,37 @@ export default function LocationEditor(props) {
               </div>
               <div className="flex gap-2">
                 <div className="flex flex-row relative">
-                  <div className="absolute z-5 right-[56px] w-[20px] h-[20px] rounded-[24px]">
+                  <div className="absolute z-[5] right-[56px] w-[20px] h-[20px] rounded-[24px]">
                     <img
                       className="w-[20px] h-[20px] rounded-[24px]"
                       src={location.location_collaborators[0].src}
                       alt={location.location_collaborators[0].name}
                     />
                   </div>
-                  <div className="absolute z-4 right-[42px] w-[20px] h-[20px] rounded-[24px]">
+                  <div className="absolute z-[4] right-[42px] w-[20px] h-[20px] rounded-[24px]">
                     <img
                       className="w-[20px] h-[20px] rounded-[24px]"
                       src={location.location_collaborators[1].src}
                       alt={location.location_collaborators[1].name}
                     />
                   </div>
-                  <div className="absolute z-3 right-[28px] w-[20px] h-[20px] rounded-[24px]">
+                  <div className="absolute z-[3] right-[28px] w-[20px] h-[20px] rounded-[24px]">
                     <img
                       className="w-[20px] h-[20px] rounded-[24px]"
                       src={location.location_collaborators[2].src}
                       alt={location.location_collaborators[2].name}
                     />
                   </div>
-                  <div className="absolute z-2 right-[14px] w-[20px] h-[20px] rounded-[24px]">
+                  <div className="absolute z-[2] right-[14px] w-[20px] h-[20px] rounded-[24px]">
                     <img
                       className="w-[20px] h-[20px] rounded-[24px]"
                       src={location.location_collaborators[3].src}
                       alt={location.location_collaborators[3].name}
                     />
                   </div>
-                  <div className="w-[20px] h-[20px] rounded-[24px]">
+                  <div className="z-[1] w-[20px] h-[20px] rounded-[24px]">
                     <img
-                      className="z-10 w-[20px] h-[20px] rounded-[24px]"
+                      className="w-[20px] h-[20px] rounded-[24px]"
                       src={location.location_collaborators[4].src}
                       alt={location.location_collaborators[4].name}
                     />
