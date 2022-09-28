@@ -78,7 +78,7 @@ const VoiceSection = () => {
           </label>
         </div>
         {isVoiceOpen && (
-          <div className="drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact  shadow bg-[#2B2B2B] border border-[#161616] rounded-[4px] w-[400px] absolute right-[25rem]">
+          <div className="z-50 drop-shadow-[0_15px_15px_rgba(255,255,255,0.2)] menu menu-compact  shadow bg-[#2B2B2B] border border-[#161616] rounded-[4px] w-[400px] absolute right-[25rem]">
             <div className=" flex flex-row justify-between items-center py-[14px] w-full h-12 border-b border-[#161616]">
               <label className="ml-[24px] text-xs text-white font-extrabold leading-5 tracking-[.21em]">
                 New Voice Memo
