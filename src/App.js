@@ -33,7 +33,7 @@ function App() {
     { path: "/dashboard", element: <Dashboard /> },
     { path: "/project/new", element: <NewProject /> },
     { path: "/project/edit", element: <EditProject /> },
-    // { path: "/profile", element: <Profile /> },
+    { path: "/profile", element: <Profile /> },
     { path: "/workspace", element: <Workspace /> },
   ]);
   return routes;
